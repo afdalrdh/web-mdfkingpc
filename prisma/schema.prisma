@@ -15,9 +15,21 @@ model Booking {
   deviceModel        String
   problemDescription String
   paymentProofUrl    String?
+  detailsJson        String?  // Extended JSON string for specialized form fields (Mouse, Keyboard, Gamepad, Laptop, Rakit PC, Instalasi)
   status             String   @default("PENDING") // PENDING, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
+}
+
+model Cashflow {
+  id          String   @id @default(cuid())
+  date        DateTime @default(now())
+  type        String   // INCOME (Pemasukan) or EXPENSE (Pengeluaran)
+  category    String   // Servis Laptop, Rakit PC, Sparepart, Operasional Workshop, dll
+  amount      Float
+  description String
+  proofUrl    String?  // Cloudinary image URL for receipt/invoice
+  createdAt   DateTime @default(now())
 }
 
 model ContactMessage {
@@ -30,23 +42,23 @@ model ContactMessage {
 }
 
 model Service {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  category      String
+  description   String
+  priceStarting String
+  imageUrl      String
+  features      String[]
+}
+
+model Article {
   id          String   @id @default(cuid())
   slug        String   @unique
   title       String
   category    String
-  description String
-  priceStarting String
+  snippet     String
+  content     String
   imageUrl    String
-  features    String[]
-}
-
-model Article {
-  id        String   @id @default(cuid())
-  slug      String   @unique
-  title     String
-  category  String
-  snippet   String
-  content   String
-  imageUrl  String
   publishedAt DateTime @default(now())
 }

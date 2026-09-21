@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { customerName, phoneWA, serviceType, deviceModel, problemDescription, paymentProofUrl } = body;
+    const { customerName, phoneWA, serviceType, deviceModel, problemDescription, paymentProofUrl, detailsJson } = body;
 
     if (!customerName || !phoneWA || !serviceType || !problemDescription) {
       return NextResponse.json(
@@ -27,6 +27,7 @@ export async function POST(request: Request) {
             deviceModel: deviceModel || 'Tidak Disebutkan',
             problemDescription,
             paymentProofUrl: paymentProofUrl || null,
+            detailsJson: detailsJson ? JSON.stringify(detailsJson) : null,
             status: 'PENDING',
           },
         });
@@ -49,6 +50,7 @@ export async function POST(request: Request) {
         deviceModel,
         problemDescription,
         paymentProofUrl: paymentProofUrl || null,
+        detailsJson: detailsJson || null,
         createdAt: new Date().toISOString(),
       },
     });
