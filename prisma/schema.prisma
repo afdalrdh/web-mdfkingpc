@@ -7,37 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Booking {
-  id                 String   @id @default(cuid())
-  customerName       String
-  phoneWA            String
-  serviceType        String
-  deviceModel        String
-  problemDescription String
-  paymentProofUrl    String?
-  detailsJson        String?  // Extended JSON string for specialized form fields (Mouse, Keyboard, Gamepad, Laptop, Rakit PC, Instalasi)
-  status             String   @default("PENDING") // PENDING, CONFIRMED, IN_PROGRESS, COMPLETED, CANCELLED
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-}
-
-model Cashflow {
-  id          String   @id @default(cuid())
-  date        DateTime @default(now())
-  type        String   // INCOME (Pemasukan) or EXPENSE (Pengeluaran)
-  category    String   // Servis Laptop, Rakit PC, Sparepart, Operasional Workshop, dll
-  amount      Float
-  description String
-  proofUrl    String?  // Cloudinary image URL for receipt/invoice
-  createdAt   DateTime @default(now())
-}
-
-model ContactMessage {
+model AdminUser {
   id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
   name      String
-  email     String
-  phone     String?
-  message   String
   createdAt DateTime @default(now())
 }
 
@@ -46,10 +20,60 @@ model Service {
   slug          String   @unique
   title         String
   category      String
+  shortDesc     String?
   description   String
   priceStarting String
+  price         Float    @default(0)
   imageUrl      String
+  badge         String?
   features      String[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  orders        Order[]
+}
+
+model Order {
+  id                 String   @id @default(cuid())
+  customerName       String
+  customerEmail      String
+  customerPhone      String
+  serviceId          String?
+  service            Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  serviceName        String
+  price              Float    @default(0)
+  paymentStatus      String   @default("PENDING") // PENDING, CONFIRMED, COMPLETED, CANCELLED
+  paymentProofUrl    String?
+  invoiceUrl         String?
+  deviceModel        String?
+  problemDescription String?
+  detailsJson        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model CmsPage {
+  id         String   @id @default(cuid())
+  pageKey    String   // beranda, layanan, testimoni, blog, tentang, kontak
+  sectionKey String   // hero, site_info, values, stats, custom, dll
+  title      String?
+  subtitle   String?
+  content    String   // Text or JSON content
+  imageUrl   String?  // Cloudinary image URL
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([pageKey, sectionKey])
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  location    String?
+  rating      Int      @default(5)
+  serviceType String
+  quote       String
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
 }
 
 model Article {
@@ -60,5 +84,41 @@ model Article {
   snippet     String
   content     String
   imageUrl    String
+  author      String   @default("Admin mdfkingpc")
+  readTime    String   @default("5 menit baca")
   publishedAt DateTime @default(now())
+}
+
+model Booking {
+  id                 String   @id @default(cuid())
+  customerName       String
+  phoneWA            String
+  serviceType        String
+  deviceModel        String
+  problemDescription String
+  paymentProofUrl    String?
+  detailsJson        String?
+  status             String   @default("PENDING")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Cashflow {
+  id          String   @id @default(cuid())
+  date        DateTime @default(now())
+  type        String
+  category    String
+  amount      Float
+  description String
+  proofUrl    String?
+  createdAt   DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  createdAt DateTime @default(now())
 }
