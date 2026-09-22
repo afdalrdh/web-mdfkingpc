@@ -15,10 +15,8 @@ import {
   MessageSquare,
   Check,
   RefreshCw,
-  AlertCircle,
-  SlidersHorizontal,
-  DollarSign,
   Wrench,
+  DollarSign,
 } from 'lucide-react';
 
 export default function RakitPcSimulator() {
@@ -64,7 +62,7 @@ export default function RakitPcSimulator() {
     setSelectedComponents((prev) => ({ ...prev, [category]: item }));
   };
 
-  // Trigger Groq AI for Mode 1 (Custom Pick - Itemized Price Research)
+  // Trigger Groq AI ONLY on Button Click for Mode 1
   const handleCalculateCustomPricesWithGroq = async () => {
     setLoadingCustomAi(true);
     setCustomAiResult(null);
@@ -80,6 +78,14 @@ export default function RakitPcSimulator() {
           psu: selectedComponents.psu?.name,
           case: selectedComponents.case?.name,
           cooler: selectedComponents.cooler?.name,
+          cpuPrice: selectedComponents.cpu?.price,
+          gpuPrice: selectedComponents.gpu?.price,
+          motherboardPrice: selectedComponents.motherboard?.price,
+          ramPrice: selectedComponents.ram?.price,
+          ssdPrice: selectedComponents.ssd?.price,
+          psuPrice: selectedComponents.psu?.price,
+          casePrice: selectedComponents.case?.price,
+          coolerPrice: selectedComponents.cooler?.price,
         },
         targetUsage: targetUsageCustom,
       };
@@ -101,7 +107,7 @@ export default function RakitPcSimulator() {
     }
   };
 
-  // Trigger Groq AI for Mode 2 (Budget Auto-Build)
+  // Trigger Groq AI ONLY on Button Click for Mode 2
   const handleBuildByBudgetWithGroq = async () => {
     setLoadingBudgetAi(true);
     setBudgetAiResult(null);
@@ -267,12 +273,18 @@ export default function RakitPcSimulator() {
             </p>
           </div>
 
-          {activeTab === 'custom' && customAiResult && (
-            <div className="bg-slate-800/90 border border-emerald-500/30 rounded-2xl p-4 text-right animate-in fade-in">
+          {activeTab === 'custom' && (
+            <div className="bg-slate-800/90 border border-slate-700 rounded-2xl p-4 text-right animate-in fade-in">
               <span className="text-[11px] text-slate-400 block uppercase font-medium">Total Estimasi AI</span>
-              <span className="text-2xl sm:text-3xl font-black text-emerald-400">
-                Rp {customAiResult.totalPrice.toLocaleString('id-ID')}
-              </span>
+              {customAiResult ? (
+                <span className="text-2xl sm:text-3xl font-black text-emerald-400">
+                  Rp {customAiResult.totalPrice.toLocaleString('id-ID')}
+                </span>
+              ) : (
+                <span className="text-xs font-bold text-sky-400 bg-sky-500/10 border border-sky-500/20 px-3 py-1.5 rounded-xl inline-block mt-1">
+                  Hitung via Button AI
+                </span>
+              )}
             </div>
           )}
         </div>
@@ -341,7 +353,7 @@ export default function RakitPcSimulator() {
             {/* Clean Component Selection Dropdowns */}
             <div className="space-y-4">
               <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                Pilih Komponen Utama (Harga Akan Dihitung & Diriset Oleh AI Groq):
+                Pilih Komponen Utama (Harga Akan Dihitung Saat Klik Button AI Groq):
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {categories.map((cat) => {
@@ -360,9 +372,13 @@ export default function RakitPcSimulator() {
                           <span className="text-xs font-bold text-white">{cat.name}</span>
                         </div>
 
-                        {itemizedPrice && (
+                        {itemizedPrice ? (
                           <span className="text-xs font-black text-emerald-400">
                             Rp {itemizedPrice.toLocaleString('id-ID')}
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-medium text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-lg">
+                            Riset via AI
                           </span>
                         )}
                       </div>
@@ -570,7 +586,7 @@ export default function RakitPcSimulator() {
                 type="text"
                 value={userNotes}
                 onChange={(e) => setUserNotes(e.target.value)}
-                placeholder="Contoh: Utamakan VGA NVIDIA RTX, casing warna putih, or minimal SSD 1TB..."
+                placeholder="Contoh: Utamakan VGA NVIDIA RTX, casing warna putih, atau minimal SSD 1TB..."
                 className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
