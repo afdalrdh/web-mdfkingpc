@@ -229,8 +229,21 @@ export default function PesananSayaPage() {
                   </div>
                 )}
 
+                {/* Status Info for PENDING & IN_PROGRESS */}
+                {(order.paymentStatus === 'PENDING' || order.paymentStatus === 'IN_PROGRESS') && (
+                  <div className="bg-sky-950/30 border border-sky-800/40 rounded-2xl p-4 text-xs space-y-1">
+                    <div className="font-bold text-sky-300 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-sky-400 animate-pulse" />
+                      <span>Proses Perbaikan & Diagnostik Teknisi</span>
+                    </div>
+                    <p className="text-slate-300">
+                      Perangkat Anda saat ini sedang ditangani oleh teknisi mdfkingpc. Form upload bukti pembayaran akan otomatis muncul setelah pengerjaan servis selesai.
+                    </p>
+                  </div>
+                )}
+
                 {/* Status Action: Upload Proof when Servis Selesai */}
-                {(order.paymentStatus === 'COMPLETED_WAITING_PAYMENT' || order.paymentStatus === 'PENDING') && (
+                {order.paymentStatus === 'COMPLETED_WAITING_PAYMENT' && (
                   <div className="bg-rose-950/30 border border-rose-800/40 rounded-2xl p-4 text-xs space-y-3">
                     <div className="font-bold text-rose-300 flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 text-rose-400" />
