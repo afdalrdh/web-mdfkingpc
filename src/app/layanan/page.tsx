@@ -4,9 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   Wrench, ShieldCheck, Award, CheckCircle2, ArrowRight, HardDrive, 
-  Cpu, Smartphone, Laptop, Gamepad2, MousePointer, Keyboard, MonitorCheck 
+  Laptop, Info
 } from 'lucide-react';
-import { SERVICES_LIST, SITE_INFO, CLOUDINARY_IMAGES } from '@/data/mockData';
+import { SERVICES_LIST, CLOUDINARY_IMAGES } from '@/data/mockData';
 
 export default function LayananPage() {
   return (
@@ -26,7 +26,7 @@ export default function LayananPage() {
         </h1>
         
         <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-          Pilih kategori perbaikan perangkat Anda. Semua pengerjaan ditangani teknisi profesional dengan transparansi biaya dan bergaransi 30 hari penuh.
+          Pilih kategori perbaikan perangkat Anda. Klik kartu layanan untuk melihat rincian tabel perbaikan, estimasi durasi, dan garansi.
         </p>
 
         {/* Highlight Badges */}
@@ -49,71 +49,93 @@ export default function LayananPage() {
       {/* Services Cards Grid */}
       <div className="space-y-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES_LIST.map((service) => (
-            <div
-              id={service.slug}
-              key={service.id}
-              className="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-brand-blue transition-all duration-300 flex flex-col justify-between group shadow-xl"
-            >
-              <div>
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={service.imageUrl}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1E] via-transparent to-transparent opacity-90" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-md bg-black/70 backdrop-blur text-white text-[10px] font-bold uppercase tracking-wider border border-white/10">
-                    {service.category}
-                  </span>
-                  {service.badge && (
-                    <span className="absolute top-4 right-4 px-3 py-1 rounded-md bg-brand-red/90 text-white text-[10px] font-bold shadow-glow-red">
-                      {service.badge}
+          {SERVICES_LIST.map((service) => {
+            const detailUrl = `/layanan/${service.slug}`;
+
+            return (
+              <div
+                id={service.slug}
+                key={service.id}
+                className="glass-panel rounded-3xl overflow-hidden border border-white/10 hover:border-sky-500/60 transition-all duration-300 flex flex-col justify-between group shadow-xl hover:shadow-2xl hover:shadow-sky-500/10"
+              >
+                <div>
+                  {/* Clickable Image Header */}
+                  <Link href={detailUrl} className="block relative h-56 overflow-hidden cursor-pointer">
+                    <img
+                      src={service.imageUrl}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1E] via-transparent to-transparent opacity-90" />
+                    <span className="absolute top-4 left-4 px-3 py-1 rounded-md bg-black/70 backdrop-blur text-white text-[10px] font-bold uppercase tracking-wider border border-white/10">
+                      {service.category}
                     </span>
-                  )}
+                    {service.badge && (
+                      <span className="absolute top-4 right-4 px-3 py-1 rounded-md bg-brand-red/90 text-white text-[10px] font-bold shadow-glow-red">
+                        {service.badge}
+                      </span>
+                    )}
+                  </Link>
+
+                  <div className="p-6 space-y-4">
+                    {/* Clickable Title */}
+                    <Link href={detailUrl} className="block group/title">
+                      <h3 className="text-xl font-bold text-white group-hover/title:text-sky-400 transition-colors flex items-center justify-between">
+                        <span>{service.title}</span>
+                        <ArrowRight className="w-4 h-4 text-sky-400 opacity-0 group-hover/title:opacity-100 transition-opacity" />
+                      </h3>
+                    </Link>
+
+                    <p className="text-xs text-slate-300 leading-relaxed">
+                      {service.fullDesc}
+                    </p>
+
+                    <div className="space-y-2 pt-2">
+                      <span className="text-[11px] font-bold text-slate-400 block uppercase tracking-wider">Fitur & Pengerjaan Utama:</span>
+                      <ul className="space-y-1.5 text-xs text-slate-300">
+                        {service.features.map((feat, i) => (
+                          <li key={i} className="flex items-center gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-brand-blue transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs text-gray-300 leading-relaxed">
-                    {service.fullDesc}
-                  </p>
+                {/* Card Bottom Action Bar */}
+                <div className="p-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 bg-black/30">
+                  <div>
+                    <span className="text-[10px] text-slate-400 block">Estimasi Mulai Dari</span>
+                    <span className="text-base font-extrabold text-emerald-400">{service.priceStarting}</span>
+                  </div>
 
-                  <div className="space-y-2 pt-2">
-                    <span className="text-[11px] font-bold text-gray-400 block uppercase tracking-wider">Fitur & Pengerjaan:</span>
-                    <ul className="space-y-1.5 text-xs text-gray-300">
-                      {service.features.map((feat, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={detailUrl}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition-all"
+                    >
+                      <Info className="w-3.5 h-3.5 text-sky-400" />
+                      <span>Detail</span>
+                    </Link>
+
+                    <Link
+                      href={`/pemesanan?service=${encodeURIComponent(service.title)}`}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-xs font-bold text-white shadow-glow-blue transition-all border border-blue-400/30"
+                    >
+                      <span>Pesan</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-brand-red" />
+                    </Link>
                   </div>
                 </div>
               </div>
-
-              <div className="p-6 pt-4 border-t border-white/10 flex items-center justify-between bg-black/20">
-                <div>
-                  <span className="text-[10px] text-gray-400 block">Estimasi Biaya</span>
-                  <span className="text-base font-extrabold text-emerald-400">{service.priceStarting}</span>
-                </div>
-                <Link
-                  href={`/pemesanan?service=${service.slug}`}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-blue hover:bg-brand-blue-hover text-xs font-bold text-white shadow-glow-blue transition-all border border-blue-400/30"
-                >
-                  <span>Pesan Sekarang</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-brand-red" />
-                </Link>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
-      {/* COMPONENT EXAMPLE SHOWCASE: SSD UPGRADE & SCREEN REPAIR */}
+      {/* COMPONENT EXAMPLE SHOWCASE */}
       <div className="glass-panel p-8 md:p-10 rounded-3xl border border-white/10 bg-gradient-to-r from-[#1C1C1E] via-[#141414] to-[#1C1C1E] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-7 space-y-4">
           <span className="px-3 py-1 rounded bg-brand-red/20 text-brand-red text-xs font-bold border border-brand-red/30">
