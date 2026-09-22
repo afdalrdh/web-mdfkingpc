@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { SERVICES_LIST, REPAIR_PRICING_TABLES, SITE_INFO } from '@/data/mockData';
 import { Wrench, ShieldCheck, Clock, Award, CheckCircle2, ArrowRight, MessageSquare, AlertCircle } from 'lucide-react';
+import RakitPcSimulator from '@/components/RakitPcSimulator';
 
 export function generateStaticParams() {
   return SERVICES_LIST.map((service) => ({
@@ -19,6 +20,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
   }
 
   const repairTable = REPAIR_PRICING_TABLES[service.slug] || [];
+  const isRakitPc = service.slug === 'rakit-pc-gaming';
 
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
@@ -89,57 +91,63 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           </div>
         </section>
 
-        {/* Pricing & Repair Table Section */}
+        {/* Pricing & Repair / Simulator Section */}
         <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
-              Rincian Perbaikan & Estimasi Biaya
-            </h2>
-            <p className="text-slate-400 text-sm">
-              Tabel kisaran harga perbaikan transparan, estimasi durasi pengerjaan, dan jaminan garansi resmi di mdfkingpc.
-            </p>
-          </div>
-
-          {repairTable.length > 0 ? (
-            <div className="overflow-x-auto rounded-3xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur-md">
-              <table className="w-full text-left text-sm text-slate-300">
-                <thead className="bg-slate-800/80 text-xs uppercase font-bold text-slate-200 tracking-wider border-b border-slate-700">
-                  <tr>
-                    <th className="px-6 py-4">Jenis Perbaikan / Problem</th>
-                    <th className="px-6 py-4">Deskripsi Layanan</th>
-                    <th className="px-6 py-4">Kisaran Harga (Rp)</th>
-                    <th className="px-6 py-4">Estimasi Waktu</th>
-                    <th className="px-6 py-4">Garansi</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-800">
-                  {repairTable.map((item, idx) => (
-                    <tr key={idx} className="hover:bg-slate-800/40 transition-colors">
-                      <td className="px-6 py-4 font-bold text-white whitespace-nowrap flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                        <span>{item.problemName}</span>
-                      </td>
-                      <td className="px-6 py-4 text-slate-400 max-w-xs">{item.description}</td>
-                      <td className="px-6 py-4 font-extrabold text-emerald-400 whitespace-nowrap">{item.priceRange}</td>
-                      <td className="px-6 py-4 text-slate-300 whitespace-nowrap flex items-center gap-1.5 mt-2">
-                        <Clock className="w-3.5 h-3.5 text-sky-400" />
-                        <span>{item.estimatedTime}</span>
-                      </td>
-                      <td className="px-6 py-4 text-slate-200 font-semibold whitespace-nowrap">
-                        <span className="inline-block px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs">
-                          {item.warranty}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          {isRakitPc ? (
+            <RakitPcSimulator />
           ) : (
-            <div className="text-center py-12 bg-slate-900/40 rounded-3xl border border-slate-800 text-slate-400">
-              <AlertCircle className="w-10 h-10 mx-auto text-sky-400 mb-2" />
-              <p>Hubungi teknisi mdfkingpc via WA 085158916661 untuk konsultasi spesifik.</p>
-            </div>
+            <>
+              <div className="mb-10 text-center max-w-3xl mx-auto">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
+                  Rincian Perbaikan & Estimasi Biaya
+                </h2>
+                <p className="text-slate-400 text-sm">
+                  Tabel kisaran harga perbaikan transparan, estimasi durasi pengerjaan, dan jaminan garansi resmi di mdfkingpc.
+                </p>
+              </div>
+
+              {repairTable.length > 0 ? (
+                <div className="overflow-x-auto rounded-3xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur-md">
+                  <table className="w-full text-left text-sm text-slate-300">
+                    <thead className="bg-slate-800/80 text-xs uppercase font-bold text-slate-200 tracking-wider border-b border-slate-700">
+                      <tr>
+                        <th className="px-6 py-4">Jenis Perbaikan / Problem</th>
+                        <th className="px-6 py-4">Deskripsi Layanan</th>
+                        <th className="px-6 py-4">Kisaran Harga (Rp)</th>
+                        <th className="px-6 py-4">Estimasi Waktu</th>
+                        <th className="px-6 py-4">Garansi</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800">
+                      {repairTable.map((item, idx) => (
+                        <tr key={idx} className="hover:bg-slate-800/40 transition-colors">
+                          <td className="px-6 py-4 font-bold text-white whitespace-nowrap flex items-center gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                            <span>{item.problemName}</span>
+                          </td>
+                          <td className="px-6 py-4 text-slate-400 max-w-xs">{item.description}</td>
+                          <td className="px-6 py-4 font-extrabold text-emerald-400 whitespace-nowrap">{item.priceRange}</td>
+                          <td className="px-6 py-4 text-slate-300 whitespace-nowrap flex items-center gap-1.5 mt-2">
+                            <Clock className="w-3.5 h-3.5 text-sky-400" />
+                            <span>{item.estimatedTime}</span>
+                          </td>
+                          <td className="px-6 py-4 text-slate-200 font-semibold whitespace-nowrap">
+                            <span className="inline-block px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs">
+                              {item.warranty}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="text-center py-12 bg-slate-900/40 rounded-3xl border border-slate-800 text-slate-400">
+                  <AlertCircle className="w-10 h-10 mx-auto text-sky-400 mb-2" />
+                  <p>Hubungi teknisi mdfkingpc via WA 085158916661 untuk konsultasi spesifik.</p>
+                </div>
+              )}
+            </>
           )}
         </section>
 
@@ -150,44 +158,34 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
               Keuntungan Servis Layanan Ini di <span className="text-sky-400">mdfkingpc</span>
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 hover:border-sky-500/40 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold text-xl mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="glass-panel p-6 rounded-2xl border border-white/10 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-400 mb-4">
                   <ShieldCheck className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">Diagnostik Gratis</h3>
+                <h3 className="text-lg font-bold text-white">Garansi Sampai Puas</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Pemeriksaan awal kerusakan perangkat tanpa dipungut biaya sedikitpun. Anda berhak membatalkan jika tidak cocok.
+                  Setiap pengerjaan garansi 30 hari hingga 90 hari. Bebas konsultasi & pengerjaan perbaikan ulang gratis jika kendala berulang.
                 </p>
               </div>
 
-              <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 hover:border-sky-500/40 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-xl mb-4">
-                  <Award className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Garansi 30 Hari</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Jaminan penuh selama 30 hari untuk setiap perbaikan & pergantian part yang kami kerjakan.
-                </p>
-              </div>
-
-              <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 hover:border-sky-500/40 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold text-xl mb-4">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Pengerjaan Cepat</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Sebagian besar perbaikan ringan seperti LCD, baterai, & switch peripheral selesai dalam 1-3 jam.
-                </p>
-              </div>
-
-              <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 hover:border-sky-500/40 transition-all">
-                <div className="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold text-xl mb-4">
+              <div className="glass-panel p-6 rounded-2xl border border-white/10 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 mb-4">
                   <Wrench className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-white mb-2">Teknisi Profesional</h3>
+                <h3 className="text-lg font-bold text-white">Teknisi Sertifikasi Professional</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Ditangani langsung oleh tim teknisi berpengalaman 8+ tahun di Bandung dengan suku cadang original.
+                  Pengerjaan ditangani spesialis perangkat keras mikro (micro-soldering, BIOS chip reprogram, & modding controller/peripheral).
+                </p>
+              </div>
+
+              <div className="glass-panel p-6 rounded-2xl border border-white/10 space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 mb-4">
+                  <Award className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-white">Sparepart Original Bergaransi</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Seluruh sparepart (switch mouse, modul joystick Hall Effect, layar laptop, SSD, PSU) original dan bergaransi distributor resmi.
                 </p>
               </div>
             </div>
