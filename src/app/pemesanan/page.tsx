@@ -190,6 +190,14 @@ function PemesananContent() {
 
       const data = await res.json();
       if (data.success) {
+        if (typeof window !== 'undefined' && data.data) {
+          try {
+            const existingLocal = JSON.parse(localStorage.getItem('mdfkingpc_local_orders') || '[]');
+            localStorage.setItem('mdfkingpc_local_orders', JSON.stringify([data.data, ...existingLocal]));
+          } catch (e) {
+            console.error(e);
+          }
+        }
         router.push('/pesanan-saya');
       } else {
         setErrorMsg(data.message || 'Gagal memproses pemesanan.');

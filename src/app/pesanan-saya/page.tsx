@@ -35,15 +35,31 @@ export default function PesananSayaPage() {
   const fetchOrders = async (userEmail: string) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/orders`);
+      const res = await fetch(`/api/orders?email=${encodeURIComponent(userEmail)}`);
       const data = await res.json();
+      let apiOrders: any[] = [];
       if (data.success && Array.isArray(data.data)) {
-        // Filter orders for this user's email
-        const userOrders = data.data.filter(
-          (o: any) => o.customerEmail?.toLowerCase() === userEmail.toLowerCase()
-        );
-        setOrders(userOrders);
+        apiOrders = data.data;
       }
+
+      // Local storage fallback for seamless instant display
+      let localOrders: any[] = [];
+      if (typeof window !== 'undefined') {
+        try {
+          const storedLocal = JSON.parse(localStorage.getItem('mdfkingpc_local_orders') || '[]');
+          localOrders = storedLocal.filter(
+            (o: any) => o.customerEmail?.toLowerCase() === userEmail.toLowerCase()
+          );
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      // Combine & deduplicate orders by ID
+      const combined = [...apiOrders, ...localOrders];
+      const uniqueOrders = Array.from(new Map(combined.map((o) => [o.id, o])).values());
+
+      setOrders(uniqueOrders);
     } catch (err) {
       console.error(err);
     } finally {

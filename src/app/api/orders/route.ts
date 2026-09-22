@@ -50,12 +50,12 @@ export async function POST(request: Request) {
             paymentProofUrl: paymentProofUrl || null,
             deviceModel: deviceModel || 'Tidak Disebutkan',
             problemDescription: problemDescription || null,
-            detailsJson: detailsJson ? JSON.stringify(detailsJson) : null,
+            detailsJson: detailsJson ? (typeof detailsJson === 'string' ? detailsJson : JSON.stringify(detailsJson)) : null,
           },
         });
       }
     } catch (dbError) {
-      console.warn('DB Error on order creation, proceeding with response payload:', dbError);
+      console.warn('DB Error on order creation, proceeding with fallback payload:', dbError);
     }
 
     const orderData = savedOrder || {
@@ -98,21 +98,49 @@ export async function POST(request: Request) {
   }
 }
 
-// GET /api/orders - Get order list (Admin Protected)
+// GET /api/orders - Get order list (Public for user email query, Admin for full list)
 export async function GET(request: Request) {
   try {
-    const admin = verifyAdminToken(request);
-    if (!admin) {
-      return NextResponse.json(
-        { success: false, message: 'Akses ditolak. Memerlukan autentikasi admin.' },
-        { status: 401 }
-      );
-    }
-
     const { searchParams } = new URL(request.url);
+    const email = searchParams.get('email') || searchParams.get('customerEmail');
     const status = searchParams.get('status');
 
     let orders: any[] = [];
+
+    // 1. If email parameter is provided, fetch orders matching that customer email
+    if (email) {
+      try {
+        if (process.env.DATABASE_URL) {
+          orders = await prisma.order.findMany({
+            where: {
+              customerEmail: {
+                equals: email,
+                mode: 'insensitive',
+              },
+              ...(status ? { paymentStatus: status.toUpperCase() } : {}),
+            },
+            orderBy: { createdAt: 'desc' },
+          });
+        }
+      } catch (dbError) {
+        console.warn('DB Error fetching user orders:', dbError);
+      }
+
+      return NextResponse.json({
+        success: true,
+        count: orders.length,
+        data: orders,
+      });
+    }
+
+    // 2. Otherwise require admin token for full admin list across all users
+    const admin = verifyAdminToken(request);
+    if (!admin) {
+      return NextResponse.json(
+        { success: false, message: 'Akses ditolak. Memerlukan autentikasi admin atau parameter email.' },
+        { status: 401 }
+      );
+    }
 
     try {
       if (process.env.DATABASE_URL) {
@@ -122,7 +150,7 @@ export async function GET(request: Request) {
         });
       }
     } catch (dbError) {
-      console.warn('DB Error fetching orders:', dbError);
+      console.warn('DB Error fetching admin orders:', dbError);
     }
 
     return NextResponse.json({
