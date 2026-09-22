@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
 import { SITE_INFO } from '@/data/mockData';
 import { PackageCheck, Clock, CheckCircle2, Upload, FileText, AlertCircle, RefreshCw, MessageSquare } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
@@ -115,8 +113,6 @@ export default function PesananSayaPage() {
 
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
-      <Navbar />
-
       <main className="flex-1 py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex items-center justify-between border-b border-slate-800 pb-6 mb-8">
           <div>
@@ -303,8 +299,6 @@ export default function PesananSayaPage() {
           fetchOrders(newUser.email);
         }}
       />
-
-      <Footer />
     </div>
   );
 }

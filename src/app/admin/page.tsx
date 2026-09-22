@@ -20,7 +20,6 @@ import {
   DollarSign,
 } from 'lucide-react';
 import { SITE_INFO } from '@/data/mockData';
-import { Footer } from '@/components/Footer';
 
 export default function AdminDashboardPage() {
   const [adminToken, setAdminToken] = useState<string | null>(null);
@@ -507,8 +506,6 @@ export default function AdminDashboardPage() {
           </div>
         </div>
       )}
-
-      <Footer />
     </div>
   );
 }

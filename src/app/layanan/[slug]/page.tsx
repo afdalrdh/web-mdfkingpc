@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { SERVICES_LIST, REPAIR_PRICING_TABLES, SITE_INFO } from '@/data/mockData';
 import { Wrench, ShieldCheck, Clock, Award, CheckCircle2, ArrowRight, MessageSquare, AlertCircle } from 'lucide-react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
 
 export function generateStaticParams() {
   return SERVICES_LIST.map((service) => ({
@@ -24,15 +22,13 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
-      <Navbar />
-
       <main className="flex-1">
         {/* Service Hero Banner */}
         <section className="relative py-16 lg:py-24 bg-gradient-to-b from-brand-dark via-slate-900 to-brand-dark overflow-hidden border-b border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wider">
                   <Wrench className="w-3.5 h-3.5 text-brand-red" />
                   <span>{service.category}</span>
                 </div>
@@ -198,8 +194,6 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

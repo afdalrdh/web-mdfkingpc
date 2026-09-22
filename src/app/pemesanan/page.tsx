@@ -6,9 +6,6 @@ import {
   Wrench, Upload, CheckCircle2, AlertCircle, Loader2, ArrowRight, ShieldCheck, 
   MousePointer, Keyboard, Gamepad2, Laptop, Cpu, Download, FileText 
 } from 'lucide-react';
-import { SITE_INFO } from '@/data/mockData';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
 import AuthModal from '@/components/AuthModal';
 
 type FormTab = 'laptop' | 'mouse' | 'keyboard' | 'gamepad' | 'rakit-pc' | 'instalasi';
@@ -27,6 +24,7 @@ function PemesananContent() {
   const [customerName, setCustomerName] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
   const [phoneWA, setPhoneWA] = useState('');
+  const [address, setAddress] = useState('');
   const [deviceModel, setDeviceModel] = useState('');
   const [problemDescription, setProblemDescription] = useState('');
 
@@ -73,6 +71,7 @@ function PemesananContent() {
           setCustomerName(parsed.name || '');
           setCustomerEmail(parsed.email || '');
           setPhoneWA(parsed.phone || '');
+          setAddress(parsed.address || '');
         } catch (e) {
           console.error(e);
         }
@@ -185,7 +184,7 @@ function PemesananContent() {
           deviceModel: deviceModel || 'Tidak Disebutkan',
           problemDescription: problemDescription || 'Perbaikan sesuai formulir',
           paymentProofUrl,
-          detailsJson: details,
+          detailsJson: { ...details, address },
         }),
       });
 
@@ -300,198 +299,234 @@ function PemesananContent() {
           <div className="bg-sky-950/40 border border-sky-800/60 p-4 rounded-2xl text-xs text-sky-200 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-sky-400 shrink-0" />
-              <span>Silakan masuk akun terlebih dahulu agar dapat memantau pesanan di website.</span>
+              <span>Silakan login terlebih dahulu untuk mengisi formulir pemesanan & memantau pesanan Anda.</span>
             </div>
             <button
               type="button"
               onClick={() => setIsAuthModalOpen(true)}
-              className="py-1.5 px-3.5 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl whitespace-nowrap shadow-md"
+              className="py-1.5 px-4 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl whitespace-nowrap shadow-md"
             >
-              Masuk / Daftar
+              Login
             </button>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6 text-xs">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-4 border-b border-slate-800">
-            <div className="space-y-2">
-              <label className="font-bold text-slate-200 block">Nama Lengkap *</label>
-              <input
-                type="text"
-                required
-                placeholder="Contoh: Budi Santoso"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label className="font-bold text-slate-200 block">Nomor WhatsApp *</label>
-              <input
-                type="tel"
-                required
-                placeholder="Contoh: 085158916661"
-                value={phoneWA}
-                onChange={(e) => setPhoneWA(e.target.value)}
-                className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
-              />
-            </div>
-          </div>
-
-          {activeTab === 'mouse' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Merk & Seri Mouse</label>
-                  <input
-                    type="text"
-                    placeholder="Logitech G Pro X Superlight / Razer Viper V2"
-                    value={mouseBrand}
-                    onChange={(e) => setMouseBrand(e.target.value)}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Switch Replacement</label>
-                  <select
-                    value={switchChoice}
-                    onChange={(e) => setSwitchChoice(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500"
-                  >
-                    <option value="TTC Gold Dustproof 80M">TTC Gold Dustproof 80M (Tactile)</option>
-                    <option value="Kailh GM 8.0 Black Mamba">Kailh GM 8.0 Black Mamba 80M</option>
-                    <option value="Huano Blue Shell Pink Dot">Huano Blue Shell Pink Dot 80M</option>
-                  </select>
-                </div>
+          <fieldset disabled={!user} className="space-y-6 disabled:opacity-60">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-4 border-b border-slate-800">
+              <div className="space-y-2">
+                <label className="font-bold text-slate-200 block">Nama Lengkap *</label>
+                <input
+                  type="text"
+                  required
+                  disabled={!user}
+                  placeholder="Contoh: Budi Santoso"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                />
               </div>
 
               <div className="space-y-2">
-                <label className="font-bold text-slate-200 block">Jenis Kerusakan Mouse:</label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {['Double Click', 'Scroll Wheel Macet', 'Cursor Melompat', 'Ganti Cable Paracord'].map((issue) => (
-                    <label key={issue} className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/60 cursor-pointer">
+                <label className="font-bold text-slate-200 block">Nomor WhatsApp *</label>
+                <input
+                  type="tel"
+                  required
+                  disabled={!user}
+                  placeholder="Contoh: 085158916661"
+                  value={phoneWA}
+                  onChange={(e) => setPhoneWA(e.target.value)}
+                  className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                />
+              </div>
+
+              <div className="space-y-2 sm:col-span-2">
+                <label className="font-bold text-slate-200 block">Alamat Lengkap</label>
+                <textarea
+                  rows={2}
+                  disabled={!user}
+                  placeholder="Contoh: Jl. Ir. H. Juanda No. 154, Dago, Bandung"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                />
+              </div>
+            </div>
+
+            {activeTab === 'mouse' && (
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Merk & Seri Mouse</label>
+                    <input
+                      type="text"
+                      disabled={!user}
+                      placeholder="Logitech G Pro X Superlight / Razer Viper V2"
+                      value={mouseBrand}
+                      onChange={(e) => setMouseBrand(e.target.value)}
+                      className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Switch Replacement</label>
+                    <select
+                      disabled={!user}
+                      value={switchChoice}
+                      onChange={(e) => setSwitchChoice(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                    >
+                      <option value="TTC Gold Dustproof 80M">TTC Gold Dustproof 80M (Tactile)</option>
+                      <option value="Kailh GM 8.0 Black Mamba">Kailh GM 8.0 Black Mamba 80M</option>
+                      <option value="Huano Blue Shell Pink Dot">Huano Blue Shell Pink Dot 80M</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="font-bold text-slate-200 block">Jenis Kerusakan Mouse:</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {['Double Click', 'Scroll Wheel Macet', 'Cursor Melompat', 'Ganti Cable Paracord'].map((issue) => (
+                      <label key={issue} className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/60 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          disabled={!user}
+                          checked={mouseIssues.includes(issue)}
+                          onChange={() => handleCheckboxToggle(mouseIssues, setMouseIssues, issue)}
+                          className="w-4 h-4 rounded text-sky-500 disabled:cursor-not-allowed"
+                        />
+                        <span className="text-slate-300">{issue}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'keyboard' && (
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Tipe Keyboard</label>
+                    <select
+                      disabled={!user}
+                      value={keyboardType}
+                      onChange={(e) => setKeyboardType(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                    >
+                      <option value="Mechanical Keyboard Custom">Mechanical Keyboard</option>
+                      <option value="Keyboard Laptop Internal">Keyboard Laptop Internal</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Merk & Seri / Tuts Macet</label>
+                    <input
+                      type="text"
+                      disabled={!user}
+                      placeholder="Keychron K2 / Tuts W, A, S, D"
+                      value={specificFaultyKeys}
+                      onChange={(e) => setSpecificFaultyKeys(e.target.value)}
+                      className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'gamepad' && (
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Tipe Gamepad</label>
+                    <select
+                      disabled={!user}
+                      value={gamepadType}
+                      onChange={(e) => setGamepadType(e.target.value)}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                    >
+                      <option value="PlayStation 5 DualSense">PlayStation 5 DualSense</option>
+                      <option value="PlayStation 4 DualShock 4">PlayStation 4 DualShock 4</option>
+                      <option value="Xbox Series X/S">Xbox Series X/S</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Upgrade Hall Effect</label>
+                    <label className="flex items-center gap-2 p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 cursor-pointer">
                       <input
                         type="checkbox"
-                        checked={mouseIssues.includes(issue)}
-                        onChange={() => handleCheckboxToggle(mouseIssues, setMouseIssues, issue)}
-                        className="w-4 h-4 rounded text-sky-500"
+                        disabled={!user}
+                        checked={upgradeHallEffect}
+                        onChange={(e) => setUpgradeHallEffect(e.target.checked)}
+                        className="w-4 h-4 rounded text-sky-500 disabled:cursor-not-allowed"
                       />
-                      <span className="text-slate-300">{issue}</span>
+                      <span className="text-white font-bold">Upgrade Modul Hall Effect (Anti Drift Permanent)</span>
                     </label>
-                  ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-
-          {activeTab === 'keyboard' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Tipe Keyboard</label>
-                  <select
-                    value={keyboardType}
-                    onChange={(e) => setKeyboardType(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500"
-                  >
-                    <option value="Mechanical Keyboard Custom">Mechanical Keyboard</option>
-                    <option value="Keyboard Laptop Internal">Keyboard Laptop Internal</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Merk & Seri / Tuts Macet</label>
-                  <input
-                    type="text"
-                    placeholder="Keychron K2 / Tuts W, A, S, D"
-                    value={specificFaultyKeys}
-                    onChange={(e) => setSpecificFaultyKeys(e.target.value)}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'gamepad' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Tipe Gamepad</label>
-                  <select
-                    value={gamepadType}
-                    onChange={(e) => setGamepadType(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500"
-                  >
-                    <option value="PlayStation 5 DualSense">PlayStation 5 DualSense</option>
-                    <option value="PlayStation 4 DualShock 4">PlayStation 4 DualShock 4</option>
-                    <option value="Xbox Series X/S">Xbox Series X/S</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Upgrade Hall Effect</label>
-                  <label className="flex items-center gap-2 p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={upgradeHallEffect}
-                      onChange={(e) => setUpgradeHallEffect(e.target.checked)}
-                      className="w-4 h-4 rounded text-sky-500"
-                    />
-                    <span className="text-white font-bold">Upgrade Modul Hall Effect (Anti Drift Permanent)</span>
-                  </label>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'laptop' && (
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Merk & Seri Laptop / MacBook</label>
-                  <input
-                    type="text"
-                    placeholder="MacBook Air M1 / Asus TUF / Lenovo Legion"
-                    value={deviceModel}
-                    onChange={(e) => setDeviceModel(e.target.value)}
-                    className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="space-y-2">
-            <label className="font-bold text-slate-200 block">Catatan Gejala Kerusakan</label>
-            <textarea
-              rows={3}
-              placeholder="Deskripsikan masalah perangkat Anda..."
-              value={problemDescription}
-              onChange={(e) => setProblemDescription(e.target.value)}
-              className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={submitting || uploading}
-            className="w-full py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-sm shadow-lg shadow-sky-600/30 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-          >
-            {submitting ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin" />
-                <span>Mengirim Pesanan...</span>
-              </>
-            ) : (
-              <>
-                <Wrench className="w-5 h-5" />
-                <span>Kirim Formulir Pemesanan</span>
-              </>
             )}
-          </button>
+
+            {activeTab === 'laptop' && (
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="font-bold text-slate-200 block">Merk & Seri Laptop / MacBook</label>
+                    <input
+                      type="text"
+                      disabled={!user}
+                      placeholder="MacBook Air M1 / Asus TUF / Lenovo Legion"
+                      value={deviceModel}
+                      onChange={(e) => setDeviceModel(e.target.value)}
+                      className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <label className="font-bold text-slate-200 block">Catatan Gejala Kerusakan</label>
+              <textarea
+                rows={3}
+                disabled={!user}
+                placeholder="Deskripsikan masalah perangkat Anda..."
+                value={problemDescription}
+                onChange={(e) => setProblemDescription(e.target.value)}
+                className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+              />
+            </div>
+          </fieldset>
+
+          {!user ? (
+            <button
+              type="button"
+              onClick={() => setIsAuthModalOpen(true)}
+              className="w-full py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-sm shadow-lg shadow-sky-600/30 transition-all flex items-center justify-center gap-2"
+            >
+              <ShieldCheck className="w-5 h-5" />
+              <span>Login untuk Mengirim Pemesanan</span>
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={submitting || uploading}
+              className="w-full py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-sm shadow-lg shadow-sky-600/30 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+            >
+              {submitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <span>Mengirim Pesanan...</span>
+                </>
+              ) : (
+                <>
+                  <Wrench className="w-5 h-5" />
+                  <span>Kirim Formulir Pemesanan</span>
+                </>
+              )}
+            </button>
+          )}
         </form>
       </div>
 
@@ -503,6 +538,7 @@ function PemesananContent() {
           setCustomerName(newUser.name || '');
           setCustomerEmail(newUser.email || '');
           setPhoneWA(newUser.phone || '');
+          setAddress(newUser.address || '');
         }}
       />
     </div>
@@ -512,13 +548,11 @@ function PemesananContent() {
 export default function PemesananPage() {
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
-      <Navbar />
       <main className="flex-1">
         <Suspense fallback={<div className="text-center py-20 text-slate-400">Loading form...</div>}>
           <PemesananContent />
         </Suspense>
       </main>
-      <Footer />
     </div>
   );
 }

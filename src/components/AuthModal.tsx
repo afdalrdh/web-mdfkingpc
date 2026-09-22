@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Mail, Lock, User as UserIcon, Phone, MapPin, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, Mail, Lock, User as UserIcon, Phone, MapPin } from 'lucide-react';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -58,12 +58,13 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 
   const handleGoogleLogin = () => {
     setLoading(true);
-    // Simulate quick Google Sign-In for seamless Pinterest-like experience
     setTimeout(() => {
       const googleUser = {
         id: `usr-google-${Date.now()}`,
         name: name || 'Pelanggan Google',
         email: email || 'user.google@gmail.com',
+        phone: phone || '085158916661',
+        address: address || 'Jl. Ir. H. Juanda No. 154, Dago, Bandung',
         image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop',
         role: 'USER',
       };
@@ -104,7 +105,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
           </p>
         </div>
 
-        {/* Quick Google Login (Pinterest Style Primary Action) */}
+        {/* Quick Google Login */}
         <button
           onClick={handleGoogleLogin}
           disabled={loading}
@@ -168,7 +169,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
         <form onSubmit={handleManualAuth} className="space-y-3">
           {tab === 'register' && (
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">Nama Lengkap</label>
+              <label className="block text-xs font-medium text-slate-700 mb-1">Nama Lengkap *</label>
               <div className="relative">
                 <UserIcon className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                 <input
@@ -184,7 +185,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
           )}
 
           <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Email</label>
+            <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Email *</label>
             <div className="relative">
               <Mail className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
               <input
@@ -199,7 +200,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-700 mb-1">Kata Sandi</label>
+            <label className="block text-xs font-medium text-slate-700 mb-1">Kata Sandi *</label>
             <div className="relative">
               <Lock className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
               <input
@@ -214,19 +215,36 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
           </div>
 
           {tab === 'register' && (
-            <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">Nomor WhatsApp (Opsional)</label>
-              <div className="relative">
-                <Phone className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
-                <input
-                  type="tel"
-                  placeholder="085158916661"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
-                />
+            <>
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Nomor WhatsApp *</label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+                  <input
+                    type="tel"
+                    required
+                    placeholder="085158916661"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                  />
+                </div>
               </div>
-            </div>
+
+              <div>
+                <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Lengkap</label>
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Jl. Ir. H. Juanda No. 154, Dago, Bandung"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                  />
+                </div>
+              </div>
+            </>
           )}
 
           <button
@@ -234,7 +252,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
             disabled={loading}
             className="w-full mt-2 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm shadow-lg shadow-sky-600/30 transition-all disabled:opacity-50"
           >
-            {loading ? 'Memproses...' : tab === 'login' ? 'Masuk Sekarang' : 'Buat Akun'}
+            {loading ? 'Memproses...' : tab === 'login' ? 'Masuk Sekarang' : 'Daftar Akun'}
           </button>
         </form>
 

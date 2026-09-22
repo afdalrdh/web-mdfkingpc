@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { PC_COMPONENTS_DB, SITE_INFO, PC_PACKAGES, PcComponentItem } from '@/data/mockData';
 import { Cpu, Cpu as GpuIcon, Layers, HardDrive, Zap, Box, Thermometer, Sparkles, Download, MessageSquare, Check, RefreshCw } from 'lucide-react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
 
 export default function RakitPCPage() {
   const [selectedComponents, setSelectedComponents] = useState<Record<string, PcComponentItem>>({
@@ -132,8 +130,6 @@ export default function RakitPCPage() {
 
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
-      <Navbar />
-
       <main className="flex-1">
         {/* Header Hero */}
         <section className="py-12 bg-gradient-to-b from-brand-dark via-slate-900 to-brand-dark border-b border-slate-800">
@@ -335,8 +331,6 @@ export default function RakitPCPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

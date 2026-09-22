@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
 import { User as UserIcon, Mail, Phone, MapPin, Save, CheckCircle2 } from 'lucide-react';
 
 export default function PengaturanAkunPage() {
@@ -66,8 +64,6 @@ export default function PengaturanAkunPage() {
 
   return (
     <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
-      <Navbar />
-
       <main className="flex-1 py-12 max-w-xl mx-auto px-4 sm:px-6 w-full">
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
           <div className="border-b border-slate-800 pb-4">
@@ -154,8 +150,6 @@ export default function PengaturanAkunPage() {
           </form>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
