@@ -60,6 +60,7 @@ export const Navbar: React.FC = () => {
     { href: '/layanan/servis-keyboard', label: 'Servis Keyboard Laptop & Mechanical', icon: Keyboard, desc: 'Ganti switch, tuts macet, modding' },
     { href: '/layanan/servis-mouse', label: 'Servis Mouse Gaming & Office', icon: Mouse, desc: 'Anti double-click, scroll encoder' },
     { href: '/layanan/servis-joystick', label: 'Servis Joystick PS4, PS5 & PC', icon: Gamepad2, desc: 'Upgrade Hall Effect anti drift' },
+    { href: '/layanan/servis-pembersihan-pc', label: 'Perbaikan & Pembersihan PC', icon: Wrench, desc: 'Deep cleaning, thermal paste, & PC no display' },
     { href: '/layanan/instal-aplikasi-game', label: 'Instal OS, Aplikasi & Game PC', icon: Download, desc: 'Windows 10/11, Adobe, Game AAA' },
   ];
 

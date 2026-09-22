@@ -177,6 +177,18 @@ export const SERVICES_LIST: ServiceItem[] = [
     priceStarting: 'Rp 50.000',
     imageUrl: CLOUDINARY_IMAGES.softwareInstall,
     features: ['Windows 10/11 & Dual Boot MacOS', 'Backup Data Penting Ambil Aman', 'Instalasi Software Design & Editing', 'Optimasi Startup & Antivirus']
+  },
+  {
+    id: 'servis-pembersihan-pc',
+    slug: 'servis-pembersihan-pc',
+    title: 'Perbaikan & Pembersihan PC Desktop',
+    category: 'Hardware & Maintenance',
+    shortDesc: 'Deep cleaning debu komponen, penggantian thermal paste high-grade (Noctua/Arctic), manajemen kabel, & perbaikan PC no display.',
+    fullDesc: 'Layanan pembersihan dan perawatan menyeluruh untuk PC Desktop Gaming, Workstation, maupun Office. Kami membersihkan debu membandel pada fan, heatsink radiator, dan motherboard menggunakan kompresor khusus anti-statis. Penggantian pasta thermal kualitas tinggi (Noctua NT-H1 / Arctic MX-6) untuk menurunkan suhu hingga 15-20°C, perbaikan PC tidak nyala/black screen, serta penataan ulang kabel agar sirkulasi udara lebih optimal.',
+    priceStarting: 'Rp 85.000',
+    imageUrl: CLOUDINARY_IMAGES.workshop,
+    badge: 'Suhu Turun 15-20°C',
+    features: ['Deep Dust Cleaning Anti-Statis', 'Ganti Thermal Paste Premium High-Grade', 'Cable Re-Management Rapi', 'Perbaikan PC No Display / Auto Restart']
   }
 ];
 
@@ -212,6 +224,12 @@ export const REPAIR_PRICING_TABLES: Record<string, RepairPricingItem[]> = {
     { problemName: 'Paket Software Desain / Editing (Adobe Suite / Corel / Autodesk)', description: 'Instalasi lengkap Photoshop, Premiere, Illustrator, AutoCAD, 3ds Max, dll.', priceRange: 'Rp 50.000 - Rp 120.000', estimatedTime: '1 Jam', warranty: 'Garansi Aplikasi' },
     { problemName: 'Paket Game PC AAA & Esports Terbaru', description: 'Pengisian game PC terupdate (Valorant, CS2, Cyberpunk, GTA V, EA FC, Genshin, dll).', priceRange: 'Rp 50.000 - Rp 150.000', estimatedTime: '1 - 3 Jam', warranty: 'Garansi Bebas Crash' },
     { problemName: 'Optimasi Performance & Cleaning Antivirus Malware', description: 'Pembersihan virus, malware, bloatware, dan optimasi startup Windows anti lemot.', priceRange: 'Rp 50.000', estimatedTime: '45 Menit', warranty: '30 Hari' },
+  ],
+  'servis-pembersihan-pc': [
+    { problemName: 'Deep Cleaning PC & Replacement Thermal Paste Premium', description: 'Pembersihan debu total fan/heatsink + ganti pasta thermal Noctua/Arctic MX-6 untuk CPU & GPU.', priceRange: 'Rp 85.000 - Rp 175.000', estimatedTime: '1 - 2 Jam', warranty: 'Garansi Suhu & Bersih' },
+    { problemName: 'Perbaikan PC No Display (Lampu Nyala Tapi Layar Mati)', description: 'Pemeriksaan & perbaikan jalur RAM, slot PCIe GPU, motherboard, dan kabel power.', priceRange: 'Rp 100.000 - Rp 250.000', estimatedTime: '1 Hari', warranty: '30 Hari' },
+    { problemName: 'Perbaikan PC Sering Restart / Shutdown Sendiri (Overheat)', description: 'Penanganan komprehensif overheat CPU/VGA, ganti thermal pad, & testing stres suhu.', priceRange: 'Rp 100.000 - Rp 200.000', estimatedTime: '1 Hari', warranty: '30 Hari' },
+    { problemName: 'Re-Management Cable Rapi (Clean Airflow Setup)', description: 'Penataan ulang seluruh jalur kabel power supply & casing agar rapi dan aliran udara lancar.', priceRange: 'Rp 75.000 - Rp 150.000', estimatedTime: '1 - 2 Jam', warranty: 'Garansi Rapi' },
   ],
 };
 

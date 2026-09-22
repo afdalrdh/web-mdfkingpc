@@ -350,37 +350,24 @@ export default function RakitPcSimulator() {
               </div>
             </div>
 
-            {/* Clean Component Selection Dropdowns */}
+            {/* Clean Component Selection Dropdowns (No prices in input cards) */}
             <div className="space-y-4">
               <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                Pilih Komponen Utama (Harga Akan Dihitung Saat Klik Button AI Groq):
+                Pilih Komponen Utama Komputer:
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {categories.map((cat) => {
                   const items = PC_COMPONENTS_DB.filter((item) => item.category === cat.key);
                   const currentSelected = selectedComponents[cat.key];
                   const IconComp = cat.icon;
-                  const itemizedPrice = customAiResult?.itemizedPrices?.[cat.key];
 
                   return (
                     <div key={cat.key} className="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-4 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400">
-                            <IconComp className="w-4 h-4" />
-                          </div>
-                          <span className="text-xs font-bold text-white">{cat.name}</span>
+                      <div className="flex items-center gap-2">
+                        <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                          <IconComp className="w-4 h-4" />
                         </div>
-
-                        {itemizedPrice ? (
-                          <span className="text-xs font-black text-emerald-400">
-                            Rp {itemizedPrice.toLocaleString('id-ID')}
-                          </span>
-                        ) : (
-                          <span className="text-[11px] font-medium text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-lg">
-                            Riset via AI
-                          </span>
-                        )}
+                        <span className="text-xs font-bold text-white">{cat.name}</span>
                       </div>
 
                       <select
@@ -430,7 +417,7 @@ export default function RakitPcSimulator() {
                 )}
               </button>
 
-              {/* AI Groq Custom Result Display */}
+              {/* AI Groq Custom Result Display (With Itemized Component Price Summary Table) */}
               {customAiResult && (
                 <div className="bg-gradient-to-br from-slate-900 to-sky-950/60 border border-sky-500/30 rounded-2xl p-6 space-y-5 animate-in fade-in duration-300">
                   <div className="flex flex-wrap items-center justify-between gap-4 border-b border-sky-500/20 pb-4">
@@ -462,9 +449,33 @@ export default function RakitPcSimulator() {
                       </p>
                     </div>
 
+                    {/* Itemized Component Price Summary Grid (Hasil Riset AI) */}
+                    <div>
+                      <span className="font-bold text-emerald-400 block mb-2 uppercase tracking-wider text-[11px]">
+                        Rincian Summary Harga Komponen Terpilih (Hasil Riset AI Groq):
+                      </span>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
+                        {categories.map((cat) => {
+                          const comp = selectedComponents[cat.key];
+                          const priceVal = customAiResult?.itemizedPrices?.[cat.key] || 0;
+                          return (
+                            <div key={cat.key} className="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-xs">
+                              <div className="flex-1 pr-2 truncate">
+                                <span className="text-[10px] text-slate-400 uppercase font-bold block">{cat.name}</span>
+                                <span className="font-bold text-white truncate block">{comp ? comp.name : 'Komponen Terpilih'}</span>
+                              </div>
+                              <span className="font-black text-emerald-400 text-xs shrink-0 ml-2">
+                                Rp {priceVal.toLocaleString('id-ID')}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
                     {customAiResult.suggestedUpgrades && customAiResult.suggestedUpgrades.length > 0 && (
                       <div>
-                        <span className="font-bold text-emerald-400 block mb-1">Saran Optimasi / Upgrade Opsional:</span>
+                        <span className="font-bold text-sky-400 block mb-1">Saran Optimasi / Upgrade Opsional:</span>
                         <ul className="space-y-1.5 bg-slate-950/50 p-3 rounded-xl border border-slate-800 text-slate-200">
                           {customAiResult.suggestedUpgrades.map((sugg: string, idx: number) => (
                             <li key={idx} className="flex items-center gap-2">
