@@ -36,7 +36,7 @@ export async function generateInvoicePDF(data: InvoiceData): Promise<Buffer> {
         .font('Helvetica')
         .fillColor('#64748B')
         .text('Made For KING PC - Servis & Solusi IT Bandung', 40, 68)
-        .text('Jl. Ir. H. Juanda No. 154, Dago, Bandung | WA: +62 812-3456-7890', 40, 82)
+        .text('Jl. Ir. H. Juanda No. 154, Dago, Bandung | WA: +62 851-5891-6661', 40, 82)
         .text('Email: support@mdfkingpc.com | Web: www.mdfkingpc.com', 40, 96);
 
       doc

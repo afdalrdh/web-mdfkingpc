@@ -60,7 +60,7 @@ export async function sendOrderConfirmationEmail(order: {
         <p>Tim teknisi kami akan segera memproses dan memeriksa perangkat/pesanan Anda. Silakan selesaikan pembayaran dan unggah bukti pembayaran jika belum dilakukan.</p>
         
         <p style="margin-top: 30px; font-size: 13px; color: #64748b; text-align: center;">
-          Ada pertanyaan? Hubungi Customer Support kami via WhatsApp: <strong>+62 812-3456-7890</strong>
+          Ada pertanyaan? Hubungi Customer Support kami via WhatsApp: <strong>+62 851-5891-6661</strong>
         </p>
       </div>
       <div style="background-color: #f1f5f9; padding: 12px; text-align: center; font-size: 12px; color: #94a3b8;">

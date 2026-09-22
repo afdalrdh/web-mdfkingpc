@@ -7,6 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String?  // Nullable if logged in via Google OAuth
+  image     String?
+  phone     String?
+  address   String?
+  role      String   @default("USER") // USER or ADMIN
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Order[]
+}
+
 model AdminUser {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -34,6 +48,8 @@ model Service {
 
 model Order {
   id                 String   @id @default(cuid())
+  userId             String?
+  user               User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
   customerName       String
   customerEmail      String
   customerPhone      String
@@ -41,14 +57,27 @@ model Order {
   service            Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
   serviceName        String
   price              Float    @default(0)
-  paymentStatus      String   @default("PENDING") // PENDING, CONFIRMED, COMPLETED, CANCELLED
+  paymentStatus      String   @default("PENDING") // PENDING, IN_PROGRESS, COMPLETED_WAITING_PAYMENT, PAID_WAITING_VERIFICATION, CONFIRMED, CANCELLED
   paymentProofUrl    String?
   invoiceUrl         String?
   deviceModel        String?
   problemDescription String?
   detailsJson        String?
+  receiptDetailsJson String?  // JSON for edited/custom receipt breakdown
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
+}
+
+model PcComponent {
+  id        String   @id @default(cuid())
+  category  String   // cpu, gpu, motherboard, ram, ssd, psu, case, cooler
+  name      String
+  brand     String
+  price     Float
+  specs     String
+  imageUrl  String?
+  badge     String?
+  createdAt DateTime @default(now())
 }
 
 model CmsPage {

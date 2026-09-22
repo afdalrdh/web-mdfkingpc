@@ -11,6 +11,14 @@ export interface ServiceItem {
   features: string[];
 }
 
+export interface RepairPricingItem {
+  problemName: string;
+  description: string;
+  priceRange: string;
+  estimatedTime: string;
+  warranty: string;
+}
+
 export interface TestimonialItem {
   id: string;
   name: string;
@@ -49,6 +57,17 @@ export interface PCPackage {
   targetGames: string[];
 }
 
+export interface PcComponentItem {
+  id: string;
+  category: 'cpu' | 'gpu' | 'motherboard' | 'ram' | 'ssd' | 'psu' | 'case' | 'cooler';
+  name: string;
+  brand: string;
+  price: number;
+  specs: string;
+  imageUrl?: string;
+  badge?: string;
+}
+
 export const SITE_INFO = {
   name: 'mdfkingpc',
   tagline: 'Made For KING PC',
@@ -56,9 +75,9 @@ export const SITE_INFO = {
   subSlogan: 'Teknisi berpengalaman, harga transparan, bergaransi 30 hari, dan diagnostik gratis.',
   story: 'Partner terpercaya untuk service laptop, komputer, dan solusi IT di Bandung sejak 2018.',
   address: 'Jl. Ir. H. Juanda No. 154, Dago, Kec. Coblong, Kota Bandung, Jawa Barat 40132',
-  whatsapp: '6281234567890',
-  whatsappFormatted: '+62 812-3456-7890',
-  email: 'support@mdfkingpc.com',
+  whatsapp: '6285158916661',
+  whatsappFormatted: '+62 851-5891-6661',
+  email: 'mdfkingpc@gmail.com',
   operatingHours: 'Senin - Sabtu: 09:00 - 20:00 WIB | Minggu: 10:00 - 17:00 WIB',
   stats: [
     { value: '1000+', label: 'Device Diperbaiki' },
@@ -159,6 +178,87 @@ export const SERVICES_LIST: ServiceItem[] = [
     imageUrl: CLOUDINARY_IMAGES.softwareInstall,
     features: ['Windows 10/11 & Dual Boot MacOS', 'Backup Data Penting Ambil Aman', 'Instalasi Software Design & Editing', 'Optimasi Startup & Antivirus']
   }
+];
+
+export const REPAIR_PRICING_TABLES: Record<string, RepairPricingItem[]> = {
+  'servis-laptop-macbook': [
+    { problemName: 'Ganti Layar LCD Laptop / MacBook', description: 'Penggantian panel layar pecah, garis, atau dead pixel dengan garansi resmi.', priceRange: 'Rp 500.000 - Rp 1.800.000', estimatedTime: '1 - 3 Jam', warranty: '30 - 90 Hari' },
+    { problemName: 'Ganti Baterai Original / High Quality', description: 'Solusi baterai cepat drop, kembung, atau tidak bisa diisi daya.', priceRange: 'Rp 350.000 - Rp 950.000', estimatedTime: '1 Jam', warranty: '30 - 60 Hari' },
+    { problemName: 'Service Motherboard / IC Power (Mati Total)', description: 'Perbaikan komponen sirkuit utama laptop yang terkena cairan atau short circuit.', priceRange: 'Rp 350.000 - Rp 1.200.000', estimatedTime: '1 - 3 Hari', warranty: '30 Hari' },
+    { problemName: 'Pembersihan Fan & Ganti Thermal Paste Premium', description: 'Pembersihan debu internal dan penyegaran Thermal Grizzly / Noctua untuk atasi overheat.', priceRange: 'Rp 100.000 - Rp 200.000', estimatedTime: '45 Menit', warranty: 'Garansi Suhu' },
+    { problemName: 'Upgrade SSD NVMe & Cloning Data OS', description: 'Peningkatan kecepatan booting & buka aplikasi hingga 5x lipat dari HDD.', priceRange: 'Rp 300.000 - Rp 1.500.000', estimatedTime: '1 - 2 Jam', warranty: '1 - 3 Tahun (Komponen)' },
+    { problemName: 'Perbaikan Engsel Patah & Rebuilt Casing', description: 'Penguatan dudukan engsel laptop yang lepas atau retak tanpa mengganti keseluruhan casing.', priceRange: 'Rp 150.000 - Rp 400.000', estimatedTime: '1 Hari', warranty: '30 Hari' },
+  ],
+  'servis-keyboard': [
+    { problemName: 'Ganti Keyboard Laptop Internal', description: 'Penggantian unit keyboard laptop macet, beberapa tuts mati, atau ketik sendiri.', priceRange: 'Rp 175.000 - Rp 450.000', estimatedTime: '1 - 2 Jam', warranty: '30 Hari' },
+    { problemName: 'Ganti Switch Mechanical Keyboard (Desolder / Hotswap)', description: 'Penggantian switch yang double-typing / chattering atau tidak merespon (Gateron/TTC/Outemu).', priceRange: 'Rp 15.000 / switch (Min 5)', estimatedTime: '1 - 2 Jam', warranty: '30 Hari' },
+    { problemName: 'Full Custom Modding & Lube Mechanical Keyboard', description: 'Lubrication Krytox 205g0 pada switch & stabilizer, tempel foam dampener anti hampa.', priceRange: 'Rp 150.000 - Rp 350.000', estimatedTime: '1 Hari', warranty: 'Garansi Suara & Feel' },
+    { problemName: 'Perbaikan PCB Controller / Kabel USB Keyboard', description: 'Servis jalur PCB putus atau penggantian kabel USB paracord braided.', priceRange: 'Rp 75.000 - Rp 200.000', estimatedTime: '1 Hari', warranty: '30 Hari' },
+  ],
+  'servis-mouse': [
+    { problemName: 'Ganti Micro Switch Anti Double-Click (Omron / TTC Gold)', description: 'Solusi klik kiri/kanan mouse yang double-click sendiri atau tidak membal.', priceRange: 'Rp 50.000 - Rp 120.000', estimatedTime: '30 - 60 Menit', warranty: '30 Hari' },
+    { problemName: 'Ganti Encoder Scroll Wheel Sensor', description: 'Mengatasi masalah scroll mouse meloncat-loncat ke atas/bawah saat diputar.', priceRange: 'Rp 60.000 - Rp 110.000', estimatedTime: '45 Menit', warranty: '30 Hari' },
+    { problemName: 'Upgrade Paracord Cable Flexible', description: 'Ganti kabel kaku bawaan mouse dengan kabel ultra-light paracord terasa wireless.', priceRange: 'Rp 85.000 - Rp 150.000', estimatedTime: '1 Jam', warranty: '30 Hari' },
+    { problemName: 'Ganti Skates Mouse PTFE Premium', description: 'Penggantian kaki mouse berbahan 100% Virgin Grade PTFE untuk meluncur super licin.', priceRange: 'Rp 40.000 - Rp 80.000', estimatedTime: '15 Menit', warranty: 'Garansi Licin' },
+  ],
+  'servis-joystick': [
+    { problemName: 'Upgrade Analog Hall Effect Permanent (Anti-Drift)', description: 'Penggantian sensor 3D potentiometer analog ke Hall Effect magnetik bebas aus selamanya.', priceRange: 'Rp 85.000 - Rp 160.000 / side', estimatedTime: '1 - 2 Jam', warranty: '60 Hari' },
+    { problemName: 'Ganti Conductive Rubber Pad Tombol (R1/L1/Cross/Square)', description: 'Solusi tombol stick empuk tidak balik atau tidak empuk saat ditekan.', priceRange: 'Rp 50.000 - Rp 90.000', estimatedTime: '30 Menit', warranty: '30 Hari' },
+    { problemName: 'Ganti Baterai Internal Controller PS4 / PS5 / Switch', description: 'Solusi baterai controller cepat habis atau tidak mengisi daya.', priceRange: 'Rp 75.000 - Rp 180.000', estimatedTime: '30 Menit', warranty: '30 Hari' },
+    { problemName: 'Perbaikan PCB Charging Board & Type-C Port', description: 'Ganti port charger yang longgar atau IC cas mati total.', priceRange: 'Rp 65.000 - Rp 140.000', estimatedTime: '1 Jam', warranty: '30 Hari' },
+  ],
+  'instal-aplikasi-game': [
+    { problemName: 'Instal Ulang OS Windows 10 / 11 Original Driver Complete', description: 'Instalasi OS bersih anti lag + aktivasi digital resmi + driver hardware lengkap.', priceRange: 'Rp 75.000', estimatedTime: '1 - 2 Jam', warranty: 'Garansi OS 30 Hari' },
+    { problemName: 'Paket Software Desain / Editing (Adobe Suite / Corel / Autodesk)', description: 'Instalasi lengkap Photoshop, Premiere, Illustrator, AutoCAD, 3ds Max, dll.', priceRange: 'Rp 50.000 - Rp 120.000', estimatedTime: '1 Jam', warranty: 'Garansi Aplikasi' },
+    { problemName: 'Paket Game PC AAA & Esports Terbaru', description: 'Pengisian game PC terupdate (Valorant, CS2, Cyberpunk, GTA V, EA FC, Genshin, dll).', priceRange: 'Rp 50.000 - Rp 150.000', estimatedTime: '1 - 3 Jam', warranty: 'Garansi Bebas Crash' },
+    { problemName: 'Optimasi Performance & Cleaning Antivirus Malware', description: 'Pembersihan virus, malware, bloatware, dan optimasi startup Windows anti lemot.', priceRange: 'Rp 50.000', estimatedTime: '45 Menit', warranty: '30 Hari' },
+  ],
+};
+
+export const PC_COMPONENTS_DB: PcComponentItem[] = [
+  // CPUs (Processors)
+  { id: 'cpu-12100f', category: 'cpu', name: 'Intel Core i3 12100F (4C/8T)', brand: 'Intel', price: 1250000, specs: '4 Cores, 8 Threads, Up to 4.3 GHz, LGA1700' },
+  { id: 'cpu-5600', category: 'cpu', name: 'AMD Ryzen 5 5600 (6C/12T)', brand: 'AMD', price: 1750000, specs: '6 Cores, 12 Threads, Up to 4.4 GHz, AM4' },
+  { id: 'cpu-13400f', category: 'cpu', name: 'Intel Core i5 13400F (10C/16T)', brand: 'Intel', price: 2950000, specs: '10 Cores (6P+4E), 16 Threads, Up to 4.6 GHz' },
+  { id: 'cpu-7500f', category: 'cpu', name: 'AMD Ryzen 5 7500F (6C/12T)', brand: 'AMD', price: 2450000, specs: '6 Cores, 12 Threads, Up to 5.0 GHz, AM5, DDR5' },
+  { id: 'cpu-7800x3d', category: 'cpu', name: 'AMD Ryzen 7 7800X3D (8C/16T)', brand: 'AMD', price: 6850000, specs: 'King of Gaming CPU, 3D V-Cache, AM5', badge: 'Best Gaming CPU' },
+
+  // GPUs (Graphics Cards)
+  { id: 'gpu-rx6600', category: 'gpu', name: 'AMD Radeon RX 6600 8GB GDDR6', brand: 'AMD', price: 3150000, specs: '1080p Ultra Gaming, 8GB GDDR6, Low Power' },
+  { id: 'gpu-rtx3060', category: 'gpu', name: 'NVIDIA GeForce RTX 3060 12GB GDDR6', brand: 'NVIDIA', price: 4250000, specs: '12GB VRAM, DLSS 2, Ray Tracing, Editing Choice' },
+  { id: 'gpu-rtx4060', category: 'gpu', name: 'NVIDIA GeForce RTX 4060 8GB GDDR6', brand: 'NVIDIA', price: 4750000, specs: 'DLSS 3 Frame Gen, Efficient Power 115W', badge: 'Terfavorit' },
+  { id: 'gpu-rtx4070super', category: 'gpu', name: 'NVIDIA GeForce RTX 4070 Super 12GB GDDR6X', brand: 'NVIDIA', price: 10450000, specs: '1440p Maxed Ultra Gaming & 4K Ready' },
+
+  // Motherboards
+  { id: 'mb-h610', category: 'motherboard', name: 'ASRock H610M-HDV/M.2 DDR4', brand: 'ASRock', price: 950000, specs: 'LGA1700, M.2 NVMe Slot, Budget Board' },
+  { id: 'mb-b550', category: 'motherboard', name: 'MSI B550M PRO-VDH WiFi', brand: 'MSI', price: 1650000, specs: 'AM4, Dual M.2, Built-in WiFi & Bluetooth' },
+  { id: 'mb-b760', category: 'motherboard', name: 'Gigabyte B760M DS3H AX DDR5', brand: 'Gigabyte', price: 2250000, specs: 'LGA1700, DDR5, PCIe 4.0, WiFi 6E' },
+  { id: 'mb-b650', category: 'motherboard', name: 'ASUS TUF Gaming B650M-PLUS WiFi', brand: 'ASUS', price: 3150000, specs: 'AM5, DDR5 6400MHz+, Heavy Duty VRM' },
+
+  // RAM
+  { id: 'ram-16ddr4', category: 'ram', name: 'Kingston FURY Beast 16GB (2x8GB) DDR4 3200MHz', brand: 'Kingston', price: 650000, specs: 'Dual Channel, 3200MHz CL16' },
+  { id: 'ram-32ddr4', category: 'ram', name: 'Corsair Vengeance LPX 32GB (2x16GB) DDR4 3200MHz', brand: 'Corsair', price: 1150000, specs: '32GB Capacity for Heavy Multitasking & Editing' },
+  { id: 'ram-32ddr5', category: 'ram', name: 'G.Skill Ripjaws S5 32GB (2x16GB) DDR5 6000MHz CL30', brand: 'G.Skill', price: 1850000, specs: 'Low Latency DDR5 6000MHz Expo/XMP' },
+
+  // SSD Storage
+  { id: 'ssd-512gb', category: 'ssd', name: 'ADATA XPG SX8200 Pro 512GB M.2 NVMe', brand: 'ADATA', price: 550000, specs: 'Read Up to 3500 MB/s, PCIe Gen3' },
+  { id: 'ssd-1tb', category: 'ssd', name: 'Kingston NV2 1TB M.2 PCIe 4.0 NVMe', brand: 'Kingston', price: 950000, specs: 'Read 3500 MB/s, 1TB High Capacity Storage' },
+  { id: 'ssd-2tb-gen4', category: 'ssd', name: 'Samsung 980 PRO 2TB M.2 PCIe 4.0 NVMe', brand: 'Samsung', price: 2650000, specs: 'Flagship Speed 7000 MB/s for Gaming & Workstation' },
+
+  // Power Supplies (PSU)
+  { id: 'psu-550w', category: 'psu', name: 'DeepCool PK550D 550W 80+ Bronze', brand: 'DeepCool', price: 620000, specs: '550W 80 Plus Bronze Certified, Flat Cable' },
+  { id: 'psu-650w', category: 'psu', name: 'MSI MAG A650BN 650W 80+ Bronze', brand: 'MSI', price: 780000, specs: '650W Tier-B Reliability, 80 Plus Bronze' },
+  { id: 'psu-750w-gold', category: 'psu', name: 'Corsair RM750e 750W 80+ Gold Fully Modular ATX 3.0', brand: 'Corsair', price: 1650000, specs: 'Native PCIe 5.0 12VHPWR Cable, 80+ Gold' },
+
+  // Cases
+  { id: 'case-matx', category: 'case', name: 'CUBE Gaming VRED M-ATX Case + 3 RGB Fans', brand: 'CUBE Gaming', price: 420000, specs: 'Tempered Glass Side Panel, High Airflow Mesh' },
+  { id: 'case-aquarium', category: 'case', name: 'Paradox Gaming Aquaview Panoramic Dual Chamber', brand: 'Paradox', price: 750000, specs: 'Aquarium Style Tempered Glass, Cable Management Space' },
+  { id: 'case-montech', category: 'case', name: 'Montech AIR 903 Max E-ATX + 4x 140mm ARGB Fans', brand: 'Montech', price: 1150000, specs: 'Ultra High Airflow Mesh, Massive GPU Support' },
+
+  // Coolers
+  { id: 'cooler-stock', category: 'cooler', name: 'Stock Cooler / Basic Air Cooler', brand: 'Standard', price: 0, specs: 'Bawaan Processor / Cukup untuk Penggunaan Standar' },
+  { id: 'cooler-air-ag400', category: 'cooler', name: 'DeepCool AG400 ARGB Single Tower Air Cooler', brand: 'DeepCool', price: 280000, specs: '4 Direct Touch Heatpipes, 120mm ARGB Fan' },
+  { id: 'cooler-aio-240', category: 'cooler', name: 'Thermalright Frozen Prism 240 ARGB Liquid Cooler', brand: 'Thermalright', price: 850000, specs: '240mm Radiator AIO Water Cooling' },
 ];
 
 export const PC_PACKAGES: PCPackage[] = [

@@ -39,7 +39,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
         id,
         customerName: 'Pelanggan mdfkingpc',
         customerEmail: 'pelanggan@mdfkingpc.com',
-        customerPhone: '+6281234567890',
+        customerPhone: '+6285158916661',
         serviceName: 'Layanan Servis & Rakit PC',
         price: 150000,
         paymentStatus: 'PENDING',
