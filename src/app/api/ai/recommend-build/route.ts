@@ -1,11 +1,26 @@
 import { NextResponse } from 'next/server';
-import { getGroqBuildRecommendation } from '@/lib/groq';
+import { getGroqBuildRecommendation, getGroqBudgetBuildRecommendation } from '@/lib/groq';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { components, targetUsage, maxBudget } = body;
+    const { mode, components, targetUsage, budget, userNotes } = body;
 
+    if (mode === 'budget') {
+      const parsedBudget = Number(budget) || 10000000;
+      const result = await getGroqBudgetBuildRecommendation(
+        parsedBudget,
+        targetUsage || 'Gaming & Daily Workstation',
+        userNotes
+      );
+
+      return NextResponse.json({
+        success: true,
+        data: result,
+      });
+    }
+
+    // Default to Custom Pick mode
     if (!components || typeof components !== 'object') {
       return NextResponse.json(
         { success: false, message: 'Mohon sertakan komponen terpilih.' },
@@ -13,7 +28,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const recommendation = await getGroqBuildRecommendation(components, targetUsage, maxBudget);
+    const recommendation = await getGroqBuildRecommendation(components, targetUsage);
 
     return NextResponse.json({
       success: true,

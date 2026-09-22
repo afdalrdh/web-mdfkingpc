@@ -237,7 +237,7 @@ export const Navbar: React.FC = () => {
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-sky-600 hover:bg-sky-500 shadow-md transition-all"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-sky-600 hover:bg-sky-500 shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 border border-sky-400/30"
                 >
                   Login
                 </button>
