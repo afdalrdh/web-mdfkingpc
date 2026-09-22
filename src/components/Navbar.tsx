@@ -8,7 +8,6 @@ import {
   Menu,
   X,
   Wrench,
-  PhoneCall,
   ChevronDown,
   ChevronRight,
   Laptop,
@@ -190,16 +189,6 @@ export const Navbar: React.FC = () => {
 
             {/* Desktop Right Actions */}
             <div className="hidden md:flex items-center gap-3">
-              <a
-                href={`https://wa.me/${SITE_INFO.whatsapp}?text=Halo%20mdfkingpc,%20saya%20ingin%20konsultasi%20service%20device`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-300 hover:text-white transition-colors"
-              >
-                <PhoneCall className="w-3.5 h-3.5 text-brand-red" />
-                <span>{SITE_INFO.whatsappFormatted}</span>
-              </a>
-
               {user ? (
                 <div className="relative">
                   <button
@@ -274,7 +263,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsAuthModalOpen(true)}
                   className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-gray-300 bg-white/10"
                 >
-                  Masuk
+                  Login
                 </button>
               )}
               <button

@@ -21,8 +21,15 @@ export async function POST(request: Request) {
 
     try {
       if (process.env.DATABASE_URL) {
-        createdUser = await prisma.user.create({
-          data: {
+        createdUser = await prisma.user.upsert({
+          where: { email },
+          update: {
+            name,
+            password: hashedPassword,
+            phone: phone || undefined,
+            address: address || undefined,
+          },
+          create: {
             name,
             email,
             password: hashedPassword,
@@ -33,13 +40,7 @@ export async function POST(request: Request) {
         });
       }
     } catch (dbErr: any) {
-      if (dbErr.code === 'P2002') {
-        return NextResponse.json(
-          { success: false, message: 'Email sudah terdaftar. Silakan gunakan menu Masuk.' },
-          { status: 400 }
-        );
-      }
-      console.warn('DB Register error:', dbErr);
+      console.warn('DB Register warning:', dbErr);
     }
 
     const userObj = createdUser || {
@@ -61,7 +62,15 @@ export async function POST(request: Request) {
       success: true,
       message: 'Registrasi berhasil!',
       token,
-      user: userObj,
+      user: {
+        id: userObj.id,
+        name: userObj.name,
+        email: userObj.email,
+        phone: userObj.phone || null,
+        address: userObj.address || null,
+        image: userObj.image || null,
+        role: userObj.role || 'USER',
+      },
     });
   } catch (error: any) {
     console.error('User Register API error:', error);
