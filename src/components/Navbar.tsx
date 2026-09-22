@@ -16,10 +16,10 @@ import {
   Mouse,
   Gamepad2,
   Download,
-  User as UserIcon,
   LogOut,
   PackageCheck,
   Settings,
+  Sparkles,
 } from 'lucide-react';
 import { SITE_INFO } from '@/data/mockData';
 import AuthModal from '@/components/AuthModal';
@@ -81,10 +81,12 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 glass-nav transition-all duration-300">
-        {/* Top Banner */}
-        <div className="bg-gradient-to-r from-brand-blue via-brand-dark to-brand-red text-xs py-1.5 px-4 text-center text-white/90 font-medium tracking-wide flex items-center justify-center gap-2">
-          <span className="bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider text-white">Promo Bandung</span>
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-xs">
+        {/* Top Info Banner - Gradient Brand Blue to Red */}
+        <div className="bg-gradient-to-r from-brand-blue via-brand-dark to-brand-red text-xs py-1.5 px-4 text-center text-white/90 font-medium tracking-wide flex items-center justify-center gap-2 shadow-xs">
+          <span className="bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider text-white">
+            Promo Bandung
+          </span>
           <span>Diagnostik Gratis & Garansi 30 Hari Perbaikan Device</span>
           <Link href="/pemesanan" className="underline font-semibold hover:text-white transition-colors ml-1 hidden sm:inline">
             Pesan Sekarang &rarr;
@@ -95,21 +97,21 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center justify-between h-20">
             {/* Brand Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-12 h-12 flex items-center justify-center rounded-xl bg-brand-dark/90 border border-white/10 p-1 group-hover:border-brand-blue transition-all">
+              <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-50 border border-slate-200 p-1.5 shadow-xs group-hover:border-blue-500 group-hover:shadow-md transition-all">
                 <Image
                   src="/logo.png"
                   alt="mdfkingpc Logo"
-                  width={44}
-                  height={44}
+                  width={38}
+                  height={38}
                   className="object-contain"
                   priority
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-extrabold tracking-tight text-white flex items-center gap-1.5">
-                  mdf<span className="text-brand-blue">king</span><span className="text-brand-red">pc</span>
+                <span className="text-xl font-black tracking-tight text-slate-900 flex items-center gap-0.5 font-sans">
+                  mdf<span className="text-blue-600">king</span><span className="text-red-500">pc</span>
                 </span>
-                <span className="text-[10px] text-gray-400 font-medium tracking-wider uppercase -mt-1">
+                <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase -mt-1">
                   Made For KING PC
                 </span>
               </div>
@@ -128,20 +130,20 @@ export const Navbar: React.FC = () => {
                     >
                       <Link
                         href={link.href}
-                        className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                        className={`inline-flex items-center gap-1 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
                           isActive(link.href)
-                            ? 'text-white bg-white/10 font-semibold shadow-sm border border-white/10'
-                            : 'text-gray-300 hover:text-white hover:bg-white/5'
+                            ? 'text-blue-700 bg-blue-50 font-bold border border-blue-200/80'
+                            : 'text-slate-600 hover:text-blue-600 hover:bg-slate-100/70'
                         }`}
                       >
                         <span>{link.label}</span>
-                        <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
                       </Link>
 
                       {/* Dropdown Menu */}
                       {isServicesOpen && (
-                        <div className="absolute top-full left-0 w-80 bg-[#171717] border border-white/10 rounded-2xl shadow-2xl p-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                          <div className="text-[11px] font-bold text-gray-400 px-3 py-1.5 uppercase tracking-wider">
+                        <div className="absolute top-full left-0 w-80 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                          <div className="text-[10px] font-bold text-slate-400 px-3 py-1.5 uppercase tracking-wider">
                             Pilih Layanan Servis
                           </div>
                           {serviceSubmenu.map((sub) => {
@@ -150,16 +152,16 @@ export const Navbar: React.FC = () => {
                               <Link
                                 key={sub.href}
                                 href={sub.href}
-                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/10 text-gray-200 hover:text-white transition-all group"
+                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 text-slate-700 hover:text-blue-700 transition-all group"
                               >
-                                <div className="p-2 rounded-lg bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                                <div className="p-2 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
                                   <IconComponent className="w-4 h-4" />
                                 </div>
                                 <div className="flex-1">
-                                  <div className="text-xs font-bold leading-tight text-white group-hover:text-sky-300">
+                                  <div className="text-xs font-bold leading-tight text-slate-900 group-hover:text-blue-700">
                                     {sub.label}
                                   </div>
-                                  <div className="text-[11px] text-gray-400 line-clamp-1 mt-0.5">
+                                  <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
                                     {sub.desc}
                                   </div>
                                 </div>
@@ -176,10 +178,10 @@ export const Navbar: React.FC = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
                       isActive(link.href)
-                        ? 'text-white bg-white/10 font-semibold shadow-sm border border-white/10'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                        ? 'text-blue-700 bg-blue-50 font-bold border border-blue-200/80'
+                        : 'text-slate-600 hover:text-blue-600 hover:bg-slate-100/70'
                     }`}
                   >
                     {link.label}
@@ -188,15 +190,15 @@ export const Navbar: React.FC = () => {
               })}
             </nav>
 
-            {/* Desktop Right Actions */}
+            {/* Desktop Right Actions - Hitboox Cut-Corner Buttons */}
             <div className="hidden md:flex items-center gap-3">
               {user ? (
                 <div className="relative">
                   <button
                     onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
-                    className="flex items-center gap-2 py-1.5 px-3 rounded-xl bg-white/10 border border-white/10 text-white hover:bg-white/15 transition-all text-xs font-semibold"
+                    className="btn-hitboox btn-hitboox-secondary text-xs !py-2 !px-3.5 flex items-center gap-2 font-bold"
                   >
-                    <div className="w-6 h-6 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-xs">
+                    <div className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-[10px] shadow-xs">
                       {user.name ? user.name[0].toUpperCase() : 'U'}
                     </div>
                     <span className="max-w-[100px] truncate">{user.name}</span>
@@ -204,30 +206,30 @@ export const Navbar: React.FC = () => {
                   </button>
 
                   {isUserDropdownOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-48 bg-[#181818] border border-white/10 rounded-2xl shadow-2xl p-2 z-50 text-xs">
-                      <div className="px-3 py-2 border-b border-white/10 mb-1">
-                        <div className="font-bold text-white truncate">{user.name}</div>
-                        <div className="text-[11px] text-gray-400 truncate">{user.email}</div>
+                    <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 z-50 text-xs">
+                      <div className="px-3 py-2 border-b border-slate-100 mb-1">
+                        <div className="font-bold text-slate-900 truncate">{user.name}</div>
+                        <div className="text-[11px] text-slate-500 truncate">{user.email}</div>
                       </div>
                       <Link
                         href="/pesanan-saya"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-colors font-medium"
                       >
-                        <PackageCheck className="w-4 h-4 text-sky-400" />
+                        <PackageCheck className="w-4 h-4 text-blue-600" />
                         <span>Pesanan Saya</span>
                       </Link>
                       <Link
                         href="/pengaturan-akun"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-colors font-medium"
                       >
-                        <Settings className="w-4 h-4 text-purple-400" />
+                        <Settings className="w-4 h-4 text-indigo-600" />
                         <span>Pengaturan Akun</span>
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors text-left mt-1"
+                        className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-red-600 hover:bg-red-50 transition-colors text-left mt-1 font-medium"
                       >
                         <LogOut className="w-4 h-4" />
                         <span>Keluar</span>
@@ -238,7 +240,7 @@ export const Navbar: React.FC = () => {
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-sky-600 hover:bg-sky-500 shadow-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 border border-sky-400/30"
+                  className="btn-hitboox btn-hitboox-secondary text-xs !py-2 !px-5"
                 >
                   Login
                 </button>
@@ -246,9 +248,9 @@ export const Navbar: React.FC = () => {
 
               <Link
                 href="/pemesanan"
-                className="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-brand-blue hover:bg-brand-blue-hover shadow-glow-blue transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 border border-blue-400/30"
+                className="btn-hitboox btn-hitboox-primary text-xs !py-2 !px-5 gap-1.5"
               >
-                <Wrench className="w-3.5 h-3.5 mr-1.5 text-brand-red" />
+                <Wrench className="w-3.5 h-3.5 text-blue-200" />
                 <span>Form Pemesanan</span>
               </Link>
             </div>
@@ -256,20 +258,20 @@ export const Navbar: React.FC = () => {
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center gap-2">
               {user ? (
-                <Link href="/pesanan-saya" className="p-2 rounded-xl bg-sky-500/20 text-sky-400 text-xs font-bold">
+                <Link href="/pesanan-saya" className="p-2 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
                   {user.name ? user.name[0].toUpperCase() : 'U'}
                 </Link>
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-gray-300 bg-white/10"
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200"
                 >
                   Login
                 </button>
               )}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none"
+                className="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
                 aria-label="Toggle Navigation"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -280,45 +282,45 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="md:hidden bg-[#141414]/98 border-b border-white/10 px-4 pt-2 pb-6 space-y-2 animate-fadeIn">
+          <div className="md:hidden bg-white/98 border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   isActive(link.href)
-                    ? 'bg-brand-blue/20 text-white border border-brand-blue/30 font-semibold'
-                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                    ? 'bg-blue-50 text-blue-700 border border-blue-200/80 font-bold'
+                    : 'text-slate-700 hover:bg-slate-50'
                 }`}
               >
                 <span>{link.label}</span>
-                <ChevronRight className="w-4 h-4 opacity-50" />
+                <ChevronRight className="w-4 h-4 opacity-40" />
               </Link>
             ))}
 
-            <div className="pt-2 border-t border-white/10">
-              <div className="text-xs font-bold text-gray-400 px-2 py-1 uppercase tracking-wider">Layanan Servis</div>
+            <div className="pt-2 border-t border-slate-100">
+              <div className="text-xs font-bold text-slate-400 px-2 py-1 uppercase tracking-wider">Layanan Servis</div>
               {serviceSubmenu.map((sub) => (
                 <Link
                   key={sub.href}
                   href={sub.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2 text-xs text-gray-300 hover:text-white"
+                  className="flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg"
                 >
-                  <sub.icon className="w-3.5 h-3.5 text-sky-400" />
+                  <sub.icon className="w-3.5 h-3.5 text-blue-600" />
                   <span>{sub.label}</span>
                 </Link>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+            <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
               <Link
                 href="/pemesanan"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-hover shadow-glow-blue"
+                className="btn-hitboox btn-hitboox-primary text-xs !py-3 w-full gap-2"
               >
-                <Wrench className="w-4 h-4 text-brand-red" />
+                <Wrench className="w-4 h-4 text-blue-200" />
                 <span>Formulir Pemesanan Online</span>
               </Link>
             </div>

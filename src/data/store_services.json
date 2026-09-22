@@ -1,0 +1,124 @@
+[
+  {
+    "id": "servis-laptop-macbook",
+    "slug": "servis-laptop-macbook",
+    "title": "Service Laptop & MacBook",
+    "category": "Hardware & Laptop",
+    "shortDesc": "Perbaikan layar pecah, pergantian baterai, perbaikan motherboard mati total, overheat, hingga upgrade SSD NVMe cepat.",
+    "fullDesc": "Layanan spesialis perbaikan segala merek laptop (Asus, Lenovo, Acer, HP, Dell, MSI) dan Apple MacBook (Air & Pro). Kami menangani kerusakan layar pecah/fleksibel, baterai cepat drop, engsel patah, terkena cairan, ic power mati total, serta pembersihan thermal paste gratis.",
+    "priceStarting": "Rp 100.000",
+    "price": 100000,
+    "imageUrl": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800&auto=format&fit=crop",
+    "badge": "Paling Populer",
+    "features": [
+      "Diagnostik Kerusakan Gratis",
+      "Ganti Layar LCD & Baterai Original",
+      "Service Engine Motherboard/IC Power",
+      "Pembersihan Thermal Paste Premium"
+    ]
+  },
+  {
+    "id": "rakit-pc-gaming",
+    "slug": "rakit-pc-gaming",
+    "title": "Rakit PC Gaming & Workstation",
+    "category": "Custom PC",
+    "shortDesc": "Konsultasi spesifikasi PC Gaming dan Editing sesuai budget dengan harga komponen jelas tanpa biaya tersembunyi.",
+    "fullDesc": "Layanan perakitan PC Gaming, Streaming, dan 3D Rendering profesional. Pilihan komponen original bergaransi resmi, manajemen kabel rapi (clean cable management), optimalisasi BIOS & testing benchmark stres sebelum diserahkan.",
+    "priceStarting": "Rp 4.500.000",
+    "price": 4500000,
+    "imageUrl": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=1000&auto=format&fit=crop",
+    "badge": "Garansi Komponen Resmi",
+    "features": [
+      "Harga Transparan Tanpa Mark Up",
+      "Manajemen Kabel Super Rapi",
+      "Instalasi Windows & Driver Terbuka",
+      "Bonus Testing Benchmark Stres Test"
+    ]
+  },
+  {
+    "id": "servis-keyboard",
+    "slug": "servis-keyboard",
+    "title": "Servis Keyboard Laptop & Mechanical",
+    "category": "Peripherals",
+    "shortDesc": "Ganti switch mechanical keyboard, perbaikan tuts macet/lengket, dan ganti keyboard laptop internal bergaransi.",
+    "fullDesc": "Perbaikan keyboard laptop tidak merespon, tuts mengetik sendiri, penggantian modul keyboard backlit, hingga modding & solder switch mechanical keyboard (Cherry MX, Gateron, Outemu).",
+    "priceStarting": "Rp 75.000",
+    "price": 75000,
+    "imageUrl": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=800&auto=format&fit=crop",
+    "features": [
+      "Ganti Keyboard Laptop Segala Tipe",
+      "Desolder & Solder Switch Mechanical",
+      "Pembersihan & Lube Keycap",
+      "Garansi Tuts Lengkap"
+    ]
+  },
+  {
+    "id": "servis-mouse",
+    "slug": "servis-mouse",
+    "title": "Servis Mouse Gaming & Office",
+    "category": "Peripherals",
+    "shortDesc": "Solusi double-click mouse gaming, ganti kabel paracord, penggantian scroll wheel sensor, dan skates PTFE.",
+    "fullDesc": "Servis mouse gaming kelas atas (Logitech, Razer, SteelSeries, Glorious) yang mengalami masalah double click. Kami ganti mikro switch Omron/TTC Gold asli serta penggantian mouse skates.",
+    "priceStarting": "Rp 50.000",
+    "price": 50000,
+    "imageUrl": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=800&auto=format&fit=crop",
+    "features": [
+      "Ganti Switch Anti Double-Click",
+      "Perbaikan Scroll Wheel & Encoder",
+      "Ganti Cable Paracord Flex",
+      "Pembersihan PCB Optik"
+    ]
+  },
+  {
+    "id": "servis-joystick",
+    "slug": "servis-joystick",
+    "title": "Servis Joystick & Controller Game",
+    "category": "Gaming Gear",
+    "shortDesc": "Perbaikan analog drift PS4, PS5 DualSense, Xbox Controller, Switch Joy-Con, dan tombol rubber pad.",
+    "fullDesc": "Mengatasi masalah analog drift pada controller konsol dan PC. Penggantian modul potentiometer 3D analog / Hall Effect anti drift permanent, perbaikan tombol R1/L1 tidak empuk, dan ganti baterai internal.",
+    "priceStarting": "Rp 65.000",
+    "price": 65000,
+    "imageUrl": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=800&auto=format&fit=crop",
+    "badge": "Upgrade Hall Effect",
+    "features": [
+      "Upgrade Analog Hall Effect Anti Drift",
+      "Ganti Rubber Pad & Flexible Board",
+      "Kalibrasi Analog Precision Check",
+      "Ganti Baterai Controller"
+    ]
+  },
+  {
+    "id": "instal-aplikasi-game",
+    "slug": "instal-aplikasi-game",
+    "title": "Instal OS, Aplikasi & Game PC",
+    "category": "Software",
+    "shortDesc": "Instal ulang Windows 10/11 Original, MacOS, software desain (Adobe/Autodesk), office, dan game PC terbaru.",
+    "fullDesc": "Layanan instalasi sistem operasi tercepat tanpa hilang data penting. Paket instalasi software produktivitas kerja/kuliah, tuning performa Windows anti lag, serta penginstal modul game PC lengkap.",
+    "priceStarting": "Rp 50.000",
+    "price": 50000,
+    "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
+    "features": [
+      "Windows 10/11 & Dual Boot MacOS",
+      "Backup Data Penting Ambil Aman",
+      "Instalasi Software Design & Editing",
+      "Optimasi Startup & Antivirus"
+    ]
+  },
+  {
+    "id": "servis-pembersihan-pc",
+    "slug": "servis-pembersihan-pc",
+    "title": "Perbaikan & Pembersihan PC Desktop",
+    "category": "Hardware & Maintenance",
+    "shortDesc": "Deep cleaning debu komponen, penggantian thermal paste high-grade (Noctua/Arctic), manajemen kabel, & perbaikan PC no display.",
+    "fullDesc": "Layanan pembersihan dan perawatan menyeluruh untuk PC Desktop Gaming, Workstation, maupun Office. Kami membersihkan debu membandel pada fan, heatsink radiator, dan motherboard menggunakan kompresor khusus anti-statis. Penggantian pasta thermal kualitas tinggi (Noctua NT-H1 / Arctic MX-6) untuk menurunkan suhu hingga 15-20°C, perbaikan PC tidak nyala/black screen, serta penataan ulang kabel agar sirkulasi udara lebih optimal.",
+    "priceStarting": "Rp 85.000",
+    "price": 85000,
+    "imageUrl": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1000&auto=format&fit=crop",
+    "features": [
+      "Deep Dust Cleaning Anti-Statis",
+      "Ganti Thermal Paste Premium High-Grade",
+      "Cable Re-Management Rapi",
+      "Perbaikan PC No Display / Auto Restart"
+    ]
+  }
+]

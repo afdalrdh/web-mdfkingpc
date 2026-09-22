@@ -2,47 +2,307 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Local Fonts Definition */
+@font-face {
+  font-family: 'Realce';
+  src: url('/fonts/Realce-Black.otf') format('opentype');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/fonts/GeneralSans-Bold.otf') format('opentype');
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --color-brand-dark: #141414;
-  --color-brand-blue: #3352C1;
-  --color-brand-red: #D13D5D;
+  --color-brand-bg: #FFFFFF;
+  --color-brand-surface: #F8FAFC;
+  --color-brand-blue: #1D4ED8;
+  --color-brand-blue-hover: #1E40AF;
+  --color-brand-blue-light: #EFF6FF;
+  --color-brand-red: #EF4444;
+  --color-brand-red-light: #FEF2F2;
+  --color-brand-border: #E2E8F0;
+  --color-brand-text-dark: #0F172A;
+  --color-brand-text-muted: #64748B;
 }
 
 body {
-  background-color: #141414;
-  color: #F3F4F6;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #FFFFFF;
+  color: #1E293B;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom Glass Effect */
+/* 
+ * TYPOGRAPHY RULES:
+ * 1. Any text 20px or below MUST use General Sans (never Realce).
+ * 2. Realce is ONLY for large display text (> 20px).
+ * 3. Whenever Realce is used, it MUST ALWAYS be FULL CAPITAL / UPPERCASE.
+ */
+
+/* Default headings 20px or below use General Sans */
+h3, h4, h5, h6 {
+  font-family: 'General Sans', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Default large headings (> 20px) use Realce in full uppercase */
+h1, h2 {
+  font-family: 'Realce', sans-serif;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+}
+
+/* Realce is strictly for large display text (> 20px) and ALWAYS UPPERCASE */
+.font-display, .font-realce {
+  font-family: 'Realce', sans-serif;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+}
+
+/* STRICT RULE: Any text 20px or below MUST use General Sans, NEVER Realce */
+.text-xs,
+.text-sm,
+.text-base,
+.text-lg,
+.text-xl,
+p, span.text-xs, span.text-sm, span.text-base, span.text-lg, span.text-xl,
+button.text-xs, button.text-sm, button.text-base, button.text-lg, button.text-xl,
+a.text-xs, a.text-sm, a.text-base, a.text-lg, a.text-xl,
+div.text-xs, div.text-sm, div.text-base, div.text-lg, div.text-xl,
+h3.text-xs, h3.text-sm, h3.text-base, h3.text-lg, h3.text-xl,
+h4.text-xs, h4.text-sm, h4.text-base, h4.text-lg, h4.text-xl,
+input, textarea, select {
+  font-family: 'General Sans', sans-serif !important;
+}
+
+/* If font-display is placed on elements <= 20px, forcefully fallback to General Sans and reset uppercase */
+.font-display.text-xs,
+.font-display.text-sm,
+.font-display.text-base,
+.font-display.text-lg,
+.font-display.text-xl,
+.font-realce.text-xs,
+.font-realce.text-sm,
+.font-realce.text-base,
+.font-realce.text-lg,
+.font-realce.text-xl {
+  font-family: 'General Sans', sans-serif !important;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Ensure Realce applies only when element has large size (> 20px) and is 100% full uppercase */
+.font-display.text-2xl,
+.font-display.text-3xl,
+.font-display.text-4xl,
+.font-display.text-5xl,
+.font-display.text-6xl,
+.font-display.text-7xl,
+.font-realce.text-2xl,
+.font-realce.text-3xl,
+.font-realce.text-4xl,
+.font-realce.text-5xl,
+.font-realce.text-6xl,
+.font-realce.text-7xl {
+  font-family: 'Realce', sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+}
+
+/* Hitboox Cut-Corner Geometry & Gaming Chamfer Buttons */
+.btn-hitboox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 1.4rem;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-hitboox:hover {
+  transform: translateY(-2px);
+}
+
+.btn-hitboox:active {
+  transform: translateY(0px);
+}
+
+.btn-hitboox-primary {
+  background-color: #1D4ED8;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+}
+
+.btn-hitboox-primary:hover {
+  background-color: #1E40AF;
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.45);
+}
+
+.btn-hitboox-white {
+  background-color: #FFFFFF;
+  color: #0F172A;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.1);
+}
+
+.btn-hitboox-white:hover {
+  background-color: #F8FAFC;
+  color: #1D4ED8;
+}
+
+.btn-hitboox-secondary {
+  background-color: #F8FAFC;
+  color: #1E293B;
+  border: 1px solid #CBD5E1;
+}
+
+.btn-hitboox-secondary:hover {
+  border-color: #1D4ED8;
+  color: #1D4ED8;
+  background-color: #FFFFFF;
+}
+
+.btn-hitboox-outline {
+  background-color: transparent;
+  color: #1D4ED8;
+  border: 1.5px solid #1D4ED8;
+}
+
+.btn-hitboox-outline:hover {
+  background-color: #1D4ED8;
+  color: #FFFFFF;
+}
+
+.btn-hitboox-red {
+  background-color: #EF4444;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
+}
+
+.btn-hitboox-red:hover {
+  background-color: #DC2626;
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.4);
+}
+
+/* Backward compatibility for previous classes */
+.btn-pill-primary {
+  @apply btn-hitboox btn-hitboox-primary;
+}
+
+.btn-pill-secondary {
+  @apply btn-hitboox btn-hitboox-secondary;
+}
+
+/* Hitboox Angled / Chamfer Containers */
+.cut-corner-container {
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+.cut-corner-container-lg {
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px));
+}
+
+.cut-corner-card {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.cut-corner-top-right {
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+}
+
+.cut-corner-bottom-left {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+/* Clean Glass Effect */
 .glass-panel {
-  background: rgba(28, 28, 30, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
 }
 
 .glass-nav {
-  background: rgba(20, 20, 20, 0.9);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
 }
 
-/* Gradient Text */
-.text-gradient-brand {
-  background: linear-gradient(135deg, #3352C1 0%, #D13D5D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-.bg-gradient-brand {
-  background: linear-gradient(135deg, #3352C1 0%, #D13D5D 100%);
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
-.border-gradient-brand {
-  border-image: linear-gradient(135deg, #3352C1, #D13D5D) 1;
+.animate-float-delayed {
+  animation: float 4s ease-in-out infinite 2s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 /* Custom Scrollbar */
@@ -51,14 +311,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #141414;
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2A2A2E;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3352C1;
+  background: #94A3B8;
 }

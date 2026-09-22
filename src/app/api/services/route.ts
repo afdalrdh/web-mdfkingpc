@@ -1,38 +1,40 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
-import { SERVICES_LIST } from '@/data/mockData';
+import { getStoredServices, saveStoredService, StoredService } from '@/lib/storage';
 
 // GET /api/services - Retrieve all services
 export async function GET() {
   try {
-    let services: any[] = [];
+    let services: StoredService[] = [];
     
     try {
       if (process.env.DATABASE_URL) {
-        services = await prisma.service.findMany({
+        const dbServices = await prisma.service.findMany({
           orderBy: { createdAt: 'desc' },
         });
+        if (dbServices && dbServices.length > 0) {
+          services = dbServices.map((s) => ({
+            id: s.id,
+            slug: s.slug,
+            title: s.title,
+            category: s.category,
+            shortDesc: s.shortDesc || '',
+            fullDesc: s.description,
+            priceStarting: s.priceStarting,
+            price: s.price,
+            imageUrl: s.imageUrl,
+            badge: s.badge || undefined,
+            features: s.features,
+          }));
+        }
       }
     } catch (dbError) {
-      console.warn('DB error fetching services, using fallback:', dbError);
+      // Fallback
     }
 
     if (services.length === 0) {
-      // Map mock data to standard API response format
-      services = SERVICES_LIST.map((s) => ({
-        id: s.id,
-        slug: s.slug,
-        title: s.title,
-        category: s.category,
-        shortDesc: s.shortDesc,
-        description: s.fullDesc,
-        priceStarting: s.priceStarting,
-        price: parseFloat(s.priceStarting.replace(/[^0-9]/g, '')) || 0,
-        imageUrl: s.imageUrl,
-        badge: s.badge || null,
-        features: s.features,
-      }));
+      services = getStoredServices();
     }
 
     return NextResponse.json({
@@ -48,7 +50,7 @@ export async function GET() {
   }
 }
 
-// POST /api/services - Create new service (Admin Protected)
+// POST /api/services - Create or update service (Admin Protected)
 export async function POST(request: Request) {
   try {
     const admin = verifyAdminToken(request);
@@ -60,65 +62,78 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { title, slug, category, shortDesc, description, priceStarting, price, imageUrl, badge, features } = body;
+    const { id, title, slug, category, shortDesc, description, fullDesc, priceStarting, price, imageUrl, badge, features } = body;
 
-    if (!title || !category || !description || !imageUrl) {
+    if (!title || !category || (!description && !fullDesc) || !imageUrl) {
       return NextResponse.json(
-        { success: false, message: 'Mohon isi nama layanan, kategori, deskripsi, dan URL gambar (Cloudinary).' },
+        { success: false, message: 'Mohon isi nama layanan, kategori, deskripsi, dan URL gambar.' },
         { status: 400 }
       );
     }
 
     const generatedSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     const numericPrice = price !== undefined ? parseFloat(price) : (parseFloat((priceStarting || '').replace(/[^0-9]/g, '')) || 0);
+    const serviceId = id || `srv-${Date.now()}`;
 
-    let createdService = null;
+    const newService: StoredService = {
+      id: serviceId,
+      slug: generatedSlug,
+      title,
+      category,
+      shortDesc: shortDesc || '',
+      fullDesc: description || fullDesc || '',
+      priceStarting: priceStarting || `Rp ${numericPrice.toLocaleString('id-ID')}`,
+      price: numericPrice,
+      imageUrl,
+      badge: badge || undefined,
+      features: Array.isArray(features) ? features : (typeof features === 'string' ? features.split(',').map((f: string) => f.trim()) : []),
+    };
 
     try {
       if (process.env.DATABASE_URL) {
-        createdService = await prisma.service.create({
-          data: {
+        await prisma.service.upsert({
+          where: { slug: generatedSlug },
+          update: {
+            title,
+            category,
+            shortDesc: shortDesc || null,
+            description: description || fullDesc || '',
+            priceStarting: newService.priceStarting,
+            price: numericPrice,
+            imageUrl,
+            badge: badge || null,
+            features: newService.features,
+          },
+          create: {
+            id: serviceId,
             title,
             slug: generatedSlug,
             category,
             shortDesc: shortDesc || null,
-            description,
-            priceStarting: priceStarting || `Rp ${numericPrice.toLocaleString('id-ID')}`,
+            description: description || fullDesc || '',
+            priceStarting: newService.priceStarting,
             price: numericPrice,
             imageUrl,
             badge: badge || null,
-            features: Array.isArray(features) ? features : [],
+            features: newService.features,
           },
         });
       }
     } catch (dbError) {
-      console.warn('DB error creating service:', dbError);
+      // Fallback
     }
 
-    const result = createdService || {
-      id: `srv-${Date.now()}`,
-      title,
-      slug: generatedSlug,
-      category,
-      shortDesc,
-      description,
-      priceStarting: priceStarting || `Rp ${numericPrice.toLocaleString('id-ID')}`,
-      price: numericPrice,
-      imageUrl,
-      badge,
-      features: Array.isArray(features) ? features : [],
-      createdAt: new Date().toISOString(),
-    };
+    const saved = saveStoredService(newService);
 
     return NextResponse.json({
       success: true,
-      message: 'Layanan berhasil ditambahkan ke katalog!',
-      data: result,
+      message: 'Layanan berhasil disimpan ke katalog!',
+      data: saved,
     });
   } catch (error: any) {
     console.error('API Services POST error:', error);
     return NextResponse.json(
-      { success: false, message: 'Gagal membuat layanan baru.', error: error.message },
+      { success: false, message: 'Gagal menyimpan layanan.', error: error.message },
       { status: 500 }
     );
   }

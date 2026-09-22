@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "slug": "5-tanda-laptop-harus-upgrade-ssd",
+    "title": "5 Tanda Laptop Anda Sudah Harus Upgrade SSD NVMe",
+    "category": "Tips Laptop",
+    "date": "18 September 2026",
+    "author": "Teknisi mdfkingpc",
+    "snippet": "Apakah laptop Anda terasa lambat saat booting atau membuka aplikasi? Ketahui 5 indikator utama saatnya beralih dari HDD ke SSD NVMe super cepat.",
+    "content": "Apakah laptop Anda membutuhkan waktu hingga berdetik-detik hanya untuk menyala? Laptop dengan Harddisk (HDD) konvensional kini sering mengalami kemacetan sistem karena beban sistem operasi modern seperti Windows 11.\n\nBerikut adalah 5 tanda utama laptop Anda perlu segera di-upgrade ke SSD:\n1. Booting Windows Membutuhkan Waktu Lebih dari 1 Menit.\n2. Disk Usage di Task Manager Selalu 100%.\n3. Bunyi Berisik \"Krek-krek\" Dari Harddisk Internal.\n4. Aplikasi Sering Not Responding Saat Membuka File Berat.\n5. Laptop Terasa Panas Meskipun Tidak Menjalankan Game.\n\nDi mdfkingpc Bandung, kami menyediakan paket Upgrade SSD hemat termasuk gratis migrasi data tanpa instal ulang dari awal!",
+    "imageUrl": "https://images.unsplash.com/photo-1544652478-6653e09f18a2?q=80&w=800&auto=format&fit=crop",
+    "readTime": "4 menit baca"
+  },
+  {
+    "id": "2",
+    "slug": "cara-mengatasi-analog-controller-drift",
+    "title": "Cara Mengatasi Analog Controller Drift pada Stick PS5 & PC",
+    "category": "Hardware & PC",
+    "date": "12 September 2026",
+    "author": "Teknisi mdfkingpc",
+    "snippet": "Karakter game berjalan sendiri? Simak panduan teknis mengenai penyebab analog drift dan solusi terbaik penggantian ke modul Hall Effect.",
+    "content": "Analog drift merupakan masalah paling populer di antara gamer PlayStation 5, Switch Joy-Con, dan Xbox Controller. Karakter atau kamera bergerak sendiri tanpa disentuh.\n\nMengapa Drift Bisa Terjadi?\nSebagian besar controller standar menggunakan potentiometer berbasis karbon yang aus setelah 300-400 jam penggunaan. Gesekan fisik menyebabkan serbuk karbon menempel dan mengirimkan sinyal palsu.\n\nSolusi Permanen: Upgrade ke Hall Effect Analog Sensor!\nModul Hall Effect menggunakan teknologi magnetik tanpa gesekan fisik. Hasilnya, potentiometer tidak akan aus dan bebas drift selamanya. mdfkingpc melayani servis & upgrade modul Hall Effect untuk stick PS4, PS5, Switch, dan Xbox.",
+    "imageUrl": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?q=80&w=800&auto=format&fit=crop",
+    "readTime": "5 menit baca"
+  },
+  {
+    "id": "3",
+    "slug": "panduan-memilih-komponen-pc-gaming-2026",
+    "title": "Panduan Memilih Komponen PC Gaming Sesuai Budget",
+    "category": "Hardware & PC",
+    "date": "05 September 2026",
+    "author": "Admin mdfkingpc",
+    "snippet": "Ingin rakit PC tetapi bingung menentukan alokasi dana antar Processor, VGA Card, dan RAM? Pelajari formula alokasi budget rakit PC yang ideal.",
+    "content": "Merapikan dana untuk merakit PC Gaming memerlukan perencanaan yang matang agar tidak terjadi penyempitan performa (bottleneck).\n\nAlokasi Ideal Budget Rakit PC Gaming:\n- GPU / Kartu Grafis: 40% - 45% dari total budget.\n- Processor (CPU): 20% - 25% dari total budget.\n- Motherboard & RAM: 15% - 20%.\n- Power Supply (PSU) & Storage: 15%.\n\nJangan pernah menghemat biaya pada Power Supply (PSU). PSU berkualitas buruk berisiko merusak komponen mahal seperti GPU dan Processor. Tim mdfkingpc siap membantu konsultasi rakit PC gratis dengan transparansi harga jelas!",
+    "imageUrl": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=1000&auto=format&fit=crop",
+    "readTime": "6 menit baca"
+  },
+  {
+    "id": "4",
+    "slug": "pentingnya-ganti-thermal-paste-laptop-pc",
+    "title": "Pentingnya Ganti Thermal Paste & Deep Cleaning Berkala",
+    "category": "Hardware & PC",
+    "date": "28 Agustus 2026",
+    "author": "Teknisi mdfkingpc",
+    "snippet": "Suhu laptop atau PC menembus 85°C saat bekerja berat? Pahami siklus ideal penggantian pasta pendingin dan pembersihan debu.",
+    "content": "Panas berlebih (overheat) adalah musuh utama umur pakai processor dan kartu grafis. Seiring waktu, thermal paste bawaan pabrik akan mengering dan mengeras dalam kurun waktu 12 hingga 18 bulan.\n\nTanda-tanda perangkat mengalami overheat:\n1. Suara kipas terdengar berdengung kencang terus-menerus.\n2. Terjadi thermal throttling (penurunan performa FPS drop tiba-tiba).\n3. Komputer mendadak mati sendiri (auto-shutdown untuk proteksi suhu).\n\nDi workshop mdfkingpc Bandung, layanan deep cleaning menggunakan kompresor anti-statis dan penggantian thermal paste kualitas tinggi (Noctua / Arctic MX-6) yang terbukti menurunkan suhu kerja secara signifikan.",
+    "imageUrl": "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1000&auto=format&fit=crop",
+    "readTime": "3 menit baca"
+  },
+  {
+    "id": "5",
+    "slug": "tips-merawat-keyboard-mechanical-bebas-double-click",
+    "title": "Tips Merawat Keyboard Mechanical Bebas Debu & Double Click",
+    "category": "Hardware & PC",
+    "date": "20 Agustus 2026",
+    "author": "Admin mdfkingpc",
+    "snippet": "Hindari switch macet atau ketik dobel dengan langkah perawatan rutin keycap dan desoldering switch berkala.",
+    "content": "Keyboard mechanical rentan kemasukan debu halus, remah makanan, dan kelembapan yang menyebabkan switch berkarat atau double-click.\n\nTips perawatan rutin keyboard mechanical:\n1. Bersihkan keycap secara teratur menggunakan keycap puller.\n2. Hindari makan dan minum di dekat setup keyboard.\n3. Jangan gunakan cairan pembersih berlebih langsung ke switch.\n4. Jika switch mulai double-click, lakukan desoldering dan penggantian switch satuan di mdfkingpc.",
+    "imageUrl": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=800&auto=format&fit=crop",
+    "readTime": "4 menit baca"
+  },
+  {
+    "id": "6",
+    "slug": "kenali-gejala-motherboard-laptop-rusak",
+    "title": "Kenali Gejala Motherboard Laptop Rusak & Solusinya",
+    "category": "Tips Laptop",
+    "date": "15 Agustus 2026",
+    "author": "Teknisi mdfkingpc",
+    "snippet": "Mati total, tidak bisa charging, atau kipas menyala tanpa tampilan? Pahami penanganan sirkuit IC power oleh teknisi ahli.",
+    "content": "Kerusakan pada motherboard atau logic board laptop sering kali ditakuti karena biaya pergantian unit utuh yang sangat mahal. Padahal, 80% kasus motherboard rusak sebenarnya bisa diperbaiki di level komponen (component-level micro-soldering).\n\nGejala umum kerusakan motherboard:\n1. Laptop mati total (no power) meskipun charger berfungsi normal.\n2. Lampu indikator berkedip tetapi layar tetap hitam (no display).\n3. Baterai tidak terdeteksi atau pengisian daya terputus-putus.\n\nTeknisi spesialis mdfkingpc Bandung memiliki peralatan mikrosolder dan osiloskop untuk melacak jalur short circuit pada IC charging, mosfet, dan chipset tanpa harus ganti motherboard baru.",
+    "imageUrl": "https://images.unsplash.com/photo-1597872250970-45d2f34241e3?q=80&w=1000&auto=format&fit=crop",
+    "readTime": "5 menit baca"
+  },
+  {
+    "id": "7",
+    "slug": "panduan-memilih-power-supply-pc-gaming",
+    "title": "Panduan Memilih Power Supply (PSU) Berkualitas untuk PC Gaming",
+    "category": "Hardware & PC",
+    "date": "08 Agustus 2026",
+    "author": "Admin mdfkingpc",
+    "snippet": "Memahami sertifikasi 80 Plus Bronze hingga Gold agar komponen VGA dan CPU terlindungi dari lonjakan daya listrik.",
+    "content": "Power Supply Unit (PSU) adalah jantung dari sebuah sistem PC Gaming. PSU yang buruk tidak hanya menyebabkan restart tiba-tiba, namun juga dapat menghantarkan tegangan tidak stabil yang berisiko merusak komponen sensitif.\n\nPoin penting saat memilih PSU:\n1. Pilih PSU dengan sertifikasi minimal 80 Plus Bronze dari merk teruji (Corsair, Seasonic, be quiet!, MSI, Cooler Master).\n2. Berikan headroom daya minimal 20-30% di atas total konsumsi daya komponen (TDP).\n3. Utamakan PSU yang memiliki proteksi lengkap seperti OVP, UVP, OCP, OTP, dan SCP.",
+    "imageUrl": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=1000&auto=format&fit=crop",
+    "readTime": "4 menit baca"
+  }
+]

@@ -187,7 +187,6 @@ export const SERVICES_LIST: ServiceItem[] = [
     fullDesc: 'Layanan pembersihan dan perawatan menyeluruh untuk PC Desktop Gaming, Workstation, maupun Office. Kami membersihkan debu membandel pada fan, heatsink radiator, dan motherboard menggunakan kompresor khusus anti-statis. Penggantian pasta thermal kualitas tinggi (Noctua NT-H1 / Arctic MX-6) untuk menurunkan suhu hingga 15-20°C, perbaikan PC tidak nyala/black screen, serta penataan ulang kabel agar sirkulasi udara lebih optimal.',
     priceStarting: 'Rp 85.000',
     imageUrl: CLOUDINARY_IMAGES.workshop,
-    badge: 'Suhu Turun 15-20°C',
     features: ['Deep Dust Cleaning Anti-Statis', 'Ganti Thermal Paste Premium High-Grade', 'Cable Re-Management Rapi', 'Perbaikan PC No Display / Auto Restart']
   }
 ];
@@ -282,75 +281,84 @@ export const PC_COMPONENTS_DB: PcComponentItem[] = [
 export const PC_PACKAGES: PCPackage[] = [
   {
     id: 'entry-esports',
-    name: 'Paket Esports Starter',
-    tier: 'Budget Gaming',
-    price: 'Rp 5.750.000',
-    processor: 'Intel Core i3 12100F / AMD Ryzen 5 4500',
-    gpu: 'NVIDIA GTX 1650 4GB / AMD RX 6500 XT',
-    ram: '16GB DDR4 3200MHz Dual Channel',
-    storage: '512GB NVMe M.2 SSD PCIe 3.0',
+    name: 'Paket Arena Esport 1080p',
+    tier: 'Entry Level Gaming',
+    price: 'Rp 5.450.000',
+    processor: 'AMD Ryzen 5 5600G (6 Cores / 12 Threads)',
+    gpu: 'Radeon Vega 7 Integrated Graphics',
+    ram: '16GB (2x8GB) DDR4 3200MHz Dual Channel',
+    storage: 'SSD NVMe M.2 512GB PCIe 3.0',
     psu: '500W 80+ Bronze Certified',
-    case: 'Gaming M-ATX Case + 3 RGB Fans',
-    badge: 'Termurah',
-    targetGames: ['Valorant 200+ FPS', 'Dota 2', 'CS2', 'Genshin Impact']
+    case: 'Gaming M-ATX Mesh Airflow + 3x RGB Fan',
+    badge: 'Best Value Pelajar & Kantor',
+    targetGames: ['Valorant 150+ FPS', 'Dota 2', 'CS:GO 2', 'GTA V', 'Genshin Impact']
   },
   {
-    id: 'mid-gaming-pro',
-    name: 'Paket Mid Gaming Pro',
-    tier: 'Popular Choice',
-    price: 'Rp 11.950.000',
-    processor: 'Intel Core i5 13400F / AMD Ryzen 5 7500F',
-    gpu: 'NVIDIA RTX 4060 8GB GDDR6',
-    ram: '32GB DDR5 5600MHz High Speed',
-    storage: '1TB NVMe Gen4 SSD (Read 5000MB/s)',
-    psu: '650W 80+ Bronze Semi-Modular',
-    case: 'Aquarium Panoramic Tempered Glass Case',
-    badge: 'Rekomendasi Utama',
-    targetGames: ['Cyberpunk 2077 (Ray Tracing)', 'GTA V', 'EA FC 24', 'Apex Legends']
+    id: 'mid-super',
+    name: 'Paket Titan RTX 4060 1440p',
+    tier: 'Mid-Range AAA Gaming & Editing',
+    price: 'Rp 11.850.000',
+    processor: 'Intel Core i5-13400F / Ryzen 5 7500F',
+    gpu: 'NVIDIA GeForce RTX 4060 8GB GDDR6',
+    ram: '32GB (2x16GB) DDR5 5600MHz',
+    storage: 'SSD NVMe Gen4 1TB Read 5000MB/s',
+    psu: '650W 80+ Bronze Fully Modular',
+    case: 'Panoramic Dual Chamber Tempered Glass + 4x ARGB Fan',
+    badge: 'Paling Populer & Laris',
+    targetGames: ['Cyberpunk 2077 Ray Tracing', 'Black Myth: Wukong', 'Valorant 350+ FPS', 'Premiere & Blender 4K']
   },
   {
-    id: 'ultra-workstation',
-    name: 'Paket Ultra 4K & Workstation',
-    tier: 'High-End Power',
-    price: 'Rp 27.800.000',
-    processor: 'Intel Core i7 14700K / AMD Ryzen 7 7800X3D',
-    gpu: 'NVIDIA RTX 4080 Super 16GB GDDR6X',
-    ram: '64GB DDR5 6000MHz RGB',
-    storage: '2TB NVMe Gen4 High Speed SSD',
-    psu: '850W 80+ Gold Full Modular ATX 3.0',
-    case: 'Premium E-ATX Tower + 360mm AIO Liquid Cooler',
-    badge: 'Monster Performance',
-    targetGames: ['4K Ultra Gaming All Titles', '3D Blender Rendering', '4K Video Editing']
+    id: 'ultimate-beast',
+    name: 'Paket Sovereign 4K Ultimate Rig',
+    tier: 'Ultra Enthusiast & 3D Render',
+    price: 'Rp 26.500.000',
+    processor: 'AMD Ryzen 7 7800X3D (V-Cache Champion)',
+    gpu: 'NVIDIA GeForce RTX 4070 Ti SUPER 16GB',
+    ram: '32GB (2x16GB) DDR5 6000MHz CL30 EXPO',
+    storage: 'SSD NVMe Gen4 2TB High Endurance',
+    psu: '850W 80+ Gold PCIe 5.0 ATX 3.0 Ready',
+    case: 'Full Tower Premium Aluminum + 360mm AIO Liquid Cooler ARGB',
+    badge: 'Performa Tanpa Kompromi',
+    targetGames: ['All AAA Games Ultra 4K 100+ FPS', 'Heavy 3D CAD & Unreal Engine 5']
   }
 ];
 
 export const TESTIMONIALS_LIST: TestimonialItem[] = [
   {
     id: '1',
-    name: 'Ahmad Fauzi',
-    location: 'Coblong, Bandung',
+    name: 'Rian Hidayat',
+    location: 'Dipatiukur, Bandung',
     rating: 5,
-    serviceType: 'Service MacBook Screen & SSD',
-    quote: 'Tempat perbaikan yang rekomended buat saya. Laptop MacBook Air M1 saya layarnya mati tiba-tiba, dibawa ke mdfkingpc langsung didiagnosa gratis dan pengerjaannya cuma 1 hari. Harganya sangat transparan!',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop'
+    serviceType: 'Service Motherboard Laptop Asus ROG',
+    quote: 'Laptop ROG saya mati total kena tumpahan kopi. Dibawa ke service center resmi divonis ganti motherboard 8 juta. Beruntung ketemu mdfkingpc, ditangani micro soldering cuma bayar 850rb langsung normal lagi. Sangat profesional!',
+    avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop'
   },
   {
     id: '2',
-    name: 'Budi Santoso',
-    location: 'Dago, Bandung',
+    name: 'Sarah Putri',
+    location: 'Dago Atas, Bandung',
     rating: 5,
-    serviceType: 'Rakit PC Gaming RTX 4060',
-    quote: 'OptionTech / mdfkingpc memang terbaik! Saya rakit PC gaming di sini dari konsul spesifikasi sampai barang jadi sangat rapi. Harganya jelas tanpa biaya tersembunyi dan garansinya terjamin.',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'
+    serviceType: 'Ganti Layar LCD MacBook Air M1',
+    quote: 'Tempat perbaikan yang rekomended buat saya. Laptop MacBook Air M1 saya layarnya mati tiba-tiba, dibawa ke mdfkingpc langsung didiagnosa gratis dan pengerjaannya cuma 1 hari. Harganya sangat transparan!',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop'
   },
   {
     id: '3',
-    name: 'Rina Wijaya',
-    location: 'Bandung Barat',
+    name: 'Bagas Aditya',
+    location: 'Buah Batu, Bandung',
+    rating: 5,
+    serviceType: 'Rakit PC Gaming RTX 4070',
+    quote: 'Konsultasi rakit PC di sini enak banget, dicarikan harga part termurah dengan performa maksimal sesuai budget saya. Kabel management di dalam casing sangat rapi seperti rakitan pameran. Recommended!',
+    avatarUrl: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=200&auto=format&fit=crop'
+  },
+  {
+    id: '4',
+    name: 'Kevin Jonathan',
+    location: 'Sukajadi, Bandung',
     rating: 5,
     serviceType: 'Service Keyboard Mechanical & Joystick',
     quote: 'Joystick PS5 saya drift parah dan switch keyboard Macat. Di perbaiki di mdfkingpc ganti modul Hall Effect jadi aman sentosa lagi. Pengerjaan cepat & teknisinya sangat ramah melayani.',
-    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop'
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop'
   }
 ];
 
@@ -413,5 +421,78 @@ Alokasi Ideal Budget Rakit PC Gaming:
 Jangan pernah menghemat biaya pada Power Supply (PSU). PSU berkualitas buruk berisiko merusak komponen mahal seperti GPU dan Processor. Tim mdfkingpc siap membantu konsultasi rakit PC gratis dengan transparansi harga jelas!`,
     imageUrl: CLOUDINARY_IMAGES.pcGaming,
     readTime: '6 menit baca'
+  },
+  {
+    id: '4',
+    slug: 'pentingnya-ganti-thermal-paste-laptop-pc',
+    title: 'Pentingnya Ganti Thermal Paste & Deep Cleaning Berkala',
+    category: 'Hardware & PC',
+    date: '28 Agustus 2026',
+    author: 'Teknisi mdfkingpc',
+    snippet: 'Suhu laptop atau PC menembus 85°C saat bekerja berat? Pahami siklus ideal penggantian pasta pendingin dan pembersihan debu.',
+    content: `Panas berlebih (overheat) adalah musuh utama umur pakai processor dan kartu grafis. Seiring waktu, thermal paste bawaan pabrik akan mengering dan mengeras dalam kurun waktu 12 hingga 18 bulan.
+
+Tanda-tanda perangkat mengalami overheat:
+1. Suara kipas terdengar berdengung kencang terus-menerus.
+2. Terjadi thermal throttling (penurunan performa FPS drop tiba-tiba).
+3. Komputer mendadak mati sendiri (auto-shutdown untuk proteksi suhu).
+
+Di workshop mdfkingpc Bandung, layanan deep cleaning menggunakan kompresor anti-statis dan penggantian thermal paste kualitas tinggi (Noctua / Arctic MX-6) yang terbukti menurunkan suhu kerja secara signifikan.`,
+    imageUrl: CLOUDINARY_IMAGES.workshop,
+    readTime: '3 menit baca'
+  },
+  {
+    id: '5',
+    slug: 'tips-merawat-keyboard-mechanical-bebas-double-click',
+    title: 'Tips Merawat Keyboard Mechanical Bebas Debu & Double Click',
+    category: 'Hardware & PC',
+    date: '20 Agustus 2026',
+    author: 'Admin mdfkingpc',
+    snippet: 'Hindari switch macet atau ketik dobel dengan langkah perawatan rutin keycap dan desoldering switch berkala.',
+    content: `Keyboard mechanical rentan kemasukan debu halus, remah makanan, dan kelembapan yang menyebabkan switch berkarat atau double-click.
+
+Tips perawatan rutin keyboard mechanical:
+1. Bersihkan keycap secara teratur menggunakan keycap puller.
+2. Hindari makan dan minum di dekat setup keyboard.
+3. Jangan gunakan cairan pembersih berlebih langsung ke switch.
+4. Jika switch mulai double-click, lakukan desoldering dan penggantian switch satuan di mdfkingpc.`,
+    imageUrl: CLOUDINARY_IMAGES.keyboardRepair,
+    readTime: '4 menit baca'
+  },
+  {
+    id: '6',
+    slug: 'kenali-gejala-motherboard-laptop-rusak',
+    title: 'Kenali Gejala Motherboard Laptop Rusak & Solusinya',
+    category: 'Tips Laptop',
+    date: '15 Agustus 2026',
+    author: 'Teknisi mdfkingpc',
+    snippet: 'Mati total, tidak bisa charging, atau kipas menyala tanpa tampilan? Pahami penanganan sirkuit IC power oleh teknisi ahli.',
+    content: `Kerusakan pada motherboard atau logic board laptop sering kali ditakuti karena biaya pergantian unit utuh yang sangat mahal. Padahal, 80% kasus motherboard rusak sebenarnya bisa diperbaiki di level komponen (component-level micro-soldering).
+
+Gejala umum kerusakan motherboard:
+1. Laptop mati total (no power) meskipun charger berfungsi normal.
+2. Lampu indikator berkedip tetapi layar tetap hitam (no display).
+3. Baterai tidak terdeteksi atau pengisian daya terputus-putus.
+
+Teknisi spesialis mdfkingpc Bandung memiliki peralatan mikrosolder dan osiloskop untuk melacak jalur short circuit pada IC charging, mosfet, dan chipset tanpa harus ganti motherboard baru.`,
+    imageUrl: CLOUDINARY_IMAGES.technicianWorking,
+    readTime: '5 menit baca'
+  },
+  {
+    id: '7',
+    slug: 'panduan-memilih-power-supply-pc-gaming',
+    title: 'Panduan Memilih Power Supply (PSU) Berkualitas untuk PC Gaming',
+    category: 'Hardware & PC',
+    date: '08 Agustus 2026',
+    author: 'Admin mdfkingpc',
+    snippet: 'Memahami sertifikasi 80 Plus Bronze hingga Gold agar komponen VGA dan CPU terlindungi dari lonjakan daya listrik.',
+    content: `Power Supply Unit (PSU) adalah jantung dari sebuah sistem PC Gaming. PSU yang buruk tidak hanya menyebabkan restart tiba-tiba, namun juga dapat menghantarkan tegangan tidak stabil yang berisiko merusak komponen sensitif.
+
+Poin penting saat memilih PSU:
+1. Pilih PSU dengan sertifikasi minimal 80 Plus Bronze dari merk teruji (Corsair, Seasonic, be quiet!, MSI, Cooler Master).
+2. Berikan headroom daya minimal 20-30% di atas total konsumsi daya komponen (TDP).
+3. Utamakan PSU yang memiliki proteksi lengkap seperti OVP, UVP, OCP, OTP, dan SCP.`,
+    imageUrl: CLOUDINARY_IMAGES.pcGaming,
+    readTime: '4 menit baca'
   }
 ];

@@ -301,11 +301,11 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
             <>
               {/* Pinterest-Style Header */}
               <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-500 text-white font-bold text-2xl mb-3 shadow-lg shadow-sky-500/30">
-                  m
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white font-black text-2xl mb-3 shadow-md shadow-blue-600/30 font-sans uppercase">
+                  M
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900">
-                  Selamat Datang di <span className="text-sky-600">mdfkingpc</span>
+                <h2 className="text-2xl font-bold text-slate-900 font-display uppercase">
+                  Selamat Datang di <span className="text-blue-600">mdfkingpc</span>
                 </h2>
                 <p className="text-xs text-slate-500 mt-1">
                   {tab === 'login' ? 'Masuk ke akun Anda untuk melanjutkan pemesanan' : 'Daftar akun baru dalam hitungan detik'}
@@ -316,9 +316,9 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
               <button
                 onClick={handleTriggerGoogleAuth}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 font-semibold text-slate-700 text-sm shadow-sm transition-all mb-4"
+                className="w-full flex items-center justify-center gap-3 py-3 px-4 btn-hitboox btn-hitboox-secondary border border-slate-200 hover:border-slate-300 font-semibold text-slate-700 text-xs shadow-xs transition-all mb-4"
               >
-                <svg className="w-5 h-5" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
@@ -333,12 +333,12 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
               </div>
 
               {/* Tab Selector */}
-              <div className="flex bg-slate-100 p-1 rounded-xl mb-4">
+              <div className="flex bg-slate-100 p-1 rounded-full mb-4">
                 <button
                   type="button"
                   onClick={() => setTab('login')}
-                  className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                    tab === 'login' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-800'
+                  className={`flex-1 py-1.5 text-xs font-semibold rounded-full transition-all ${
+                    tab === 'login' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
                   Masuk
@@ -346,41 +346,42 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                 <button
                   type="button"
                   onClick={() => setTab('register')}
-                  className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
-                    tab === 'register' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-800'
+                  className={`flex-1 py-1.5 text-xs font-semibold rounded-full transition-all ${
+                    tab === 'register' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'
                   }`}
                 >
-                  Daftar Baru
+                  Daftar
                 </button>
               </div>
 
               {error && (
-                <div className="mb-4 p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-600 text-xs text-center font-medium">
-                  {error}
+                <div className="p-3 mb-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                  <span>{error}</span>
                 </div>
               )}
 
               {/* Manual Form */}
-              <form onSubmit={handleManualAuth} className="space-y-3">
+              <form onSubmit={handleManualAuth} className="space-y-3.5">
                 {tab === 'register' && (
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-1">Nama Lengkap *</label>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Nama Lengkap</label>
                     <div className="relative">
                       <UserIcon className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                       <input
                         type="text"
                         required
-                        placeholder="Ahmad Fauzi"
+                        placeholder="Nama Lengkap Anda"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                        className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                       />
                     </div>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Email *</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Email</label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                     <input
@@ -389,13 +390,13 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                       placeholder="nama@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Kata Sandi *</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">Kata Sandi</label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                     <input
@@ -404,7 +405,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -412,16 +413,15 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                 {tab === 'register' && (
                   <>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Nomor WhatsApp *</label>
+                      <label className="block text-xs font-medium text-slate-700 mb-1">Nomor WhatsApp</label>
                       <div className="relative">
                         <Phone className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                         <input
                           type="tel"
-                          required
-                          placeholder="085158916661"
+                          placeholder="08123456789"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                         />
                       </div>
                     </div>
@@ -435,7 +435,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                           placeholder="Jl. Ir. H. Juanda No. 154, Dago, Bandung"
                           value={address}
                           onChange={(e) => setAddress(e.target.value)}
-                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 outline-none transition-all"
+                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
                         />
                       </div>
                     </div>
@@ -445,7 +445,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-2 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm shadow-lg shadow-sky-600/30 transition-all disabled:opacity-50"
+                  className="w-full mt-2 btn-hitboox btn-hitboox-primary !py-3.5 text-xs font-bold disabled:opacity-50"
                 >
                   {loading ? 'Memproses...' : tab === 'login' ? 'Masuk Sekarang' : 'Daftar Akun'}
                 </button>

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "cf-1",
+    "type": "INCOME",
+    "category": "Jasa Servis",
+    "amount": 650000,
+    "description": "Pelunasan Servis MacBook Pro (ORD-882191)",
+    "date": "2026-09-22",
+    "orderId": "882191"
+  },
+  {
+    "id": "cf-2",
+    "type": "EXPENSE",
+    "category": "Pembelian Sparepart",
+    "amount": 280000,
+    "description": "Beli Thermal Paste Noctua NT-H1 10g & Thermal Grizzly",
+    "date": "2026-09-22"
+  },
+  {
+    "id": "cf-3",
+    "type": "INCOME",
+    "category": "Penjualan Komponen",
+    "amount": 14500000,
+    "description": "Down Payment Rakit PC Gaming RTX 4070 (ORD-882190)",
+    "date": "2026-09-21",
+    "orderId": "882190"
+  },
+  {
+    "id": "cf-4",
+    "type": "EXPENSE",
+    "category": "Operasional Workshop",
+    "amount": 150000,
+    "description": "Beli cairan pembersih isopropil alkohol 99% & kuas anti statis",
+    "date": "2026-09-21"
+  }
+]

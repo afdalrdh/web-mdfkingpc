@@ -112,31 +112,31 @@ export default function PesananSayaPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'PENDING':
-        return <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full text-xs font-bold">Menunggu Pengerjaan</span>;
+        return <span className="bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded-full text-xs font-bold">Menunggu Pengerjaan</span>;
       case 'IN_PROGRESS':
-        return <span className="bg-sky-500/10 text-sky-400 border border-sky-500/20 px-3 py-1 rounded-full text-xs font-bold">Sedang Dikerjakan Teknisi</span>;
+        return <span className="bg-blue-50 text-blue-700 border border-blue-200 px-3 py-1 rounded-full text-xs font-bold">Sedang Dikerjakan Teknisi</span>;
       case 'COMPLETED_WAITING_PAYMENT':
-        return <span className="bg-rose-500/10 text-rose-400 border border-rose-500/20 px-3 py-1 rounded-full text-xs font-bold">Servis Selesai - Upload Bukti Bayar</span>;
+        return <span className="bg-red-50 text-red-700 border border-red-200 px-3 py-1 rounded-full text-xs font-bold">Servis Selesai - Upload Bukti Bayar</span>;
       case 'PAID_WAITING_VERIFICATION':
-        return <span className="bg-purple-500/10 text-purple-400 border border-purple-500/20 px-3 py-1 rounded-full text-xs font-bold">Sudah Upload Struk - Verifikasi Admin</span>;
+        return <span className="bg-purple-50 text-purple-700 border border-purple-200 px-3 py-1 rounded-full text-xs font-bold">Sudah Upload Struk - Verifikasi Admin</span>;
       case 'CONFIRMED':
       case 'DONE':
-        return <span className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-bold">Pembayaran Lunas & Selesai</span>;
+        return <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full text-xs font-bold">Pembayaran Lunas & Selesai</span>;
       default:
-        return <span className="bg-slate-800 text-slate-300 px-3 py-1 rounded-full text-xs">{status}</span>;
+        return <span className="bg-slate-100 text-slate-700 border border-slate-200 px-3 py-1 rounded-full text-xs">{status}</span>;
     }
   };
 
   return (
-    <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
       <main className="flex-1 py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-6 mb-8">
+        <div className="flex items-center justify-between border-b border-slate-200 pb-6 mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
-              <PackageCheck className="w-8 h-8 text-sky-400" />
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display uppercase flex items-center gap-3">
+              <PackageCheck className="w-8 h-8 text-blue-600" />
               <span>Daftar Pesanan & Status Servis</span>
             </h1>
-            <p className="text-slate-400 text-xs sm:text-sm mt-1">
+            <p className="text-slate-600 text-xs sm:text-sm mt-1">
               Pantau perkembangan perbaikan perangkat Anda secara real-time di mdfkingpc.
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function PesananSayaPage() {
           {user && (
             <button
               onClick={() => fetchOrders(user.email)}
-              className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all border border-slate-700"
+              className="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all border border-slate-200"
               title="Refresh Pesanan"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -153,34 +153,34 @@ export default function PesananSayaPage() {
         </div>
 
         {!user ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center max-w-md mx-auto space-y-4">
-            <AlertCircle className="w-12 h-12 text-sky-400 mx-auto" />
-            <h3 className="text-xl font-bold text-white">Silakan Masuk Terlebih Dahulu</h3>
-            <p className="text-xs text-slate-400">
+          <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-md mx-auto space-y-4 shadow-sm">
+            <AlertCircle className="w-12 h-12 text-blue-600 mx-auto" />
+            <h3 className="text-xl font-bold text-slate-900 font-sans">Silakan Masuk Terlebih Dahulu</h3>
+            <p className="text-xs text-slate-600">
               Anda harus masuk ke akun Anda untuk melihat status riwayat pemesanan servis.
             </p>
             <button
               onClick={() => setIsAuthModalOpen(true)}
-              className="py-3 px-6 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-lg shadow-sky-600/30 transition-all"
+              className="py-3 px-6 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition-all"
             >
               Masuk ke Akun
             </button>
           </div>
         ) : loading ? (
-          <div className="text-center py-16 text-slate-400 flex items-center justify-center gap-2">
-            <RefreshCw className="w-5 h-5 animate-spin text-sky-400" />
+          <div className="text-center py-16 text-slate-500 flex items-center justify-center gap-2">
+            <RefreshCw className="w-5 h-5 animate-spin text-blue-600" />
             <span>Memuat data pesanan...</span>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center max-w-lg mx-auto space-y-4">
-            <PackageCheck className="w-12 h-12 text-slate-500 mx-auto" />
-            <h3 className="text-xl font-bold text-white">Belum Ada Pesanan Aktif</h3>
-            <p className="text-xs text-slate-400">
+          <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-lg mx-auto space-y-4 shadow-sm">
+            <PackageCheck className="w-12 h-12 text-slate-400 mx-auto" />
+            <h3 className="text-xl font-bold text-slate-900 font-sans">Belum Ada Pesanan Aktif</h3>
+            <p className="text-xs text-slate-600">
               Anda belum memiliki riwayat pemesanan servis di mdfkingpc.
             </p>
             <Link
               href="/pemesanan"
-              className="inline-block py-3 px-6 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-lg transition-all"
+              className="inline-block py-3 px-6 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition-all"
             >
               Buat Pemesanan Servis Baru
             </Link>
@@ -190,13 +190,13 @@ export default function PesananSayaPage() {
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-xl backdrop-blur-md space-y-4"
+                className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-sm space-y-4"
               >
                 {/* Header Info */}
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
                   <div>
-                    <span className="text-xs text-slate-400 font-medium">ID Pesanan</span>
-                    <h3 className="text-base font-extrabold text-white">ORD-{order.id}</h3>
+                    <span className="text-xs text-slate-500 font-medium">ID Pesanan</span>
+                    <h3 className="text-base font-extrabold text-slate-900 font-sans">ORD-{order.id}</h3>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -207,36 +207,36 @@ export default function PesananSayaPage() {
                 {/* Details */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                   <div>
-                    <span className="text-slate-400 block mb-1">Layanan Terpilih</span>
-                    <span className="font-bold text-white">{order.serviceName}</span>
+                    <span className="text-slate-500 block mb-1">Layanan Terpilih</span>
+                    <span className="font-bold text-slate-900">{order.serviceName}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block mb-1">Perangkat</span>
-                    <span className="font-semibold text-slate-200">{order.deviceModel || 'Tidak disebutkan'}</span>
+                    <span className="text-slate-500 block mb-1">Perangkat</span>
+                    <span className="font-semibold text-slate-700">{order.deviceModel || 'Tidak disebutkan'}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400 block mb-1">Total Biaya</span>
-                    <span className="font-extrabold text-emerald-400 text-sm">
+                    <span className="text-slate-500 block mb-1">Total Biaya</span>
+                    <span className="font-extrabold text-blue-600 text-sm font-sans">
                       Rp {(order.price || 0).toLocaleString('id-ID')}
                     </span>
                   </div>
                 </div>
 
                 {order.problemDescription && (
-                  <div className="bg-slate-800/50 p-3 rounded-2xl text-xs border border-slate-700/50">
-                    <span className="text-slate-400 block mb-0.5">Catatan Kerusakan:</span>
-                    <span className="text-slate-200">{order.problemDescription}</span>
+                  <div className="bg-slate-50 p-3.5 rounded-2xl text-xs border border-slate-200/70">
+                    <span className="text-slate-500 block mb-0.5 font-medium">Catatan Kerusakan:</span>
+                    <span className="text-slate-700">{order.problemDescription}</span>
                   </div>
                 )}
 
                 {/* Status Info for PENDING & IN_PROGRESS */}
                 {(order.paymentStatus === 'PENDING' || order.paymentStatus === 'IN_PROGRESS') && (
-                  <div className="bg-sky-950/30 border border-sky-800/40 rounded-2xl p-4 text-xs space-y-1">
-                    <div className="font-bold text-sky-300 flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-sky-400 animate-pulse" />
+                  <div className="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 text-xs space-y-1">
+                    <div className="font-bold text-blue-800 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-blue-600 animate-pulse" />
                       <span>Proses Perbaikan & Diagnostik Teknisi</span>
                     </div>
-                    <p className="text-slate-300">
+                    <p className="text-slate-600">
                       Perangkat Anda saat ini sedang ditangani oleh teknisi mdfkingpc. Form upload bukti pembayaran akan otomatis muncul setelah pengerjaan servis selesai.
                     </p>
                   </div>
@@ -244,12 +244,12 @@ export default function PesananSayaPage() {
 
                 {/* Status Action: Upload Proof when Servis Selesai */}
                 {order.paymentStatus === 'COMPLETED_WAITING_PAYMENT' && (
-                  <div className="bg-rose-950/30 border border-rose-800/40 rounded-2xl p-4 text-xs space-y-3">
-                    <div className="font-bold text-rose-300 flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-rose-400" />
+                  <div className="bg-red-50/70 border border-red-200/80 rounded-2xl p-4 text-xs space-y-3">
+                    <div className="font-bold text-red-800 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 text-red-600" />
                       <span>Upload Bukti Pembayaran / Struk Transfer</span>
                     </div>
-                    <p className="text-slate-300">
+                    <p className="text-slate-600">
                       Servis telah selesai dikerjakan! Silakan selesaikan pembayaran ke rekening mdfkingpc dan unggah foto/struk bukti pembayaran di bawah ini.
                     </p>
 
@@ -258,13 +258,13 @@ export default function PesananSayaPage() {
                         type="file"
                         accept="image/*"
                         onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
-                        className="text-xs text-slate-300 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-slate-800 file:text-slate-200 file:font-semibold hover:file:bg-slate-700 cursor-pointer"
+                        className="text-xs text-slate-600 file:mr-3 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-slate-200 file:text-slate-800 file:font-semibold hover:file:bg-slate-300 cursor-pointer"
                       />
 
                       <button
                         onClick={() => handleUploadPaymentProof(order.id)}
                         disabled={!selectedFile || uploadingId === order.id}
-                        className="py-2.5 px-5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-md transition-all disabled:opacity-40 flex items-center gap-2"
+                        className="py-2.5 px-5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition-all disabled:opacity-40 flex items-center gap-2"
                       >
                         {uploadingId === order.id ? (
                           <>
@@ -284,12 +284,12 @@ export default function PesananSayaPage() {
 
                 {/* Status Action: Payment Proof Submitted */}
                 {order.paymentStatus === 'PAID_WAITING_VERIFICATION' && (
-                  <div className="bg-purple-950/30 border border-purple-800/40 rounded-2xl p-4 text-xs space-y-1">
-                    <div className="font-bold text-purple-300 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                  <div className="bg-purple-50/70 border border-purple-200/80 rounded-2xl p-4 text-xs space-y-1">
+                    <div className="font-bold text-purple-800 flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-purple-600" />
                       <span>Bukti Pembayaran Terkirim</span>
                     </div>
-                    <p className="text-slate-300">
+                    <p className="text-slate-600">
                       Admin sedang memverifikasi bukti pembayaran Anda. Struk resmi PDF akan otomatis diterbitkan & dikirim ke email setelah terverifikasi.
                     </p>
                   </div>
@@ -297,9 +297,9 @@ export default function PesananSayaPage() {
 
                 {/* Status Action: Confirmed / Digital Invoice Download */}
                 {order.paymentStatus === 'CONFIRMED' && order.invoiceUrl && (
-                  <div className="bg-emerald-950/30 border border-emerald-800/40 rounded-2xl p-4 text-xs flex flex-wrap items-center justify-between gap-3">
-                    <div className="flex items-center gap-2 text-emerald-300 font-bold">
-                      <FileText className="w-5 h-5 text-emerald-400" />
+                  <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-4 text-xs flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex items-center gap-2 text-emerald-800 font-bold">
+                      <FileText className="w-5 h-5 text-emerald-600" />
                       <span>Struk Digital & Garansi 30 Hari Aktif</span>
                     </div>
 
@@ -307,7 +307,7 @@ export default function PesananSayaPage() {
                       href={order.invoiceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-2 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-2 shadow-md transition-all"
+                      className="py-2.5 px-5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 shadow-md shadow-emerald-600/20 transition-all"
                     >
                       <FileText className="w-4 h-4" />
                       <span>Unduh Struk / Invoice PDF</span>

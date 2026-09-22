@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
+import { getStoredCashflow, saveStoredCashflow, deleteStoredCashflow, StoredCashflow } from '@/lib/storage';
 
 export async function POST(request: Request) {
   try {
@@ -10,45 +9,45 @@ export async function POST(request: Request) {
 
     if (!type || !category || !amount || !description) {
       return NextResponse.json(
-        { success: false, message: 'Mohon isi tipe (Pemasukan/Pengeluaran), kategori, nominal, dan keterangan.' },
+        { success: false, message: 'Mohon isi tipe (INCOME/EXPENSE), kategori, nominal, dan keterangan.' },
         { status: 400 }
       );
     }
 
-    let savedEntry = null;
+    const cashflowId = `CF-${Date.now().toString().slice(-6)}`;
+    const newEntry: StoredCashflow = {
+      id: cashflowId,
+      type: type === 'Pemasukan' || type === 'INCOME' ? 'INCOME' : 'EXPENSE',
+      category,
+      amount: parseFloat(amount),
+      description,
+      date: date || new Date().toISOString().slice(0, 10),
+    };
 
     try {
       if (process.env.DATABASE_URL) {
-        savedEntry = await prisma.cashflow.create({
+        await prisma.cashflow.create({
           data: {
-            type,
-            category,
-            amount: parseFloat(amount),
-            description,
+            type: newEntry.type,
+            category: newEntry.category,
+            amount: newEntry.amount,
+            description: newEntry.description,
             proofUrl: proofUrl || null,
-            date: date ? new Date(date) : new Date(),
+            date: new Date(newEntry.date),
           },
         });
       }
     } catch (dbErr) {
-      console.warn('Database error or fallback active for cashflow:', dbErr);
+      // Fallback
     }
 
-    const cashflowId = savedEntry ? savedEntry.id : `CF-${Date.now().toString().slice(-6)}`;
+    const saved = saveStoredCashflow(newEntry);
 
     return NextResponse.json({
       success: true,
       message: 'Transaksi cashflow berhasil dicatat!',
       cashflowId,
-      data: {
-        cashflowId,
-        type,
-        category,
-        amount: parseFloat(amount),
-        description,
-        proofUrl: proofUrl || null,
-        date: date || new Date().toISOString(),
-      },
+      data: saved,
     });
   } catch (error: any) {
     console.error('API Cashflow error:', error);
@@ -61,16 +60,30 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    let entries: any[] = [];
+    let entries: StoredCashflow[] = [];
     try {
       if (process.env.DATABASE_URL) {
-        entries = await prisma.cashflow.findMany({
+        const dbEntries = await prisma.cashflow.findMany({
           orderBy: { createdAt: 'desc' },
-          take: 50,
+          take: 100,
         });
+        if (dbEntries && dbEntries.length > 0) {
+          entries = dbEntries.map((c) => ({
+            id: c.id,
+            type: c.type as 'INCOME' | 'EXPENSE',
+            category: c.category,
+            amount: c.amount,
+            description: c.description,
+            date: new Date(c.date).toISOString().slice(0, 10),
+          }));
+        }
       }
     } catch (dbErr) {
-      console.warn('Database fallback for cashflow GET:', dbErr);
+      // Fallback
+    }
+
+    if (entries.length === 0) {
+      entries = getStoredCashflow();
     }
 
     return NextResponse.json({
@@ -80,6 +93,40 @@ export async function GET() {
   } catch (error: any) {
     return NextResponse.json(
       { success: false, message: 'Gagal mengambil data cashflow.', error: error.message },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { success: false, message: 'ID transaksi diperlukan.' },
+        { status: 400 }
+      );
+    }
+
+    try {
+      if (process.env.DATABASE_URL) {
+        await prisma.cashflow.delete({ where: { id } });
+      }
+    } catch (dbErr) {
+      // Fallback
+    }
+
+    deleteStoredCashflow(id);
+
+    return NextResponse.json({
+      success: true,
+      message: 'Transaksi cashflow berhasil dihapus.',
+    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { success: false, message: 'Gagal menghapus transaksi.', error: error.message },
       { status: 500 }
     );
   }

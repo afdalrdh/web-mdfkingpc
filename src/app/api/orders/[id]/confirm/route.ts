@@ -3,6 +3,7 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { generateInvoicePDF } from '@/lib/pdfGenerator';
 import { sendInvoiceEmail } from '@/lib/mailer';
+import { getStoredOrders, updateStoredOrder } from '@/lib/storage';
 import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
@@ -31,6 +32,11 @@ export async function POST(request: Request, { params }: { params: { id: string 
       }
     } catch (dbError) {
       console.warn('DB error fetching order for confirmation:', dbError);
+    }
+
+    if (!order) {
+      const orders = getStoredOrders();
+      order = orders.find((o) => o.id === id);
     }
 
     // Fallback if order not found in DB
@@ -108,7 +114,12 @@ export async function POST(request: Request, { params }: { params: { id: string 
       console.warn('DB Error updating confirmed order:', dbErr);
     }
 
-    const finalOrder = updatedOrder || { ...order, paymentStatus: 'CONFIRMED', invoiceUrl };
+    const storedUpdated = updateStoredOrder(order.id, {
+      paymentStatus: 'CONFIRMED',
+      invoiceUrl,
+    });
+
+    const finalOrder = updatedOrder || storedUpdated || { ...order, paymentStatus: 'CONFIRMED', invoiceUrl };
 
     // 4. Send Email with PDF Invoice attachment using Nodemailer
     const emailResult = await sendInvoiceEmail(

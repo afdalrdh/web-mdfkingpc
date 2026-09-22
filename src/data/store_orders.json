@@ -1,0 +1,66 @@
+[
+  {
+    "id": "882190",
+    "customerName": "Budi Santoso",
+    "customerEmail": "budisantoso99@gmail.com",
+    "customerPhone": "081234567890",
+    "serviceName": "Rakit PC Gaming Kustom",
+    "price": 14500000,
+    "paymentStatus": "PENDING",
+    "deviceModel": "PC Gaming Tower RTX 4070 Super",
+    "problemDescription": "Perakitan PC Gaming baru tema stealth black + install Windows 11 & stress test thermal.",
+    "createdAt": "2026-09-22T09:28:31.974Z"
+  },
+  {
+    "id": "882191",
+    "customerName": "Dimas Pratama",
+    "customerEmail": "dimaspratama@gmail.com",
+    "customerPhone": "085712349988",
+    "serviceName": "Servis Laptop & MacBook",
+    "price": 650000,
+    "paymentStatus": "IN_PROGRESS",
+    "deviceModel": "MacBook Pro Retina 15 Inch (A1398)",
+    "problemDescription": "Ganti keyboard internal tuts macet & thermal repaste Noctua.",
+    "createdAt": "2026-09-22T06:58:31.975Z"
+  },
+  {
+    "id": "882192",
+    "customerName": "Aditya Rizky",
+    "customerEmail": "adityarizky@gmail.com",
+    "customerPhone": "082198765432",
+    "serviceName": "Servis Joystick & Gamepad",
+    "price": 160000,
+    "paymentStatus": "COMPLETED_WAITING_PAYMENT",
+    "deviceModel": "PS5 DualSense Wireless Controller",
+    "problemDescription": "Upgrade modul analog magnetik Hall Effect anti-drift sepasang L3 & R3.",
+    "createdAt": "2026-09-22T03:58:31.975Z"
+  },
+  {
+    "id": "882193",
+    "customerName": "Sarah Azhari",
+    "customerEmail": "sarahazhari@yahoo.com",
+    "customerPhone": "087822334455",
+    "serviceName": "Perbaikan & Pembersihan PC Desktop",
+    "price": 125000,
+    "paymentStatus": "CONFIRMED",
+    "paymentProofUrl": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&auto=format&fit=crop&q=80",
+    "deviceModel": "PC Desktop Gaming Lian Li O11",
+    "problemDescription": "Deep cleaning debu radiator watercooler & repaste pasta Arctic MX-6.",
+    "createdAt": "2026-09-21T21:58:31.975Z",
+    "invoiceUrl": "data:application/pdf;base64,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ZG9iagoxMSAwIG9iagooUERGS2l0KQplbmRvYmoKMTIgMCBvYmoKKFBERktpdCkKZW5kb2JqCjEzIDAgb2JqCihEOjIwMjYwOTIyMTAzODE4WikKZW5kb2JqCjEwIDAgb2JqCjw8Ci9Qcm9kdWNlciAxMSAwIFIKL0NyZWF0b3IgMTIgMCBSCi9DcmVhdGlvbkRhdGUgMTMgMCBSCj4+CmVuZG9iago5IDAgb2JqCjw8Ci9UeXBlIC9Gb250Ci9CYXNlRm9udCAvSGVsdmV0aWNhCi9TdWJ0eXBlIC9UeXBlMQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKOCAwIG9iago8PAovVHlwZSAvRm9udAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkCi9TdWJ0eXBlIC9UeXBlMQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZwo+PgplbmRvYmoKNCAwIG9iago8PAo+PgplbmRvYmoKMyAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMSAwIFIKL05hbWVzIDIgMCBSCj4+CmVuZG9iagoxIDAgb2JqCjw8Ci9UeXBlIC9QYWdlcwovQ291bnQgMQovS2lkcyBbNyAwIFJdCj4+CmVuZG9iagoyIDAgb2JqCjw8Ci9EZXN0cyA8PAogIC9OYW1lcyBbCl0KPj4KPj4KZW5kb2JqCnhyZWYKMCAxNAowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDIyNDkgMDAwMDAgbiAKMDAwMDAwMjMwNiAwMDAwMCBuIAowMDAwMDAyMTg3IDAwMDAwIG4gCjAwMDAwMDIxNjYgMDAwMDAgbiAKMDAwMDAwMDI1NCAwMDAwMCBuIAowMDAwMDAwMTM3IDAwMDAwIG4gCjAwMDAwMDAwMTUgMDAwMDAgbiAKMDAwMDAwMjA2NCAwMDAwMCBuIAowMDAwMDAxOTY3IDAwMDAwIG4gCjAwMDAwMDE4OTEgMDAwMDAgbiAKMDAwMDAwMTgwNSAwMDAwMCBuIAowMDAwMDAxODMwIDAwMDAwIG4gCjAwMDAwMDE4NTUgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSAxNAovUm9vdCAzIDAgUgovSW5mbyAxMCAwIFIKL0lEIFs8M2ExOTc3YTJiNjU2OWVlODhlYTQwM2RiMTViY2QyYTA+IDwzYTE5NzdhMmI2NTY5ZWU4OGVhNDAzZGIxNWJjZDJhMD5dCj4+CnN0YXJ0eHJlZgoyMzUzCiUlRU9GCg==",
+    "updatedAt": "2026-09-22T10:38:21.044Z"
+  },
+  {
+    "id": "882194",
+    "customerName": "Kevin Sanjaya",
+    "customerEmail": "kevinsanjaya@gmail.com",
+    "customerPhone": "081399887766",
+    "serviceName": "Servis Keyboard Mechanical & Mouse",
+    "price": 95000,
+    "paymentStatus": "CONFIRMED",
+    "deviceModel": "Vortex Pok3r + Mouse Logitech G Pro X",
+    "problemDescription": "Ganti switch desolder 5 tuts + ganti micro switch Omron mouse anti double-click.",
+    "receiptDetailsJson": "[{\"name\":\"Jasa Desolder & Solder Switch\",\"price\":45000,\"qty\":1},{\"name\":\"Micro Switch Omron D2FC-F-K Original\",\"price\":50000,\"qty\":1}]",
+    "createdAt": "2026-09-21T09:58:31.975Z"
+  }
+]

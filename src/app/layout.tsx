@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { ConditionalLayout } from '@/components/ConditionalLayout';
 import { SITE_INFO } from '@/data/mockData';
 
 export const metadata: Metadata = {
@@ -29,14 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="dark scroll-smooth">
-      <body className="bg-[#141414] text-gray-100 min-h-screen flex flex-col antialiased">
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <WhatsAppButton />
-        <Footer />
+    <html lang="id" className="light scroll-smooth">
+      <body className="bg-white text-slate-900 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   );

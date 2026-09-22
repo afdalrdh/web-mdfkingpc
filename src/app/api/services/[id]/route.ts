@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
-import { SERVICES_LIST } from '@/data/mockData';
+import { getStoredServices, saveStoredService, deleteStoredService, StoredService } from '@/lib/storage';
 
 // GET /api/services/[id]
 export async function GET(request: Request, { params }: { params: { id: string } }) {
@@ -18,26 +18,12 @@ export async function GET(request: Request, { params }: { params: { id: string }
         });
       }
     } catch (dbError) {
-      console.warn('DB error fetching service detail:', dbError);
+      // Fallback
     }
 
     if (!service) {
-      const mock = SERVICES_LIST.find((s) => s.id === id || s.slug === id);
-      if (mock) {
-        service = {
-          id: mock.id,
-          slug: mock.slug,
-          title: mock.title,
-          category: mock.category,
-          shortDesc: mock.shortDesc,
-          description: mock.fullDesc,
-          priceStarting: mock.priceStarting,
-          price: parseFloat(mock.priceStarting.replace(/[^0-9]/g, '')) || 0,
-          imageUrl: mock.imageUrl,
-          badge: mock.badge || null,
-          features: mock.features,
-        };
-      }
+      const services = getStoredServices();
+      service = services.find((s) => s.id === id || s.slug === id);
     }
 
     if (!service) {
@@ -72,7 +58,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
     const { id } = params;
     const body = await request.json();
-    const { title, slug, category, shortDesc, description, priceStarting, price, imageUrl, badge, features } = body;
+    const { title, slug, category, shortDesc, description, fullDesc, priceStarting, price, imageUrl, badge, features } = body;
 
     let updatedService: any = null;
 
@@ -85,7 +71,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
             ...(slug && { slug }),
             ...(category && { category }),
             ...(shortDesc !== undefined && { shortDesc }),
-            ...(description && { description }),
+            ...((description || fullDesc) && { description: description || fullDesc }),
             ...(priceStarting && { priceStarting }),
             ...(price !== undefined && { price: parseFloat(price) }),
             ...(imageUrl && { imageUrl }),
@@ -95,13 +81,31 @@ export async function PUT(request: Request, { params }: { params: { id: string }
         });
       }
     } catch (dbError) {
-      console.warn('DB error updating service:', dbError);
+      // Fallback
     }
+
+    const services = getStoredServices();
+    const current = services.find((s) => s.id === id || s.slug === id);
+    const numericPrice = price !== undefined ? parseFloat(price) : (current?.price || 0);
+
+    const saved = saveStoredService({
+      id: current?.id || id,
+      slug: slug || current?.slug || id,
+      title: title || current?.title || '',
+      category: category || current?.category || '',
+      shortDesc: shortDesc !== undefined ? shortDesc : (current?.shortDesc || ''),
+      fullDesc: description || fullDesc || current?.fullDesc || '',
+      priceStarting: priceStarting || current?.priceStarting || `Rp ${numericPrice.toLocaleString('id-ID')}`,
+      price: numericPrice,
+      imageUrl: imageUrl || current?.imageUrl || '',
+      badge: badge !== undefined ? badge : current?.badge,
+      features: features ? (Array.isArray(features) ? features : [features]) : (current?.features || []),
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Layanan berhasil diperbarui!',
-      data: updatedService || { id, ...body },
+      data: updatedService || saved,
     });
   } catch (error: any) {
     return NextResponse.json(
@@ -131,8 +135,10 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
         });
       }
     } catch (dbError) {
-      console.warn('DB error deleting service:', dbError);
+      // Fallback
     }
+
+    deleteStoredService(id);
 
     return NextResponse.json({
       success: true,

@@ -212,30 +212,30 @@ function PemesananContent() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       <div className="text-center space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/10 text-sky-400 text-xs font-bold border border-sky-500/20">
-          <FileText className="w-4 h-4 text-brand-red" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200/80">
+          <FileText className="w-4 h-4 text-red-500" />
           <span>Formulir Pemesanan Resmi mdfkingpc</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-black text-slate-900 font-display uppercase tracking-tight">
           Formulir Pemesanan Servis Online
         </h1>
 
-        <p className="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+        <p className="text-slate-600 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
           Pilih kategori perbaikan di bawah ini. Tim teknisi mdfkingpc akan segera merespons & mengonfirmasi via WhatsApp ke nomor Anda!
         </p>
       </div>
 
       {/* FORM SELECTION TABS */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 bg-[#18181C] p-2 rounded-2xl border border-white/10">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 bg-slate-100/80 p-2 rounded-2xl border border-slate-200/70">
         <button
           type="button"
           onClick={() => setActiveTab('laptop')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'laptop' ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === 'laptop' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
           }`}
         >
-          <Laptop className="w-4 h-4 text-brand-red" />
+          <Laptop className={`w-4 h-4 ${activeTab === 'laptop' ? 'text-white' : 'text-red-500'}`} />
           <span>Laptop</span>
         </button>
 
@@ -243,10 +243,10 @@ function PemesananContent() {
           type="button"
           onClick={() => setActiveTab('mouse')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'mouse' ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === 'mouse' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
           }`}
         >
-          <MousePointer className="w-4 h-4 text-brand-red" />
+          <MousePointer className={`w-4 h-4 ${activeTab === 'mouse' ? 'text-white' : 'text-red-500'}`} />
           <span>Mouse</span>
         </button>
 
@@ -254,10 +254,10 @@ function PemesananContent() {
           type="button"
           onClick={() => setActiveTab('keyboard')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'keyboard' ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === 'keyboard' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
           }`}
         >
-          <Keyboard className="w-4 h-4 text-brand-red" />
+          <Keyboard className={`w-4 h-4 ${activeTab === 'keyboard' ? 'text-white' : 'text-red-500'}`} />
           <span>Keyboard</span>
         </button>
 
@@ -265,10 +265,10 @@ function PemesananContent() {
           type="button"
           onClick={() => setActiveTab('gamepad')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'gamepad' ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === 'gamepad' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
           }`}
         >
-          <Gamepad2 className="w-4 h-4 text-brand-red" />
+          <Gamepad2 className={`w-4 h-4 ${activeTab === 'gamepad' ? 'text-white' : 'text-red-500'}`} />
           <span>Gamepad</span>
         </button>
 
@@ -276,10 +276,10 @@ function PemesananContent() {
           type="button"
           onClick={() => setActiveTab('rakit-pc')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'rakit-pc' ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === 'rakit-pc' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
           }`}
         >
-          <Cpu className="w-4 h-4 text-brand-red" />
+          <Cpu className={`w-4 h-4 ${activeTab === 'rakit-pc' ? 'text-white' : 'text-red-500'}`} />
           <span>Rakit PC</span>
         </button>
 
@@ -287,32 +287,32 @@ function PemesananContent() {
           type="button"
           onClick={() => setActiveTab('instalasi')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'instalasi' ? 'bg-sky-600 text-white shadow-lg shadow-sky-600/30' : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === 'instalasi' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80'
           }`}
         >
-          <Download className="w-4 h-4 text-brand-red" />
+          <Download className={`w-4 h-4 ${activeTab === 'instalasi' ? 'text-white' : 'text-red-500'}`} />
           <span>Instalasi</span>
         </button>
       </div>
 
-      <div className="bg-slate-900/90 p-8 sm:p-10 rounded-3xl border border-slate-800 space-y-6 shadow-2xl backdrop-blur-md">
+      <div className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/90 space-y-6 shadow-sm">
         {errorMsg && (
-          <div className="p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-200 text-xs flex items-center gap-2">
+          <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{errorMsg}</span>
           </div>
         )}
 
         {!user && (
-          <div className="bg-sky-950/40 border border-sky-800/60 p-4 rounded-2xl text-xs text-sky-200 flex items-center justify-between gap-4">
+          <div className="bg-blue-50 border border-blue-200/80 p-4 rounded-2xl text-xs text-blue-900 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-sky-400 shrink-0" />
+              <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0" />
               <span>Silakan login terlebih dahulu untuk mengisi formulir pemesanan & memantau pesanan Anda.</span>
             </div>
             <button
               type="button"
               onClick={() => setIsAuthModalOpen(true)}
-              className="py-1.5 px-4 bg-sky-600 hover:bg-sky-500 text-white font-bold rounded-xl whitespace-nowrap shadow-md"
+              className="py-1.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full whitespace-nowrap shadow-xs"
             >
               Login
             </button>
@@ -321,9 +321,9 @@ function PemesananContent() {
 
         <form onSubmit={handleSubmit} className="space-y-6 text-xs">
           <fieldset disabled={!user} className="space-y-6 disabled:opacity-60">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-4 border-b border-slate-800">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pb-4 border-b border-slate-100">
               <div className="space-y-2">
-                <label className="font-bold text-slate-200 block">Nama Lengkap *</label>
+                <label className="font-bold text-slate-700 block">Nama Lengkap *</label>
                 <input
                   type="text"
                   required
@@ -331,12 +331,12 @@ function PemesananContent() {
                   placeholder="Contoh: Budi Santoso"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="font-bold text-slate-200 block">Nomor WhatsApp *</label>
+                <label className="font-bold text-slate-700 block">Nomor WhatsApp *</label>
                 <input
                   type="tel"
                   required
@@ -344,19 +344,19 @@ function PemesananContent() {
                   placeholder="Contoh: 085158916661"
                   value={phoneWA}
                   onChange={(e) => setPhoneWA(e.target.value)}
-                  className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                 />
               </div>
 
               <div className="space-y-2 sm:col-span-2">
-                <label className="font-bold text-slate-200 block">Alamat Lengkap</label>
+                <label className="font-bold text-slate-700 block">Alamat Lengkap</label>
                 <textarea
                   rows={2}
                   disabled={!user}
                   placeholder="Contoh: Jl. Ir. H. Juanda No. 154, Dago, Bandung"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                 />
               </div>
             </div>
@@ -365,24 +365,24 @@ function PemesananContent() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Merk & Seri Mouse</label>
+                    <label className="font-bold text-slate-700 block">Merk & Seri Mouse</label>
                     <input
                       type="text"
                       disabled={!user}
                       placeholder="Logitech G Pro X Superlight / Razer Viper V2"
                       value={mouseBrand}
                       onChange={(e) => setMouseBrand(e.target.value)}
-                      className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Switch Replacement</label>
+                    <label className="font-bold text-slate-700 block">Switch Replacement</label>
                     <select
                       disabled={!user}
                       value={switchChoice}
                       onChange={(e) => setSwitchChoice(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                     >
                       <option value="TTC Gold Dustproof 80M">TTC Gold Dustproof 80M (Tactile)</option>
                       <option value="Kailh GM 8.0 Black Mamba">Kailh GM 8.0 Black Mamba 80M</option>
@@ -392,18 +392,18 @@ function PemesananContent() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="font-bold text-slate-200 block">Jenis Kerusakan Mouse:</label>
+                  <label className="font-bold text-slate-700 block">Jenis Kerusakan Mouse:</label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {['Double Click', 'Scroll Wheel Macet', 'Cursor Melompat', 'Ganti Cable Paracord'].map((issue) => (
-                      <label key={issue} className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/40 border border-slate-700/60 cursor-pointer">
+                      <label key={issue} className="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 cursor-pointer">
                         <input
                           type="checkbox"
                           disabled={!user}
                           checked={mouseIssues.includes(issue)}
                           onChange={() => handleCheckboxToggle(mouseIssues, setMouseIssues, issue)}
-                          className="w-4 h-4 rounded text-sky-500 disabled:cursor-not-allowed"
+                          className="w-4 h-4 rounded text-blue-600 disabled:cursor-not-allowed"
                         />
-                        <span className="text-slate-300">{issue}</span>
+                        <span className="text-slate-700">{issue}</span>
                       </label>
                     ))}
                   </div>
@@ -415,12 +415,12 @@ function PemesananContent() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Tipe Keyboard</label>
+                    <label className="font-bold text-slate-700 block">Tipe Keyboard</label>
                     <select
                       disabled={!user}
                       value={keyboardType}
                       onChange={(e) => setKeyboardType(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                     >
                       <option value="Mechanical Keyboard Custom">Mechanical Keyboard</option>
                       <option value="Keyboard Laptop Internal">Keyboard Laptop Internal</option>
@@ -428,14 +428,14 @@ function PemesananContent() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Merk & Seri / Tuts Macet</label>
+                    <label className="font-bold text-slate-700 block">Merk & Seri / Tuts Macet</label>
                     <input
                       type="text"
                       disabled={!user}
                       placeholder="Keychron K2 / Tuts W, A, S, D"
                       value={specificFaultyKeys}
                       onChange={(e) => setSpecificFaultyKeys(e.target.value)}
-                      className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -446,12 +446,12 @@ function PemesananContent() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Tipe Gamepad</label>
+                    <label className="font-bold text-slate-700 block">Tipe Gamepad</label>
                     <select
                       disabled={!user}
                       value={gamepadType}
                       onChange={(e) => setGamepadType(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                     >
                       <option value="PlayStation 5 DualSense">PlayStation 5 DualSense</option>
                       <option value="PlayStation 4 DualShock 4">PlayStation 4 DualShock 4</option>
@@ -460,16 +460,16 @@ function PemesananContent() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Upgrade Hall Effect</label>
-                    <label className="flex items-center gap-2 p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 cursor-pointer">
+                    <label className="font-bold text-slate-700 block">Upgrade Hall Effect</label>
+                    <label className="flex items-center gap-2 p-3.5 rounded-xl bg-blue-50 border border-blue-200 cursor-pointer">
                       <input
                         type="checkbox"
                         disabled={!user}
                         checked={upgradeHallEffect}
                         onChange={(e) => setUpgradeHallEffect(e.target.checked)}
-                        className="w-4 h-4 rounded text-sky-500 disabled:cursor-not-allowed"
+                        className="w-4 h-4 rounded text-blue-600 disabled:cursor-not-allowed"
                       />
-                      <span className="text-white font-bold">Upgrade Modul Hall Effect (Anti Drift Permanent)</span>
+                      <span className="text-blue-950 font-bold">Upgrade Modul Hall Effect (Anti Drift Permanent)</span>
                     </label>
                   </div>
                 </div>
@@ -480,14 +480,14 @@ function PemesananContent() {
               <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="font-bold text-slate-200 block">Merk & Seri Laptop / MacBook</label>
+                    <label className="font-bold text-slate-700 block">Merk & Seri Laptop / MacBook</label>
                     <input
                       type="text"
                       disabled={!user}
                       placeholder="MacBook Air M1 / Asus TUF / Lenovo Legion"
                       value={deviceModel}
                       onChange={(e) => setDeviceModel(e.target.value)}
-                      className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
                     />
                   </div>
                 </div>
@@ -495,14 +495,14 @@ function PemesananContent() {
             )}
 
             <div className="space-y-2">
-              <label className="font-bold text-slate-200 block">Catatan Gejala Kerusakan</label>
+              <label className="font-bold text-slate-700 block">Catatan Gejala Kerusakan</label>
               <textarea
                 rows={3}
                 disabled={!user}
                 placeholder="Deskripsikan masalah perangkat Anda..."
                 value={problemDescription}
                 onChange={(e) => setProblemDescription(e.target.value)}
-                className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500 disabled:cursor-not-allowed"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white shadow-xs disabled:cursor-not-allowed"
               />
             </div>
           </fieldset>
@@ -511,7 +511,7 @@ function PemesananContent() {
             <button
               type="button"
               onClick={() => setIsAuthModalOpen(true)}
-              className="w-full py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-sm shadow-lg shadow-sky-600/30 transition-all flex items-center justify-center gap-2"
+              className="btn-hitboox btn-hitboox-primary w-full !py-4 text-xs font-bold shadow-pill-blue gap-2"
             >
               <ShieldCheck className="w-5 h-5" />
               <span>Login untuk Mengirim Pemesanan</span>
@@ -520,7 +520,7 @@ function PemesananContent() {
             <button
               type="submit"
               disabled={submitting || uploading}
-              className="w-full py-4 rounded-2xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-sm shadow-lg shadow-sky-600/30 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              className="btn-hitboox btn-hitboox-primary w-full !py-4 text-xs font-bold shadow-pill-blue disabled:opacity-50 gap-2"
             >
               {submitting ? (
                 <>
@@ -555,9 +555,9 @@ function PemesananContent() {
 
 export default function PemesananPage() {
   return (
-    <div className="min-h-screen bg-brand-dark text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
       <main className="flex-1">
-        <Suspense fallback={<div className="text-center py-20 text-slate-400">Loading form...</div>}>
+        <Suspense fallback={<div className="text-center py-20 text-slate-500">Loading form...</div>}>
           <PemesananContent />
         </Suspense>
       </main>

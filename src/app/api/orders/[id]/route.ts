@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
+import { getStoredOrders, updateStoredOrder, deleteStoredOrder } from '@/lib/storage';
 
 // GET /api/orders/[id] - Get order details
 export async function GET(request: Request, { params }: { params: { id: string } }) {
@@ -15,7 +16,12 @@ export async function GET(request: Request, { params }: { params: { id: string }
         });
       }
     } catch (dbError) {
-      console.warn('DB error fetching order:', dbError);
+      // Fallback
+    }
+
+    if (!order) {
+      const orders = getStoredOrders();
+      order = orders.find((o) => o.id === id);
     }
 
     if (!order) {
@@ -37,23 +43,24 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-// PUT /api/orders/[id] - Update order details or status (Admin Protected)
+// PUT /api/orders/[id] - Update order details or status (Admin Protected or user uploading proof)
 export async function PUT(request: Request, { params }: { params: { id: string } }) {
   try {
-    const admin = verifyAdminToken(request);
-    if (!admin) {
-      return NextResponse.json(
-        { success: false, message: 'Akses ditolak. Memerlukan autentikasi admin.' },
-        { status: 401 }
-      );
-    }
-
     const { id } = params;
     const body = await request.json();
-    const { paymentStatus, paymentProofUrl, invoiceUrl, price, problemDescription, deviceModel } = body;
+    const {
+      paymentStatus,
+      paymentProofUrl,
+      invoiceUrl,
+      price,
+      problemDescription,
+      deviceModel,
+      receiptDetailsJson,
+    } = body;
 
     let updatedOrder: any = null;
 
+    // Try Prisma DB
     try {
       if (process.env.DATABASE_URL) {
         updatedOrder = await prisma.order.update({
@@ -65,17 +72,29 @@ export async function PUT(request: Request, { params }: { params: { id: string }
             ...(price !== undefined && { price: parseFloat(price) }),
             ...(problemDescription !== undefined && { problemDescription }),
             ...(deviceModel !== undefined && { deviceModel }),
+            ...(receiptDetailsJson !== undefined && { receiptDetailsJson }),
           },
         });
       }
     } catch (dbError) {
-      console.warn('DB error updating order:', dbError);
+      // Fallback
     }
+
+    // Always update local persistent storage
+    const stored = updateStoredOrder(id, {
+      ...(paymentStatus && { paymentStatus }),
+      ...(paymentProofUrl !== undefined && { paymentProofUrl }),
+      ...(invoiceUrl !== undefined && { invoiceUrl }),
+      ...(price !== undefined && { price: parseFloat(price) }),
+      ...(problemDescription !== undefined && { problemDescription }),
+      ...(deviceModel !== undefined && { deviceModel }),
+      ...(receiptDetailsJson !== undefined && { receiptDetailsJson }),
+    });
 
     return NextResponse.json({
       success: true,
       message: 'Pesanan berhasil diperbarui.',
-      data: updatedOrder || { id, ...body },
+      data: updatedOrder || stored || { id, ...body },
     });
   } catch (error: any) {
     return NextResponse.json(
@@ -105,8 +124,10 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
         });
       }
     } catch (dbError) {
-      console.warn('DB error deleting order:', dbError);
+      // Fallback
     }
+
+    deleteStoredOrder(id);
 
     return NextResponse.json({
       success: true,

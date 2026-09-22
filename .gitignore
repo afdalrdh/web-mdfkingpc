@@ -28,3 +28,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# OS & Temp
+.DS_Store
+*.DS_Store
+Realce-Black-v0.006.otf
+general sans/
+

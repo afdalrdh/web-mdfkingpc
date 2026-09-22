@@ -1,36 +1,39 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
-import { BLOG_POSTS } from '@/data/mockData';
+import { getStoredBlogs, saveStoredBlog, deleteStoredBlog, StoredBlogPost } from '@/lib/storage';
 
 // GET /api/blog
 export async function GET() {
   try {
-    let articles: any[] = [];
+    let articles: StoredBlogPost[] = [];
 
     try {
       if (process.env.DATABASE_URL) {
-        articles = await prisma.article.findMany({
+        const dbArticles = await prisma.article.findMany({
           orderBy: { publishedAt: 'desc' },
         });
+        if (dbArticles && dbArticles.length > 0) {
+          articles = dbArticles.map((a) => ({
+            id: a.id,
+            slug: a.slug,
+            title: a.title,
+            category: a.category,
+            snippet: a.snippet || '',
+            content: a.content,
+            imageUrl: a.imageUrl,
+            author: a.author,
+            readTime: a.readTime || '4 menit baca',
+            date: new Date(a.publishedAt).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }),
+          }));
+        }
       }
     } catch (dbError) {
-      console.warn('DB error fetching blog articles:', dbError);
+      // Fallback
     }
 
     if (articles.length === 0) {
-      articles = BLOG_POSTS.map((b) => ({
-        id: b.id,
-        slug: b.slug,
-        title: b.title,
-        category: b.category,
-        snippet: b.snippet,
-        content: b.content,
-        imageUrl: b.imageUrl,
-        author: b.author,
-        readTime: b.readTime,
-        publishedAt: b.date,
-      }));
+      articles = getStoredBlogs();
     }
 
     return NextResponse.json({
@@ -46,7 +49,7 @@ export async function GET() {
   }
 }
 
-// POST /api/blog - Create Article (Admin Protected)
+// POST /api/blog - Create or Update Article (Admin Protected)
 export async function POST(request: Request) {
   try {
     const admin = verifyAdminToken(request);
@@ -58,56 +61,116 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { title, slug, category, snippet, content, imageUrl, author, readTime } = body;
+    const { id, title, slug, category, snippet, content, imageUrl, author, readTime, date } = body;
 
     if (!title || !category || !content || !imageUrl) {
       return NextResponse.json(
-        { success: false, message: 'Mohon isi judul, kategori, konten artikel, dan URL gambar (Cloudinary).' },
+        { success: false, message: 'Mohon lengkapi judul, kategori, konten artikel, dan URL gambar.' },
         { status: 400 }
       );
     }
 
     const generatedSlug = slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    let createdArticle: any = null;
+    const articleId = id || `art-${Date.now()}`;
+
+    const newPost: StoredBlogPost = {
+      id: articleId,
+      slug: generatedSlug,
+      title,
+      category,
+      date: date || new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }),
+      author: author || 'Admin mdfkingpc',
+      snippet: snippet || content.slice(0, 140) + '...',
+      content,
+      imageUrl,
+      readTime: readTime || '4 menit baca',
+    };
 
     try {
       if (process.env.DATABASE_URL) {
-        createdArticle = await prisma.article.create({
-          data: {
+        await prisma.article.upsert({
+          where: { slug: generatedSlug },
+          update: {
+            title,
+            category,
+            snippet: newPost.snippet,
+            content,
+            imageUrl,
+            author: newPost.author,
+            readTime: newPost.readTime,
+          },
+          create: {
+            id: articleId,
             title,
             slug: generatedSlug,
             category,
-            snippet: snippet || content.slice(0, 150) + '...',
+            snippet: newPost.snippet,
             content,
             imageUrl,
-            author: author || 'Teknisi mdfkingpc',
-            readTime: readTime || '5 menit baca',
+            author: newPost.author,
+            readTime: newPost.readTime,
           },
         });
       }
     } catch (dbError) {
-      console.warn('DB error creating article:', dbError);
+      // Fallback
     }
+
+    const saved = saveStoredBlog(newPost);
 
     return NextResponse.json({
       success: true,
-      message: 'Artikel blog berhasil diterbitkan!',
-      data: createdArticle || {
-        id: `art-${Date.now()}`,
-        title,
-        slug: generatedSlug,
-        category,
-        snippet,
-        content,
-        imageUrl,
-        author,
-        readTime,
-        publishedAt: new Date().toISOString(),
-      },
+      message: 'Artikel blog berhasil disimpan!',
+      data: saved,
     });
   } catch (error: any) {
     return NextResponse.json(
-      { success: false, message: 'Gagal membuat artikel blog.', error: error.message },
+      { success: false, message: 'Gagal menyimpan artikel blog.', error: error.message },
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE /api/blog - Delete Article (Admin Protected)
+export async function DELETE(request: Request) {
+  try {
+    const admin = verifyAdminToken(request);
+    if (!admin) {
+      return NextResponse.json(
+        { success: false, message: 'Akses ditolak. Memerlukan autentikasi admin.' },
+        { status: 401 }
+      );
+    }
+
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json(
+        { success: false, message: 'Parameter ID artikel diperlukan.' },
+        { status: 400 }
+      );
+    }
+
+    try {
+      if (process.env.DATABASE_URL) {
+        await prisma.article.delete({
+          where: { id },
+        });
+      }
+    } catch (dbError) {
+      // Fallback
+    }
+
+    deleteStoredBlog(id);
+
+    return NextResponse.json({
+      success: true,
+      message: 'Artikel blog berhasil dihapus.',
+    });
+  } catch (error: any) {
+    return NextResponse.json(
+      { success: false, message: 'Gagal menghapus artikel.', error: error.message },
       { status: 500 }
     );
   }
