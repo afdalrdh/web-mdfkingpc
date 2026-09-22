@@ -4,6 +4,32 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'mdfkingpc_super_secret_jwt_key_2026';
 
+function getGoogleClientId() {
+  return process.env.GOOGLE_CLIENT_ID || process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '';
+}
+
+function getRedirectUri(request: Request) {
+  const host = request.headers.get('host') || 'localhost:3000';
+  const protocol = host.includes('localhost') ? 'http' : 'https';
+  return `${protocol}://${host}/api/auth/google/callback`;
+}
+
+// GET /api/auth/google -> Redirects to official Google Account Chooser
+export async function GET(request: Request) {
+  const clientId = getGoogleClientId();
+  const redirectUri = getRedirectUri(request);
+
+  const googleAuthUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
+  googleAuthUrl.searchParams.set('client_id', clientId);
+  googleAuthUrl.searchParams.set('redirect_uri', redirectUri);
+  googleAuthUrl.searchParams.set('response_type', 'code');
+  googleAuthUrl.searchParams.set('scope', 'openid email profile');
+  googleAuthUrl.searchParams.set('prompt', 'select_account');
+
+  return NextResponse.redirect(googleAuthUrl.toString());
+}
+
+// POST /api/auth/google -> Direct authentication & Neon DB upsert
 export async function POST(request: Request) {
   try {
     const { email, name, image, phone, address } = await request.json();

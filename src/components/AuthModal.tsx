@@ -109,6 +109,28 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
     }
   };
 
+  const handleTriggerGoogleAuth = () => {
+    if (typeof window !== 'undefined') {
+      const width = 520;
+      const height = 650;
+      const left = window.screenX + (window.outerWidth - width) / 2;
+      const top = window.screenY + (window.outerHeight - height) / 2;
+      
+      const popup = window.open(
+        '/api/auth/google',
+        'google_oauth_popup',
+        `width=${width},height=${height},left=${left},top=${top},status=yes,scrollbars=yes`
+      );
+
+      if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        // Fallback to in-modal selector if popup is blocked
+        setIsGoogleStep(true);
+      }
+    } else {
+      setIsGoogleStep(true);
+    }
+  };
+
   return (
     <>
       <Script src="https://accounts.google.com/gsi/client" strategy="afterInteractive" />
@@ -292,7 +314,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 
               {/* Quick Google Login Button */}
               <button
-                onClick={() => setIsGoogleStep(true)}
+                onClick={handleTriggerGoogleAuth}
                 disabled={loading}
                 className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 font-semibold text-slate-700 text-sm shadow-sm transition-all mb-4"
               >
