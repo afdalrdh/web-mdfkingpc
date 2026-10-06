@@ -3,18 +3,25 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { getStoredServices, saveStoredService, StoredService } from '@/lib/storage';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/services - Retrieve all services
 export async function GET() {
   try {
-    let services: StoredService[] = [];
-    
+    // Always start with JSON as base (contains all initial services)
+    const jsonServices = getStoredServices();
+
+    let dbServiceMap = new Map<string, StoredService>();
+
     try {
       if (process.env.DATABASE_URL) {
         const dbServices = await prisma.service.findMany({
-          orderBy: { createdAt: 'desc' },
+          orderBy: { updatedAt: 'desc' },
         });
-        if (dbServices && dbServices.length > 0) {
-          services = dbServices.map((s) => ({
+
+        // Build a map of DB services keyed by slug
+        for (const s of dbServices) {
+          dbServiceMap.set(s.slug, {
             id: s.id,
             slug: s.slug,
             title: s.title,
@@ -26,21 +33,39 @@ export async function GET() {
             imageUrl: s.imageUrl,
             badge: s.badge || undefined,
             features: s.features,
-          }));
+          });
         }
       }
     } catch (dbError) {
-      // Fallback
+      console.error('DB error fetching services, fallback to JSON only:', dbError);
     }
 
-    if (services.length === 0) {
-      services = getStoredServices();
+    let services: StoredService[];
+
+    if (dbServiceMap.size === 0) {
+      // No DB data — use JSON as-is
+      services = jsonServices;
+    } else {
+      // Merge: JSON is the base, DB overrides for matching slugs
+      const jsonSlugs = new Set(jsonServices.map((s) => s.slug));
+
+      // Start with JSON services, override with DB version if available
+      services = jsonServices.map((jsonS) =>
+        dbServiceMap.has(jsonS.slug) ? dbServiceMap.get(jsonS.slug)! : jsonS
+      );
+
+      // Append any DB-only services (newly created in admin, not in JSON)
+      for (const [slug, dbS] of dbServiceMap) {
+        if (!jsonSlugs.has(slug)) {
+          services.push(dbS);
+        }
+      }
     }
 
-    return NextResponse.json({
-      success: true,
-      data: services,
-    });
+    return NextResponse.json(
+      { success: true, data: services },
+      { headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' } }
+    );
   } catch (error: any) {
     console.error('API Services GET error:', error);
     return NextResponse.json(
@@ -91,36 +116,69 @@ export async function POST(request: Request) {
 
     try {
       if (process.env.DATABASE_URL) {
-        await prisma.service.upsert({
-          where: { slug: generatedSlug },
-          update: {
-            title,
-            category,
-            shortDesc: shortDesc || null,
-            description: description || fullDesc || '',
-            priceStarting: newService.priceStarting,
-            price: numericPrice,
-            imageUrl,
-            badge: badge || null,
-            features: newService.features,
-          },
-          create: {
-            id: serviceId,
-            title,
-            slug: generatedSlug,
-            category,
-            shortDesc: shortDesc || null,
-            description: description || fullDesc || '',
-            priceStarting: newService.priceStarting,
-            price: numericPrice,
-            imageUrl,
-            badge: badge || null,
-            features: newService.features,
-          },
-        });
+        // If editing an existing service (id provided), update by id directly
+        if (id) {
+          await prisma.service.upsert({
+            where: { id: serviceId },
+            update: {
+              title,
+              slug: generatedSlug,
+              category,
+              shortDesc: shortDesc || null,
+              description: description || fullDesc || '',
+              priceStarting: newService.priceStarting,
+              price: numericPrice,
+              imageUrl,
+              badge: badge || null,
+              features: newService.features,
+            },
+            create: {
+              id: serviceId,
+              title,
+              slug: generatedSlug,
+              category,
+              shortDesc: shortDesc || null,
+              description: description || fullDesc || '',
+              priceStarting: newService.priceStarting,
+              price: numericPrice,
+              imageUrl,
+              badge: badge || null,
+              features: newService.features,
+            },
+          });
+        } else {
+          // Creating new service, upsert by slug
+          await prisma.service.upsert({
+            where: { slug: generatedSlug },
+            update: {
+              title,
+              category,
+              shortDesc: shortDesc || null,
+              description: description || fullDesc || '',
+              priceStarting: newService.priceStarting,
+              price: numericPrice,
+              imageUrl,
+              badge: badge || null,
+              features: newService.features,
+            },
+            create: {
+              id: serviceId,
+              title,
+              slug: generatedSlug,
+              category,
+              shortDesc: shortDesc || null,
+              description: description || fullDesc || '',
+              priceStarting: newService.priceStarting,
+              price: numericPrice,
+              imageUrl,
+              badge: badge || null,
+              features: newService.features,
+            },
+          });
+        }
       }
     } catch (dbError) {
-      // Fallback
+      console.error('DB error saving service:', dbError);
     }
 
     const saved = saveStoredService(newService);

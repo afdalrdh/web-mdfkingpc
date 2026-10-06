@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { SITE_INFO, CLOUDINARY_IMAGES } from '@/data/mockData';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/cms?page=beranda|layanan|testimoni|blog|tentang|kontak
 export async function GET(request: Request) {
   try {
@@ -57,6 +59,7 @@ export async function GET(request: Request) {
           content: JSON.stringify({
             story: SITE_INFO.story,
             address: SITE_INFO.address,
+            branches: SITE_INFO.branches,
             email: SITE_INFO.email,
             values: SITE_INFO.companyValues,
           }),
@@ -70,6 +73,7 @@ export async function GET(request: Request) {
           subtitle: 'Kami Siap Membantu Kerusakan Perangkat Anda',
           content: JSON.stringify({
             address: SITE_INFO.address,
+            branches: SITE_INFO.branches,
             whatsapp: SITE_INFO.whatsappFormatted,
             email: SITE_INFO.email,
             operatingHours: SITE_INFO.operatingHours,

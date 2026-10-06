@@ -135,17 +135,15 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
     <>
       <Script src="https://accounts.google.com/gsi/client" strategy="afterInteractive" />
 
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
         <div
-          className={`relative w-full ${isGoogleStep ? 'max-w-lg bg-[#121212] text-slate-100 border-slate-800' : 'max-w-md bg-white text-slate-800 border-slate-100'} rounded-3xl shadow-2xl p-6 sm:p-8 border overflow-hidden transition-all`}
+          className={`relative w-full ${isGoogleStep ? 'max-w-lg bg-[#0F121C]' : 'max-w-md bg-[#0D0F18]/95'} text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-8 border border-white/10 overflow-hidden transition-all`}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className={`absolute top-5 right-5 p-2 rounded-full transition-colors ${
-              isGoogleStep ? 'text-slate-400 hover:text-white hover:bg-slate-800' : 'text-slate-400 hover:text-slate-700 hover:bg-slate-100'
-            }`}
+            className="absolute top-5 right-5 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -299,15 +297,15 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
           ) : (
             /* STANDARD LOGIN / REGISTER FORM */
             <>
-              {/* Pinterest-Style Header */}
+              {/* Header */}
               <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-blue-600 text-white font-black text-2xl mb-3 shadow-md shadow-blue-600/30 font-sans uppercase">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/[0.04] border border-white/10 text-white font-black text-2xl mb-3 shadow-[0_0_20px_rgba(37,99,235,0.25)] font-sans uppercase">
                   M
                 </div>
-                <h2 className="text-2xl font-bold text-slate-900 font-display uppercase">
-                  Selamat Datang di <span className="text-blue-600">mdfkingpc</span>
+                <h2 className="text-2xl font-bold text-white font-display uppercase tracking-tight">
+                  Selamat Datang di <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">mdfkingpc</span>
                 </h2>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   {tab === 'login' ? 'Masuk ke akun Anda untuk melanjutkan pemesanan' : 'Daftar akun baru dalam hitungan detik'}
                 </p>
               </div>
@@ -316,7 +314,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
               <button
                 onClick={handleTriggerGoogleAuth}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 py-3 px-4 btn-hitboox btn-hitboox-secondary border border-slate-200 hover:border-slate-300 font-semibold text-slate-700 text-xs shadow-xs transition-all mb-4"
+                className="btn-hitboox btn-hitboox-secondary w-full !py-3 text-xs gap-3 mb-4 shadow-sm"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -324,21 +322,21 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
                   <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                 </svg>
-                Lanjutkan dengan Google
+                <span>Lanjutkan dengan Google</span>
               </button>
 
               <div className="relative flex items-center justify-center my-4">
-                <div className="border-t border-slate-200 w-full" />
-                <span className="bg-white px-3 text-xs text-slate-400 uppercase tracking-wider font-medium">atau</span>
+                <div className="border-t border-white/[0.08] w-full" />
+                <span className="bg-[#0D0F18] px-3 text-xs text-slate-500 uppercase tracking-wider font-medium">atau</span>
               </div>
 
               {/* Tab Selector */}
-              <div className="flex bg-slate-100 p-1 rounded-full mb-4">
+              <div className="flex bg-white/[0.04] p-1 rounded-full mb-4 border border-white/[0.08]">
                 <button
                   type="button"
                   onClick={() => setTab('login')}
                   className={`flex-1 py-1.5 text-xs font-semibold rounded-full transition-all ${
-                    tab === 'login' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'
+                    tab === 'login' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   Masuk
@@ -347,7 +345,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                   type="button"
                   onClick={() => setTab('register')}
                   className={`flex-1 py-1.5 text-xs font-semibold rounded-full transition-all ${
-                    tab === 'register' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-500 hover:text-slate-800'
+                    tab === 'register' ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   Daftar
@@ -355,8 +353,8 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
               </div>
 
               {error && (
-                <div className="p-3 mb-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                <div className="p-3 mb-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0" />
                   <span>{error}</span>
                 </div>
               )}
@@ -365,7 +363,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
               <form onSubmit={handleManualAuth} className="space-y-3.5">
                 {tab === 'register' && (
                   <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-1">Nama Lengkap</label>
+                    <label className="block text-xs font-medium text-slate-300 mb-1">Nama Lengkap</label>
                     <div className="relative">
                       <UserIcon className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                       <input
@@ -374,14 +372,14 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                         placeholder="Nama Lengkap Anda"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                        className="w-full pl-9 pr-3 py-2 text-sm rounded-xl bg-white/[0.04] border border-white/10 focus:border-cyan-400 focus:bg-white/[0.08] text-white placeholder-slate-500 outline-none transition-all"
                       />
                     </div>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Email</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Alamat Email</label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                     <input
@@ -390,13 +388,13 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                       placeholder="nama@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl bg-white/[0.04] border border-white/10 focus:border-cyan-400 focus:bg-white/[0.08] text-white placeholder-slate-500 outline-none transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Kata Sandi</label>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Kata Sandi</label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                     <input
@@ -405,7 +403,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                      className="w-full pl-9 pr-3 py-2 text-sm rounded-xl bg-white/[0.04] border border-white/10 focus:border-cyan-400 focus:bg-white/[0.08] text-white placeholder-slate-500 outline-none transition-all"
                     />
                   </div>
                 </div>
@@ -413,7 +411,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                 {tab === 'register' && (
                   <>
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Nomor WhatsApp</label>
+                      <label className="block text-xs font-medium text-slate-300 mb-1">Nomor WhatsApp</label>
                       <div className="relative">
                         <Phone className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                         <input
@@ -421,21 +419,21 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                           placeholder="08123456789"
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl bg-white/[0.04] border border-white/10 focus:border-cyan-400 focus:bg-white/[0.08] text-white placeholder-slate-500 outline-none transition-all"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">Alamat Lengkap</label>
+                      <label className="block text-xs font-medium text-slate-300 mb-1">Alamat Lengkap</label>
                       <div className="relative">
                         <MapPin className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
                         <input
                           type="text"
-                          placeholder="Jl. Ir. H. Juanda No. 154, Dago, Bandung"
+                          placeholder="Jalan citarip wetan 3 No.115, Kopo, Bandung"
                           value={address}
                           onChange={(e) => setAddress(e.target.value)}
-                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
+                          className="w-full pl-9 pr-3 py-2 text-sm rounded-xl bg-white/[0.04] border border-white/10 focus:border-cyan-400 focus:bg-white/[0.08] text-white placeholder-slate-500 outline-none transition-all"
                         />
                       </div>
                     </div>
@@ -445,13 +443,13 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-2 btn-hitboox btn-hitboox-primary !py-3.5 text-xs font-bold disabled:opacity-50"
+                  className="w-full mt-2 btn-hitboox btn-hitboox-primary !py-3.5 text-xs font-bold disabled:opacity-50 shadow-pill-blue"
                 >
                   {loading ? 'Memproses...' : tab === 'login' ? 'Masuk Sekarang' : 'Daftar Akun'}
                 </button>
               </form>
 
-              <p className="text-[11px] text-slate-400 text-center mt-4">
+              <p className="text-[11px] text-slate-500 text-center mt-4">
                 Dengan melanjutkan, Anda menyetujui Ketentuan Layanan & Kebijakan Privasi mdfkingpc.
               </p>
             </>

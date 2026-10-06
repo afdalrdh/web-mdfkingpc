@@ -3,18 +3,22 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { getStoredBlogs, saveStoredBlog, deleteStoredBlog, StoredBlogPost } from '@/lib/storage';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/blog
 export async function GET() {
   try {
-    let articles: StoredBlogPost[] = [];
+    const jsonBlogs = getStoredBlogs();
+    let dbBlogMap = new Map<string, StoredBlogPost>();
 
     try {
       if (process.env.DATABASE_URL) {
         const dbArticles = await prisma.article.findMany({
           orderBy: { publishedAt: 'desc' },
         });
-        if (dbArticles && dbArticles.length > 0) {
-          articles = dbArticles.map((a) => ({
+
+        for (const a of dbArticles) {
+          dbBlogMap.set(a.slug, {
             id: a.id,
             slug: a.slug,
             title: a.title,
@@ -25,22 +29,37 @@ export async function GET() {
             author: a.author,
             readTime: a.readTime || '4 menit baca',
             date: new Date(a.publishedAt).toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' }),
-          }));
+          });
         }
       }
     } catch (dbError) {
-      // Fallback
+      console.error('DB error fetching articles, fallback to JSON:', dbError);
     }
 
-    if (articles.length === 0) {
-      articles = getStoredBlogs();
+    let articles: StoredBlogPost[];
+
+    if (dbBlogMap.size === 0) {
+      articles = jsonBlogs;
+    } else {
+      const jsonSlugs = new Set(jsonBlogs.map((b) => b.slug));
+
+      // Start with JSON blogs, override with DB version if available
+      articles = jsonBlogs.map((jsonB) =>
+        dbBlogMap.has(jsonB.slug) ? dbBlogMap.get(jsonB.slug)! : jsonB
+      );
+
+      // Append any DB-only blogs (newly created in admin)
+      for (const [slug, dbA] of dbBlogMap) {
+        if (!jsonSlugs.has(slug)) {
+          articles.push(dbA);
+        }
+      }
     }
 
-    return NextResponse.json({
-      success: true,
-      count: articles.length,
-      data: articles,
-    });
+    return NextResponse.json(
+      { success: true, count: articles.length, data: articles },
+      { headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' } }
+    );
   } catch (error: any) {
     return NextResponse.json(
       { success: false, message: 'Gagal mengambil artikel blog.', error: error.message },
@@ -88,32 +107,61 @@ export async function POST(request: Request) {
 
     try {
       if (process.env.DATABASE_URL) {
-        await prisma.article.upsert({
-          where: { slug: generatedSlug },
-          update: {
-            title,
-            category,
-            snippet: newPost.snippet,
-            content,
-            imageUrl,
-            author: newPost.author,
-            readTime: newPost.readTime,
-          },
-          create: {
-            id: articleId,
-            title,
-            slug: generatedSlug,
-            category,
-            snippet: newPost.snippet,
-            content,
-            imageUrl,
-            author: newPost.author,
-            readTime: newPost.readTime,
-          },
-        });
+        if (id) {
+          // Editing existing article — update by id
+          await prisma.article.upsert({
+            where: { id: articleId },
+            update: {
+              title,
+              slug: generatedSlug,
+              category,
+              snippet: newPost.snippet,
+              content,
+              imageUrl,
+              author: newPost.author,
+              readTime: newPost.readTime,
+            },
+            create: {
+              id: articleId,
+              title,
+              slug: generatedSlug,
+              category,
+              snippet: newPost.snippet,
+              content,
+              imageUrl,
+              author: newPost.author,
+              readTime: newPost.readTime,
+            },
+          });
+        } else {
+          // Creating new article — upsert by slug
+          await prisma.article.upsert({
+            where: { slug: generatedSlug },
+            update: {
+              title,
+              category,
+              snippet: newPost.snippet,
+              content,
+              imageUrl,
+              author: newPost.author,
+              readTime: newPost.readTime,
+            },
+            create: {
+              id: articleId,
+              title,
+              slug: generatedSlug,
+              category,
+              snippet: newPost.snippet,
+              content,
+              imageUrl,
+              author: newPost.author,
+              readTime: newPost.readTime,
+            },
+          });
+        }
       }
     } catch (dbError) {
-      // Fallback
+      console.error('DB error saving article:', dbError);
     }
 
     const saved = saveStoredBlog(newPost);

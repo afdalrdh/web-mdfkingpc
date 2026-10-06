@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { SITE_INFO } from '@/data/mockData';
 import AuthModal from '@/components/AuthModal';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,14 +82,14 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-xs">
-        {/* Top Info Banner - Gradient Brand Blue to Red */}
-        <div className="bg-gradient-to-r from-brand-blue via-brand-dark to-brand-red text-xs py-1.5 px-4 text-center text-white/90 font-medium tracking-wide flex items-center justify-center gap-2 shadow-xs">
-          <span className="bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider text-white">
+      <header className="sticky top-0 z-50 dark:bg-[#07080B]/85 bg-white/90 backdrop-blur-2xl dark:border-white/[0.08] border-black/[0.06] border-b transition-all duration-300 dark:shadow-[0_4px_30px_rgba(0,0,0,0.6)] shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
+        {/* Top Info Banner - Dark Luxury Carbon with Cyan & Sapphire Glow */}
+        <div className="bg-gradient-to-r from-[#080A10] via-[#0E1528] to-[#080A10] border-b border-white/[0.06] text-xs py-1.5 px-4 text-center text-slate-300 font-medium tracking-wide flex items-center justify-center gap-2">
+          <span className="bg-blue-500/20 text-cyan-400 border border-blue-500/30 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider shadow-[0_0_10px_rgba(6,182,212,0.2)]">
             Promo Bandung
           </span>
-          <span>Diagnostik Gratis & Garansi 30 Hari Perbaikan Device</span>
-          <Link href="/pemesanan" className="underline font-semibold hover:text-white transition-colors ml-1 hidden sm:inline">
+          <span className="text-slate-300">Diagnostik Gratis & Garansi 30 Hari Perbaikan Device</span>
+          <Link href="/pemesanan" className="underline font-semibold text-cyan-400 hover:text-cyan-300 transition-colors ml-1 hidden sm:inline">
             Pesan Sekarang &rarr;
           </Link>
         </div>
@@ -97,7 +98,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center justify-between h-20">
             {/* Brand Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-50 border border-slate-200 p-1.5 shadow-xs group-hover:border-blue-500 group-hover:shadow-md transition-all">
+              <div className="relative w-11 h-11 flex items-center justify-center rounded-2xl dark:bg-white/[0.04] bg-slate-100 dark:border-white/[0.1] border-slate-200 border p-1.5 dark:shadow-[0_0_15px_rgba(37,99,235,0.15)] shadow-sm group-hover:border-blue-500/60 group-hover:shadow-[0_0_22px_rgba(37,99,235,0.35)] transition-all">
                 <Image
                   src="/logo.png"
                   alt="mdfkingpc Logo"
@@ -108,10 +109,10 @@ export const Navbar: React.FC = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tight text-slate-900 flex items-center gap-0.5 font-sans">
-                  mdf<span className="text-blue-600">king</span><span className="text-red-500">pc</span>
+                <span className="text-xl font-black tracking-tight dark:text-white text-slate-900 flex items-center gap-0.5 font-sans">
+                  mdf<span className="text-blue-500">king</span><span className="text-rose-500">pc</span>
                 </span>
-                <span className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase -mt-1">
+                <span className="text-[10px] dark:text-slate-400 text-slate-500 font-semibold tracking-wider uppercase -mt-1">
                   Made For KING PC
                 </span>
               </div>
@@ -132,17 +133,17 @@ export const Navbar: React.FC = () => {
                         href={link.href}
                         className={`inline-flex items-center gap-1 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
                           isActive(link.href)
-                            ? 'text-blue-700 bg-blue-50 font-bold border border-blue-200/80'
-                            : 'text-slate-600 hover:text-blue-600 hover:bg-slate-100/70'
+                            ? 'text-blue-500 bg-blue-500/10 font-bold border border-blue-500/30 shadow-[0_0_12px_rgba(59,130,246,0.2)]'
+                            : 'dark:text-slate-300 text-slate-600 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/[0.06]'
                         }`}
                       >
                         <span>{link.label}</span>
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? 'rotate-180 text-blue-600' : 'text-slate-400'}`} />
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? 'rotate-180 text-blue-400' : 'text-slate-500'}`} />
                       </Link>
 
                       {/* Dropdown Menu */}
                       {isServicesOpen && (
-                        <div className="absolute top-full left-0 w-80 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                        <div className="absolute top-full left-0 w-84 dark:bg-[#0D0F17]/95 bg-white backdrop-blur-2xl dark:border-white/10 border-black/[0.07] border rounded-2xl shadow-2xl p-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
                           <div className="text-[10px] font-bold text-slate-400 px-3 py-1.5 uppercase tracking-wider">
                             Pilih Layanan Servis
                           </div>
@@ -152,16 +153,16 @@ export const Navbar: React.FC = () => {
                               <Link
                                 key={sub.href}
                                 href={sub.href}
-                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/80 text-slate-700 hover:text-blue-700 transition-all group"
+                                className="flex items-start gap-3 p-2.5 rounded-xl dark:hover:bg-white/[0.06] hover:bg-slate-50 dark:text-slate-300 text-slate-700 dark:hover:text-white hover:text-blue-700 transition-all group"
                               >
-                                <div className="p-2 rounded-lg bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xs">
                                   <IconComponent className="w-4 h-4" />
                                 </div>
                                 <div className="flex-1">
-                                  <div className="text-xs font-bold leading-tight text-slate-900 group-hover:text-blue-700">
+                                  <div className="text-xs font-bold leading-tight dark:text-slate-100 text-slate-900 dark:group-hover:text-cyan-400 group-hover:text-blue-600 transition-colors">
                                     {sub.label}
                                   </div>
-                                  <div className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                  <div className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-1 mt-0.5">
                                     {sub.desc}
                                   </div>
                                 </div>
@@ -180,8 +181,8 @@ export const Navbar: React.FC = () => {
                     href={link.href}
                     className={`px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
                       isActive(link.href)
-                        ? 'text-blue-700 bg-blue-50 font-bold border border-blue-200/80'
-                        : 'text-slate-600 hover:text-blue-600 hover:bg-slate-100/70'
+                        ? 'text-blue-500 bg-blue-500/10 font-bold border border-blue-500/30 shadow-[0_0_12px_rgba(59,130,246,0.2)]'
+                        : 'dark:text-slate-300 text-slate-600 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/[0.06]'
                     }`}
                   >
                     {link.label}
@@ -206,30 +207,30 @@ export const Navbar: React.FC = () => {
                   </button>
 
                   {isUserDropdownOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 z-50 text-xs">
-                      <div className="px-3 py-2 border-b border-slate-100 mb-1">
-                        <div className="font-bold text-slate-900 truncate">{user.name}</div>
-                        <div className="text-[11px] text-slate-500 truncate">{user.email}</div>
+                    <div className="absolute right-0 top-full mt-2 w-52 dark:bg-[#0D0F17]/95 bg-white backdrop-blur-2xl dark:border-white/10 border-black/[0.07] border rounded-2xl shadow-2xl p-2 z-50 text-xs">
+                      <div className="px-3 py-2 dark:border-white/[0.08] border-black/[0.07] border-b mb-1">
+                        <div className="font-bold dark:text-white text-slate-900 truncate">{user.name}</div>
+                        <div className="text-[11px] dark:text-slate-400 text-slate-500 truncate">{user.email}</div>
                       </div>
                       <Link
                         href="/pesanan-saya"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-colors font-medium"
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl dark:text-slate-300 text-slate-700 dark:hover:text-white hover:text-blue-700 dark:hover:bg-white/[0.06] hover:bg-slate-50 transition-colors font-medium"
                       >
-                        <PackageCheck className="w-4 h-4 text-blue-600" />
+                        <PackageCheck className="w-4 h-4 text-blue-400" />
                         <span>Pesanan Saya</span>
                       </Link>
                       <Link
                         href="/pengaturan-akun"
                         onClick={() => setIsUserDropdownOpen(false)}
-                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition-colors font-medium"
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl dark:text-slate-300 text-slate-700 dark:hover:text-white hover:text-blue-700 dark:hover:bg-white/[0.06] hover:bg-slate-50 transition-colors font-medium"
                       >
-                        <Settings className="w-4 h-4 text-indigo-600" />
+                        <Settings className="w-4 h-4 text-indigo-400" />
                         <span>Pengaturan Akun</span>
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-red-600 hover:bg-red-50 transition-colors text-left mt-1 font-medium"
+                        className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-rose-400 hover:bg-rose-500/10 transition-colors text-left mt-1 font-medium"
                       >
                         <LogOut className="w-4 h-4" />
                         <span>Keluar</span>
@@ -253,25 +254,30 @@ export const Navbar: React.FC = () => {
                 <Wrench className="w-3.5 h-3.5 text-blue-200" />
                 <span>Form Pemesanan</span>
               </Link>
+
+              {/* Theme Toggle */}
+              <ThemeToggle />
             </div>
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center gap-2">
               {user ? (
-                <Link href="/pesanan-saya" className="p-2 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+                <Link href="/pesanan-saya" className="p-2 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold border border-blue-500/40">
                   {user.name ? user.name[0].toUpperCase() : 'U'}
                 </Link>
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200"
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-300 bg-white/[0.06] border border-white/[0.1]"
                 >
                   Login
                 </button>
               )}
+              {/* Theme Toggle — mobile */}
+              <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none"
+                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] focus:outline-none"
                 aria-label="Toggle Navigation"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -282,7 +288,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="md:hidden bg-white/98 border-b border-slate-200 px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-xl">
+          <div className="md:hidden dark:bg-[#090B10]/98 bg-white/98 backdrop-blur-2xl dark:border-white/10 border-black/[0.06] border-b px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-2xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -290,8 +296,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   isActive(link.href)
-                    ? 'bg-blue-50 text-blue-700 border border-blue-200/80 font-bold'
-                    : 'text-slate-700 hover:bg-slate-50'
+                    ? 'bg-blue-500/15 text-blue-500 border border-blue-500/30 font-bold'
+                    : 'dark:text-slate-300 text-slate-700 dark:hover:bg-white/[0.05] hover:bg-slate-100'
                 }`}
               >
                 <span>{link.label}</span>
@@ -299,22 +305,22 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
 
-            <div className="pt-2 border-t border-slate-100">
+            <div className="pt-2 border-t border-white/[0.08]">
               <div className="text-xs font-bold text-slate-400 px-2 py-1 uppercase tracking-wider">Layanan Servis</div>
               {serviceSubmenu.map((sub) => (
                 <Link
                   key={sub.href}
                   href={sub.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2 text-xs text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg"
+                  className="flex items-center gap-2 px-3 py-2 text-xs text-slate-300 hover:text-cyan-400 hover:bg-white/[0.05] rounded-lg"
                 >
-                  <sub.icon className="w-3.5 h-3.5 text-blue-600" />
+                  <sub.icon className="w-3.5 h-3.5 text-blue-400" />
                   <span>{sub.label}</span>
                 </Link>
               ))}
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
+            <div className="pt-4 border-t border-white/[0.08] flex flex-col gap-3">
               <Link
                 href="/pemesanan"
                 onClick={() => setIsOpen(false)}

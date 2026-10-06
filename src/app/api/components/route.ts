@@ -3,22 +3,25 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { getStoredComponents, saveStoredComponent, deleteStoredComponent, StoredComponent } from '@/lib/storage';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/components - Get all PC components
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
 
-    let components: StoredComponent[] = [];
+    let jsonComponents = getStoredComponents();
+    let dbComponentMap = new Map<string, StoredComponent>();
 
     try {
       if (process.env.DATABASE_URL) {
         const dbComponents = await prisma.pcComponent.findMany({
-          where: category ? { category } : undefined,
           orderBy: { price: 'asc' },
         });
-        if (dbComponents && dbComponents.length > 0) {
-          components = dbComponents.map((c) => ({
+
+        for (const c of dbComponents) {
+          dbComponentMap.set(c.id, {
             id: c.id,
             category: c.category,
             name: c.name,
@@ -27,25 +30,39 @@ export async function GET(request: Request) {
             specs: c.specs,
             imageUrl: c.imageUrl || undefined,
             badge: c.badge || undefined,
-          }));
+          });
         }
       }
     } catch (dbError) {
-      // Fallback
+      console.error('DB error fetching components, fallback to JSON:', dbError);
     }
 
-    if (components.length === 0) {
-      components = getStoredComponents();
-      if (category) {
-        components = components.filter((c) => c.category.toLowerCase() === category.toLowerCase());
+    let components: StoredComponent[];
+
+    if (dbComponentMap.size === 0) {
+      components = jsonComponents;
+    } else {
+      const jsonIds = new Set(jsonComponents.map((c) => c.id));
+
+      components = jsonComponents.map((jsonC) =>
+        dbComponentMap.has(jsonC.id) ? dbComponentMap.get(jsonC.id)! : jsonC
+      );
+
+      for (const [id, dbC] of dbComponentMap) {
+        if (!jsonIds.has(id)) {
+          components.push(dbC);
+        }
       }
     }
 
-    return NextResponse.json({
-      success: true,
-      count: components.length,
-      data: components,
-    });
+    if (category) {
+      components = components.filter((c) => c.category.toLowerCase() === category.toLowerCase());
+    }
+
+    return NextResponse.json(
+      { success: true, count: components.length, data: components },
+      { headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' } }
+    );
   } catch (error: any) {
     return NextResponse.json(
       { success: false, message: 'Gagal mengambil data komponen PC.', error: error.message },
@@ -112,7 +129,7 @@ export async function POST(request: Request) {
         });
       }
     } catch (dbError) {
-      // Fallback
+      console.error('DB error saving component:', dbError);
     }
 
     const saved = saveStoredComponent(newComp);

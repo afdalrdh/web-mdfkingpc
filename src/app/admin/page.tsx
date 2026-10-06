@@ -1960,7 +1960,7 @@ export default function AdminDashboardPage() {
                   </div>
                   <p className="text-xs text-slate-600 mt-1">
                     IT Hardware Repair &amp; Custom Rig Studio<br />
-                    Bandung, Jawa Barat • WhatsApp: {SITE_INFO.whatsapp}
+                    Bandung &amp; Cimahi, Jawa Barat • WhatsApp: {SITE_INFO.whatsapp}
                   </p>
                 </div>
 

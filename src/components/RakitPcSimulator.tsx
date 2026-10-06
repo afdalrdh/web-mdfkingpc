@@ -142,11 +142,12 @@ export default function RakitPcSimulator() {
     const totalFormatted = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(total);
 
     let content = `====================================================\n`;
-    content += `        MDFKINGPC BANDUNG - SPESIFIKASI RAKIT PC     \n`;
+    content += `   MDFKINGPC (BANDUNG & CIMAHI) - SPESIFIKASI RAKIT PC\n`;
     content += `====================================================\n`;
     content += `Tanggal Simulasi : ${new Date().toLocaleDateString('id-ID')}\n`;
-    content += `WA Konsultasi    : +62 851-5891-6661\n`;
-    content += `Alamat Workshop  : Jl. Ir. H. Juanda No. 154, Dago, Bandung\n\n`;
+    content += `WA Konsultasi    : +62 812-2161-1651\n`;
+    content += `Workshop Bandung : Jalan citarip wetan 3 No.115, Kopo (https://maps.app.goo.gl/jUztc1r1wmwoCaLS8)\n`;
+    content += `Workshop Cimahi  : Jl. Terusan Karang Sari No.312, Melong (https://maps.app.goo.gl/5nDy8Gu2XTsTNhPVA)\n\n`;
     content += `RINCIAN KOMPONEN TERPILIH & ESTIMASI HARGA PASAR 2025-2026:\n`;
     content += `----------------------------------------------------\n`;
 
@@ -179,13 +180,14 @@ export default function RakitPcSimulator() {
     const totalFormatted = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(total);
 
     let content = `====================================================\n`;
-    content += `    MDFKINGPC BANDUNG - PAKET RAKITAN AI BUDGET     \n`;
+    content += `   MDFKINGPC (BANDUNG & CIMAHI) - PAKET AI BUDGET   \n`;
     content += `====================================================\n`;
     content += `Judul Paket      : ${budgetAiResult.buildTitle}\n`;
     content += `Target Budget    : Rp ${budgetInput.toLocaleString('id-ID')}\n`;
     content += `Tanggal Simulasi : ${new Date().toLocaleDateString('id-ID')}\n`;
-    content += `WA Konsultasi    : +62 851-5891-6661\n`;
-    content += `Alamat Workshop  : Jl. Ir. H. Juanda No. 154, Dago, Bandung\n\n`;
+    content += `WA Konsultasi    : +62 812-2161-1651\n`;
+    content += `Workshop Bandung : Jalan citarip wetan 3 No.115, Kopo (https://maps.app.goo.gl/jUztc1r1wmwoCaLS8)\n`;
+    content += `Workshop Cimahi  : Jl. Terusan Karang Sari No.312, Melong (https://maps.app.goo.gl/5nDy8Gu2XTsTNhPVA)\n\n`;
     content += `RINCIAN KOMPONEN RACIKAN AI GROQ:\n`;
     content += `----------------------------------------------------\n`;
 
@@ -257,31 +259,31 @@ export default function RakitPcSimulator() {
   return (
     <div className="space-y-12">
       {/* MAIN SIMULATOR BUILDER CARD */}
-      <section className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
+      <section className="bg-[#0D0F18]/90 backdrop-blur-md border border-white/[0.08] rounded-3xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.7)] space-y-8">
         {/* HEADER & TITLE */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/[0.08]">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200/80 mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-red-500" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-cyan-400 text-xs font-bold tracking-wider uppercase mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
               <span>Full AI Groq Market Price & Compatibility Engine</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display uppercase">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-display uppercase">
               Kalkulator & Simulator Rakit PC
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            <p className="text-xs sm:text-sm text-slate-400 mt-1">
               Pilih mode rakitan Anda: susun spesifikasi sendiri atau racik otomatis sesuai budget impian Anda.
             </p>
           </div>
 
           {activeTab === 'custom' && (
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 text-right animate-in fade-in shadow-xs">
-              <span className="text-[11px] text-slate-500 block uppercase font-medium">Total Estimasi AI</span>
+            <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-4 text-right animate-in fade-in backdrop-blur-sm">
+              <span className="text-[11px] text-slate-400 block uppercase font-medium">Total Estimasi AI</span>
               {customAiResult ? (
-                <span className="text-2xl sm:text-3xl font-black text-blue-600 font-display">
+                <span className="text-2xl sm:text-3xl font-black text-cyan-400 font-display">
                   Rp {customAiResult.totalPrice.toLocaleString('id-ID')}
                 </span>
               ) : (
-                <span className="text-xs font-bold text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-full inline-block mt-1">
+                <span className="text-xs font-bold text-cyan-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1.5 rounded-full inline-block mt-1">
                   Hitung via Button AI
                 </span>
               )}
@@ -291,17 +293,17 @@ export default function RakitPcSimulator() {
 
         {/* TAB SWITCHER TOGGLE */}
         <div>
-          <div className="grid grid-cols-2 p-1.5 bg-slate-100/80 border border-slate-200/60 rounded-2xl cut-corner-card gap-2">
+          <div className="grid grid-cols-2 p-1.5 bg-white/[0.03] border border-white/[0.07] rounded-2xl cut-corner-card gap-2">
             <button
               type="button"
               onClick={() => setActiveTab('custom')}
               className={`py-3 px-4 cut-corner-card font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all uppercase tracking-wider ${
                 activeTab === 'custom'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                  : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
               }`}
             >
-              <Wrench className={`w-4 h-4 ${activeTab === 'custom' ? 'text-white' : 'text-blue-600'}`} />
+              <Wrench className={`w-4 h-4 ${activeTab === 'custom' ? 'text-white' : 'text-cyan-400'}`} />
               <span>1. Rakit Spek Sendiri</span>
             </button>
 
@@ -310,11 +312,11 @@ export default function RakitPcSimulator() {
               onClick={() => setActiveTab('budget')}
               className={`py-3 px-4 cut-corner-card font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all uppercase tracking-wider ${
                 activeTab === 'budget'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
+                  : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
               }`}
             >
-              <DollarSign className={`w-4 h-4 ${activeTab === 'budget' ? 'text-white' : 'text-emerald-600'}`} />
+              <DollarSign className={`w-4 h-4 ${activeTab === 'budget' ? 'text-white' : 'text-emerald-400'}`} />
               <span>2. Rakit Sesuai Budget (AI)</span>
             </button>
           </div>
@@ -325,7 +327,7 @@ export default function RakitPcSimulator() {
           <div className="space-y-6 animate-in fade-in duration-200">
             {/* Target Usage Selector */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wider">
+              <label className="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-2 uppercase tracking-wider">
                 Target Utama Penggunaan PC:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -340,8 +342,8 @@ export default function RakitPcSimulator() {
                     onClick={() => setTargetUsageCustom(usage)}
                     className={`p-3.5 rounded-2xl border text-xs text-left font-semibold transition-all ${
                       targetUsageCustom === usage
-                        ? 'bg-blue-50 border-blue-500 text-blue-700 shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white'
+                        ? 'dark:bg-blue-600/30 dark:border-blue-500 dark:text-cyan-300 bg-blue-50 border-blue-500 text-blue-700 shadow-xs'
+                        : 'dark:bg-white/[0.03] dark:border-white/[0.08] dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/[0.06] bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white'
                     }`}
                   >
                     {usage}
@@ -352,7 +354,7 @@ export default function RakitPcSimulator() {
 
             {/* Clean Component Selection Dropdowns */}
             <div className="space-y-4">
-              <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+              <h3 className="text-xs font-bold dark:text-slate-300 text-slate-700 uppercase tracking-wider">
                 Pilih Komponen Utama Komputer:
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -362,12 +364,12 @@ export default function RakitPcSimulator() {
                   const IconComp = cat.icon;
 
                   return (
-                    <div key={cat.key} className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 space-y-2">
+                    <div key={cat.key} className="dark:bg-white/[0.03] bg-slate-50 dark:border-white/[0.08] border-slate-200/80 rounded-2xl p-4 space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+                        <div className="p-2 rounded-lg dark:bg-blue-500/10 dark:text-cyan-400 bg-blue-50 text-blue-600">
                           <IconComp className="w-4 h-4" />
                         </div>
-                        <span className="text-xs font-bold text-slate-900 font-sans">{cat.name}</span>
+                        <span className="text-xs font-bold dark:text-white text-slate-900 font-sans">{cat.name}</span>
                       </div>
 
                       <select
@@ -376,19 +378,19 @@ export default function RakitPcSimulator() {
                           const found = items.find((i) => i.id === e.target.value);
                           if (found) handleSelectComponent(cat.key, found);
                         }}
-                        className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-800 font-medium focus:outline-none focus:border-blue-600 cursor-pointer shadow-xs"
+                        className="w-full dark:bg-[#070911] bg-white dark:border-white/[0.12] border-slate-200 rounded-xl px-3 py-2.5 text-xs dark:text-slate-100 text-slate-800 font-medium focus:outline-none focus:border-cyan-400 cursor-pointer shadow-xs"
                       >
                         {items.map((item) => (
-                          <option key={item.id} value={item.id}>
+                          <option key={item.id} value={item.id} className="dark:bg-[#070911] dark:text-slate-100">
                             {item.name} ({item.brand})
                           </option>
                         ))}
                       </select>
 
                       {currentSelected && (
-                        <div className="text-[11px] text-slate-500 flex items-center justify-between pt-1">
+                        <div className="text-[11px] dark:text-slate-400 text-slate-500 flex items-center justify-between pt-1">
                           <span>{currentSelected.specs}</span>
-                          <span className="text-blue-600 font-semibold">{currentSelected.brand}</span>
+                          <span className="dark:text-cyan-400 text-blue-600 font-semibold">{currentSelected.brand}</span>
                         </div>
                       )}
                     </div>
@@ -419,16 +421,16 @@ export default function RakitPcSimulator() {
 
               {/* AI Groq Custom Result Display */}
               {customAiResult && (
-                <div className="bg-slate-50 border border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm">
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div className="dark:bg-[#070911]/90 bg-slate-50 dark:border-cyan-500/30 border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm border">
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/[0.08] border-slate-200 pb-4">
                     <div>
-                      <span className="text-[10px] text-blue-600 uppercase font-bold tracking-wider block">Tingkat Performa Rakitan</span>
-                      <h3 className="text-xl font-extrabold text-slate-900 font-sans">{customAiResult.performanceTier}</h3>
+                      <span className="text-[10px] dark:text-cyan-400 text-blue-600 uppercase font-bold tracking-wider block">Tingkat Performa Rakitan</span>
+                      <h3 className="text-xl font-extrabold dark:text-white text-slate-900 font-sans">{customAiResult.performanceTier}</h3>
                     </div>
 
-                    <div className="bg-white border border-blue-100 px-5 py-3 rounded-2xl text-right shadow-xs">
-                      <span className="text-[10px] text-slate-500 block uppercase font-medium">Total Estimasi Harga Pasar</span>
-                      <span className="text-2xl font-black text-blue-600 font-display">
+                    <div className="dark:bg-[#0E1220] bg-white dark:border-white/[0.08] border border-blue-100 px-5 py-3 rounded-2xl text-right shadow-xs">
+                      <span className="text-[10px] dark:text-slate-400 text-slate-500 block uppercase font-medium">Total Estimasi Harga Pasar</span>
+                      <span className="text-2xl font-black dark:text-cyan-400 text-blue-600 font-display">
                         Rp {customAiResult.totalPrice.toLocaleString('id-ID')}
                       </span>
                     </div>
@@ -436,35 +438,35 @@ export default function RakitPcSimulator() {
 
                   <div className="space-y-4 text-xs">
                     <div>
-                      <span className="font-bold text-blue-700 block mb-1.5">Rekomendasi Teknisi AI mdfkingpc:</span>
-                      <p className="leading-relaxed bg-white p-4 rounded-2xl border border-slate-200 text-slate-700">
+                      <span className="font-bold dark:text-cyan-400 text-blue-700 block mb-1.5">Rekomendasi Teknisi AI mdfkingpc:</span>
+                      <p className="leading-relaxed dark:bg-[#0E1220] bg-white p-4 rounded-2xl border dark:border-white/[0.08] border-slate-200 dark:text-slate-300 text-slate-700">
                         {customAiResult.recommendationText}
                       </p>
                     </div>
 
                     <div>
-                      <span className="font-bold text-amber-600 block mb-1.5">Analisis Bottleneck & Keseimbangan CPU/GPU:</span>
-                      <p className="leading-relaxed bg-white p-4 rounded-2xl border border-slate-200 text-slate-700">
+                      <span className="font-bold text-amber-500 block mb-1.5">Analisis Bottleneck & Keseimbangan CPU/GPU:</span>
+                      <p className="leading-relaxed dark:bg-[#0E1220] bg-white p-4 rounded-2xl border dark:border-white/[0.08] border-slate-200 dark:text-slate-300 text-slate-700">
                         {customAiResult.bottleneckAnalysis}
                       </p>
                     </div>
 
                     {/* Itemized Component Price Summary Grid */}
                     <div>
-                      <span className="font-bold text-slate-800 block mb-2 uppercase tracking-wider text-[11px]">
+                      <span className="font-bold dark:text-slate-200 text-slate-800 block mb-2 uppercase tracking-wider text-[11px]">
                         Rincian Summary Harga Komponen Terpilih (Hasil Riset AI Groq):
                       </span>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 dark:bg-[#0E1220] bg-white p-4 rounded-2xl border dark:border-white/[0.08] border-slate-200 shadow-xs">
                         {categories.map((cat) => {
                           const comp = selectedComponents[cat.key];
                           const priceVal = customAiResult?.itemizedPrices?.[cat.key] || 0;
                           return (
-                            <div key={cat.key} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                            <div key={cat.key} className="flex items-center justify-between p-3 rounded-xl dark:bg-white/[0.03] bg-slate-50 border dark:border-white/[0.06] border-slate-100 text-xs">
                               <div className="flex-1 pr-2 truncate">
-                                <span className="text-[10px] text-slate-500 uppercase font-bold block">{cat.name}</span>
-                                <span className="font-bold text-slate-900 truncate block">{comp ? comp.name : 'Komponen Terpilih'}</span>
+                                <span className="text-[10px] dark:text-slate-400 text-slate-500 uppercase font-bold block">{cat.name}</span>
+                                <span className="font-bold dark:text-white text-slate-900 truncate block">{comp ? comp.name : 'Komponen Terpilih'}</span>
                               </div>
-                              <span className="font-black text-blue-600 text-xs shrink-0 ml-2">
+                              <span className="font-black dark:text-cyan-400 text-blue-600 text-xs shrink-0 ml-2">
                                 Rp {priceVal.toLocaleString('id-ID')}
                               </span>
                             </div>
@@ -475,11 +477,11 @@ export default function RakitPcSimulator() {
 
                     {customAiResult.suggestedUpgrades && customAiResult.suggestedUpgrades.length > 0 && (
                       <div>
-                        <span className="font-bold text-blue-700 block mb-1.5">Saran Optimasi / Upgrade Opsional:</span>
-                        <ul className="space-y-1.5 bg-white p-4 rounded-2xl border border-slate-200 text-slate-700">
+                        <span className="font-bold dark:text-cyan-400 text-blue-700 block mb-1.5">Saran Optimasi / Upgrade Opsional:</span>
+                        <ul className="space-y-1.5 dark:bg-[#0E1220] bg-white p-4 rounded-2xl border dark:border-white/[0.08] border-slate-200 dark:text-slate-300 text-slate-700">
                           {customAiResult.suggestedUpgrades.map((sugg: string, idx: number) => (
                             <li key={idx} className="flex items-center gap-2">
-                              <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                              <Check className="w-4 h-4 text-emerald-500 shrink-0" />
                               <span>{sugg}</span>
                             </li>
                           ))}
@@ -494,7 +496,7 @@ export default function RakitPcSimulator() {
                       onClick={handleDownloadNotepadCustom}
                       className="btn-hitboox btn-hitboox-secondary !py-3.5 text-xs font-bold gap-2"
                     >
-                      <Download className="w-4 h-4 text-blue-600" />
+                      <Download className="w-4 h-4 dark:text-cyan-400 text-blue-600" />
                       <span>Download Spesifikasi (.txt)</span>
                     </button>
 
@@ -516,8 +518,8 @@ export default function RakitPcSimulator() {
         {activeTab === 'budget' && (
           <div className="space-y-6 animate-in fade-in duration-200">
             {/* Budget Input & Quick Presets */}
-            <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 space-y-4">
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <div className="dark:bg-white/[0.03] bg-slate-50 border dark:border-white/[0.08] border-slate-200/80 rounded-2xl p-5 space-y-4">
+              <label className="block text-xs font-bold dark:text-slate-300 text-slate-700 uppercase tracking-wider">
                 Masukkan Target Budget Anda (Rupiah):
               </label>
 
@@ -529,19 +531,19 @@ export default function RakitPcSimulator() {
                     step={500000}
                     value={budgetInput}
                     onChange={(e) => setBudgetInput(Number(e.target.value))}
-                    className="w-full bg-white border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-base font-extrabold text-blue-600 font-sans focus:outline-none focus:border-blue-600 shadow-xs"
+                    className="w-full dark:bg-[#070911] bg-white border dark:border-white/[0.12] border-slate-200 rounded-xl pl-12 pr-4 py-3 text-base font-extrabold dark:text-cyan-400 text-blue-600 font-sans focus:outline-none focus:border-cyan-400 shadow-xs"
                     placeholder="Contoh: 10000000"
                   />
                 </div>
 
-                <div className="px-5 py-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 flex items-center justify-center shadow-xs">
+                <div className="px-5 py-3 dark:bg-[#070911] bg-white border dark:border-white/[0.12] border-slate-200 rounded-xl text-xs font-bold dark:text-slate-200 text-slate-700 flex items-center justify-center shadow-xs">
                   <span>Rp {budgetInput.toLocaleString('id-ID')}</span>
                 </div>
               </div>
 
               {/* Preset Budget Quick Buttons */}
               <div className="space-y-1.5">
-                <span className="text-[11px] text-slate-500 font-medium">Pilih Preset Budget Cepat:</span>
+                <span className="text-[11px] dark:text-slate-400 text-slate-500 font-medium">Pilih Preset Budget Cepat:</span>
                 <div className="flex flex-wrap gap-2">
                   {presetBudgets.map((val) => (
                     <button
@@ -551,7 +553,7 @@ export default function RakitPcSimulator() {
                       className={`px-3.5 py-1.5 rounded-full border text-xs font-bold transition-all ${
                         budgetInput === val
                           ? 'bg-blue-600 border-blue-600 text-white shadow-xs'
-                          : 'bg-white border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600'
+                          : 'dark:bg-white/[0.03] dark:border-white/[0.08] dark:text-slate-300 dark:hover:border-cyan-400 dark:hover:text-cyan-300 bg-white border-slate-200 text-slate-700 hover:border-blue-400 hover:text-blue-600'
                       }`}
                     >
                       {(val / 1000000).toLocaleString('id-ID')} Juta
@@ -563,7 +565,7 @@ export default function RakitPcSimulator() {
 
             {/* Target Usage Selector */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wider">
+              <label className="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-2 uppercase tracking-wider">
                 Target Penggunaan PC:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -578,8 +580,8 @@ export default function RakitPcSimulator() {
                     onClick={() => setTargetUsageBudget(usage)}
                     className={`p-3.5 rounded-2xl border text-xs text-left font-semibold transition-all ${
                       targetUsageBudget === usage
-                        ? 'bg-blue-50 border-blue-500 text-blue-700 shadow-xs'
-                        : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white'
+                        ? 'dark:bg-blue-600/30 dark:border-blue-500 dark:text-cyan-300 bg-blue-50 border-blue-500 text-blue-700 shadow-xs'
+                        : 'dark:bg-white/[0.03] dark:border-white/[0.08] dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/[0.06] bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-white'
                     }`}
                   >
                     {usage}
@@ -590,7 +592,7 @@ export default function RakitPcSimulator() {
 
             {/* Optional Notes */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">
+              <label className="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-1 uppercase tracking-wider">
                 Catatan / Preferensi Pengguna (Opsional):
               </label>
               <input
@@ -598,7 +600,7 @@ export default function RakitPcSimulator() {
                 value={userNotes}
                 onChange={(e) => setUserNotes(e.target.value)}
                 placeholder="Contoh: Utamakan VGA NVIDIA RTX, casing warna putih, atau minimal SSD 1TB..."
-                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-600 shadow-xs"
+                className="w-full dark:bg-[#070911] bg-white border dark:border-white/[0.12] border-slate-200 rounded-xl px-4 py-2.5 text-xs dark:text-slate-100 text-slate-800 dark:placeholder-slate-500 placeholder-slate-400 focus:outline-none focus:border-cyan-400 shadow-xs"
               />
             </div>
 
@@ -624,19 +626,19 @@ export default function RakitPcSimulator() {
 
               {/* AI Groq Budget Result Display */}
               {budgetAiResult && (
-                <div className="bg-slate-50 border border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm">
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div className="dark:bg-[#070911]/90 bg-slate-50 dark:border-cyan-500/30 border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm border">
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/[0.08] border-slate-200 pb-4">
                     <div>
-                      <span className="text-[10px] text-blue-600 uppercase font-extrabold tracking-wider block">
+                      <span className="text-[10px] dark:text-cyan-400 text-blue-600 uppercase font-extrabold tracking-wider block">
                         Rekomendasi Paket AI Groq
                       </span>
-                      <h3 className="text-xl font-extrabold text-slate-900 font-sans">{budgetAiResult.buildTitle}</h3>
-                      <span className="text-xs text-blue-600 font-semibold">{budgetAiResult.performanceTier}</span>
+                      <h3 className="text-xl font-extrabold dark:text-white text-slate-900 font-sans">{budgetAiResult.buildTitle}</h3>
+                      <span className="text-xs dark:text-cyan-400 text-blue-600 font-semibold">{budgetAiResult.performanceTier}</span>
                     </div>
 
-                    <div className="bg-white border border-blue-100 px-5 py-3 rounded-2xl text-right shadow-xs">
-                      <span className="text-[10px] text-slate-500 block uppercase font-medium">Total Estimasi Racikan</span>
-                      <span className="text-2xl font-black text-blue-600 font-display">
+                    <div className="dark:bg-[#0E1220] bg-white border dark:border-white/[0.08] border-blue-100 px-5 py-3 rounded-2xl text-right shadow-xs">
+                      <span className="text-[10px] dark:text-slate-400 text-slate-500 block uppercase font-medium">Total Estimasi Racikan</span>
+                      <span className="text-2xl font-black dark:text-cyan-400 text-blue-600 font-display">
                         Rp {(budgetAiResult.totalPrice || budgetInput).toLocaleString('id-ID')}
                       </span>
                     </div>
@@ -644,15 +646,15 @@ export default function RakitPcSimulator() {
 
                   {/* Why this build text */}
                   {budgetAiResult.whyThisBuild && (
-                    <div className="bg-white p-4 rounded-2xl border border-slate-200 text-xs">
-                      <span className="font-bold text-amber-600 block mb-1">Mengapa Racikan Ini Terbaik Untuk Budget Anda?</span>
-                      <p className="text-slate-700 leading-relaxed">{budgetAiResult.whyThisBuild}</p>
+                    <div className="dark:bg-[#0E1220] bg-white p-4 rounded-2xl border dark:border-white/[0.08] border-slate-200 text-xs">
+                      <span className="font-bold text-amber-500 block mb-1">Mengapa Racikan Ini Terbaik Untuk Budget Anda?</span>
+                      <p className="dark:text-slate-300 text-slate-700 leading-relaxed">{budgetAiResult.whyThisBuild}</p>
                     </div>
                   )}
 
                   {/* Itemized Component Grid */}
                   <div className="space-y-2">
-                    <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
+                    <span className="text-xs font-bold dark:text-slate-200 text-slate-700 uppercase tracking-wider block">
                       Spesifikasi Komponen Terpilih:
                     </span>
 
@@ -662,12 +664,12 @@ export default function RakitPcSimulator() {
                           const item = budgetAiResult.components[catKey];
                           if (!item) return null;
                           return (
-                            <div key={catKey} className="bg-white border border-slate-200 p-3.5 rounded-xl flex items-center justify-between shadow-xs">
+                            <div key={catKey} className="dark:bg-[#0E1220] bg-white border dark:border-white/[0.08] border-slate-200 p-3.5 rounded-xl flex items-center justify-between shadow-xs">
                               <div>
-                                <span className="text-[10px] text-slate-500 uppercase font-bold block">{catKey}</span>
-                                <span className="font-bold text-slate-900">{item.name}</span>
+                                <span className="text-[10px] dark:text-slate-400 text-slate-500 uppercase font-bold block">{catKey}</span>
+                                <span className="font-bold dark:text-white text-slate-900">{item.name}</span>
                               </div>
-                              <span className="font-bold text-blue-600 text-xs ml-2">
+                              <span className="font-bold dark:text-cyan-400 text-blue-600 text-xs ml-2">
                                 Rp {(item.price || 0).toLocaleString('id-ID')}
                               </span>
                             </div>
@@ -678,11 +680,11 @@ export default function RakitPcSimulator() {
 
                   {budgetAiResult.suggestedUpgrades && budgetAiResult.suggestedUpgrades.length > 0 && (
                     <div className="text-xs space-y-1.5">
-                      <span className="font-bold text-blue-700 block">Saran Upgrade / Optimasi Masa Depan:</span>
-                      <ul className="space-y-1 bg-white p-4 rounded-2xl border border-slate-200 text-slate-700">
+                      <span className="font-bold dark:text-cyan-400 text-blue-700 block">Saran Upgrade / Optimasi Masa Depan:</span>
+                      <ul className="space-y-1 dark:bg-[#0E1220] bg-white p-4 rounded-2xl border dark:border-white/[0.08] border-slate-200 dark:text-slate-300 text-slate-700">
                         {budgetAiResult.suggestedUpgrades.map((upg: string, i: number) => (
                           <li key={i} className="flex items-center gap-2">
-                            <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                            <Check className="w-3.5 h-3.5 text-blue-500 shrink-0" />
                             <span>{upg}</span>
                           </li>
                         ))}
@@ -696,7 +698,7 @@ export default function RakitPcSimulator() {
                       onClick={handleDownloadNotepadBudget}
                       className="btn-hitboox btn-hitboox-secondary !py-3.5 text-xs font-bold gap-2"
                     >
-                      <Download className="w-4 h-4 text-blue-600" />
+                      <Download className="w-4 h-4 dark:text-cyan-400 text-blue-600" />
                       <span>Download Spesifikasi (.txt)</span>
                     </button>
 
@@ -718,14 +720,14 @@ export default function RakitPcSimulator() {
       {/* PAKET REKOMENDASI RAKIT PC BEST SELLER */}
       <section className="space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full dark:bg-blue-500/10 dark:text-cyan-400 dark:border-blue-500/30 bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
             <Box className="w-3.5 h-3.5 text-red-500" />
             <span>Paket Siap Pakai Best Seller</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display uppercase">
+          <h3 className="text-2xl sm:text-3xl font-extrabold dark:text-white text-slate-900 font-display uppercase">
             Paket Rekomendasi Rakit PC mdfkingpc
           </h3>
-          <p className="text-xs sm:text-sm text-slate-600">
+          <p className="text-xs sm:text-sm dark:text-slate-400 text-slate-600">
             Pilihan paket populer bergaransi resmi, sudah siap pakai termasuk perakitan rapi & install OS.
           </p>
         </div>
@@ -734,22 +736,22 @@ export default function RakitPcSimulator() {
           {PC_PACKAGES.map((pkg, idx) => (
             <div
               key={idx}
-              className="bg-white border border-slate-200/90 hover:border-blue-500/50 rounded-3xl p-6 sm:p-7 space-y-5 transition-all shadow-xs hover:shadow-md flex flex-col justify-between"
+              className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200/90 hover:border-blue-500/50 rounded-3xl p-6 sm:p-7 space-y-5 transition-all shadow-xs hover:shadow-md flex flex-col justify-between"
             >
               <div className="space-y-4">
-                <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-100 inline-block">
+                <span className="px-3 py-1 rounded-full dark:bg-blue-500/15 dark:text-cyan-300 dark:border-cyan-500/30 bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-100 inline-block">
                   {pkg.tier}
                 </span>
-                <h4 className="text-lg font-bold text-slate-900 font-sans">{pkg.name}</h4>
-                <div className="text-2xl font-black text-blue-600 font-display">{pkg.price}</div>
+                <h4 className="text-lg font-bold dark:text-white text-slate-900 font-sans">{pkg.name}</h4>
+                <div className="text-2xl font-black dark:text-cyan-400 text-blue-600 font-display">{pkg.price}</div>
 
-                <ul className="text-xs text-slate-600 space-y-2 pt-3 border-t border-slate-100">
-                  <li>• <strong className="text-slate-800">CPU:</strong> {pkg.processor}</li>
-                  <li>• <strong className="text-slate-800">GPU:</strong> {pkg.gpu}</li>
-                  <li>• <strong className="text-slate-800">RAM:</strong> {pkg.ram}</li>
-                  <li>• <strong className="text-slate-800">SSD:</strong> {pkg.storage}</li>
-                  <li>• <strong className="text-slate-800">PSU:</strong> {pkg.psu}</li>
-                  <li>• <strong className="text-slate-800">Case:</strong> {pkg.case}</li>
+                <ul className="text-xs dark:text-slate-400 text-slate-600 space-y-2 pt-3 border-t dark:border-white/[0.06] border-slate-100">
+                  <li>• <strong className="dark:text-slate-200 text-slate-800">CPU:</strong> {pkg.processor}</li>
+                  <li>• <strong className="dark:text-slate-200 text-slate-800">GPU:</strong> {pkg.gpu}</li>
+                  <li>• <strong className="dark:text-slate-200 text-slate-800">RAM:</strong> {pkg.ram}</li>
+                  <li>• <strong className="dark:text-slate-200 text-slate-800">SSD:</strong> {pkg.storage}</li>
+                  <li>• <strong className="dark:text-slate-200 text-slate-800">PSU:</strong> {pkg.psu}</li>
+                  <li>• <strong className="dark:text-slate-200 text-slate-800">Case:</strong> {pkg.case}</li>
                 </ul>
               </div>
 

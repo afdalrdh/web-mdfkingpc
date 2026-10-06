@@ -128,15 +128,15 @@ export default function PesananSayaPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-transparent dark:text-slate-100 text-slate-800 flex flex-col font-sans">
       <main className="flex-1 py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between border-b border-slate-200 pb-6 mb-8">
+        <div className="flex items-center justify-between border-b dark:border-white/[0.08] border-slate-200 pb-6 mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display uppercase flex items-center gap-3">
-              <PackageCheck className="w-8 h-8 text-blue-600" />
+            <h1 className="text-2xl sm:text-3xl font-extrabold dark:text-white text-slate-900 font-display uppercase flex items-center gap-3">
+              <PackageCheck className="w-8 h-8 dark:text-cyan-400 text-blue-600" />
               <span>Daftar Pesanan & Status Servis</span>
             </h1>
-            <p className="text-slate-600 text-xs sm:text-sm mt-1">
+            <p className="dark:text-slate-400 text-slate-600 text-xs sm:text-sm mt-1">
               Pantau perkembangan perbaikan perangkat Anda secara real-time di mdfkingpc.
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function PesananSayaPage() {
           {user && (
             <button
               onClick={() => fetchOrders(user.email)}
-              className="p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all border border-slate-200"
+              className="p-2.5 rounded-full dark:bg-white/[0.05] dark:hover:bg-white/[0.1] dark:text-slate-300 bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all dark:border-white/[0.08] border border-slate-200"
               title="Refresh Pesanan"
             >
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -153,10 +153,10 @@ export default function PesananSayaPage() {
         </div>
 
         {!user ? (
-          <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-md mx-auto space-y-4 shadow-sm">
-            <AlertCircle className="w-12 h-12 text-blue-600 mx-auto" />
-            <h3 className="text-xl font-bold text-slate-900 font-sans">Silakan Masuk Terlebih Dahulu</h3>
-            <p className="text-xs text-slate-600">
+          <div className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200 rounded-3xl p-12 text-center max-w-md mx-auto space-y-4 shadow-sm">
+            <AlertCircle className="w-12 h-12 dark:text-cyan-400 text-blue-600 mx-auto" />
+            <h3 className="text-xl font-bold dark:text-white text-slate-900 font-sans">Silakan Masuk Terlebih Dahulu</h3>
+            <p className="text-xs dark:text-slate-400 text-slate-600">
               Anda harus masuk ke akun Anda untuk melihat status riwayat pemesanan servis.
             </p>
             <button
@@ -167,15 +167,15 @@ export default function PesananSayaPage() {
             </button>
           </div>
         ) : loading ? (
-          <div className="text-center py-16 text-slate-500 flex items-center justify-center gap-2">
-            <RefreshCw className="w-5 h-5 animate-spin text-blue-600" />
+          <div className="text-center py-16 dark:text-slate-400 text-slate-500 flex items-center justify-center gap-2">
+            <RefreshCw className="w-5 h-5 animate-spin dark:text-cyan-400 text-blue-600" />
             <span>Memuat data pesanan...</span>
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center max-w-lg mx-auto space-y-4 shadow-sm">
-            <PackageCheck className="w-12 h-12 text-slate-400 mx-auto" />
-            <h3 className="text-xl font-bold text-slate-900 font-sans">Belum Ada Pesanan Aktif</h3>
-            <p className="text-xs text-slate-600">
+          <div className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200 rounded-3xl p-12 text-center max-w-lg mx-auto space-y-4 shadow-sm">
+            <PackageCheck className="w-12 h-12 dark:text-slate-500 text-slate-400 mx-auto" />
+            <h3 className="text-xl font-bold dark:text-white text-slate-900 font-sans">Belum Ada Pesanan Aktif</h3>
+            <p className="text-xs dark:text-slate-400 text-slate-600">
               Anda belum memiliki riwayat pemesanan servis di mdfkingpc.
             </p>
             <Link
@@ -190,13 +190,13 @@ export default function PesananSayaPage() {
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-sm space-y-4"
+                className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200/90 rounded-3xl p-6 shadow-sm space-y-4"
               >
                 {/* Header Info */}
-                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/[0.06] border-slate-100 pb-4">
                   <div>
-                    <span className="text-xs text-slate-500 font-medium">ID Pesanan</span>
-                    <h3 className="text-base font-extrabold text-slate-900 font-sans">ORD-{order.id}</h3>
+                    <span className="text-xs dark:text-slate-400 text-slate-500 font-medium">ID Pesanan</span>
+                    <h3 className="text-base font-extrabold dark:text-white text-slate-900 font-sans">ORD-{order.id}</h3>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -207,25 +207,25 @@ export default function PesananSayaPage() {
                 {/* Details */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                   <div>
-                    <span className="text-slate-500 block mb-1">Layanan Terpilih</span>
-                    <span className="font-bold text-slate-900">{order.serviceName}</span>
+                    <span className="dark:text-slate-400 text-slate-500 block mb-1">Layanan Terpilih</span>
+                    <span className="font-bold dark:text-white text-slate-900">{order.serviceName}</span>
                   </div>
                   <div>
-                    <span className="text-slate-500 block mb-1">Perangkat</span>
-                    <span className="font-semibold text-slate-700">{order.deviceModel || 'Tidak disebutkan'}</span>
+                    <span className="dark:text-slate-400 text-slate-500 block mb-1">Perangkat</span>
+                    <span className="font-semibold dark:text-slate-300 text-slate-700">{order.deviceModel || 'Tidak disebutkan'}</span>
                   </div>
                   <div>
-                    <span className="text-slate-500 block mb-1">Total Biaya</span>
-                    <span className="font-extrabold text-blue-600 text-sm font-sans">
+                    <span className="dark:text-slate-400 text-slate-500 block mb-1">Total Biaya</span>
+                    <span className="font-extrabold dark:text-cyan-400 text-blue-600 text-sm font-sans">
                       Rp {(order.price || 0).toLocaleString('id-ID')}
                     </span>
                   </div>
                 </div>
 
                 {order.problemDescription && (
-                  <div className="bg-slate-50 p-3.5 rounded-2xl text-xs border border-slate-200/70">
-                    <span className="text-slate-500 block mb-0.5 font-medium">Catatan Kerusakan:</span>
-                    <span className="text-slate-700">{order.problemDescription}</span>
+                  <div className="dark:bg-white/[0.03] bg-slate-50 p-3.5 rounded-2xl text-xs border dark:border-white/[0.06] border-slate-200/70">
+                    <span className="dark:text-slate-400 text-slate-500 block mb-0.5 font-medium">Catatan Kerusakan:</span>
+                    <span className="dark:text-slate-200 text-slate-700">{order.problemDescription}</span>
                   </div>
                 )}
 

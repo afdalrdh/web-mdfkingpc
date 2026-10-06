@@ -3,14 +3,16 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { TESTIMONIALS_LIST } from '@/data/mockData';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/testimonials
 export async function GET() {
   try {
-    let testimonials: any[] = [];
+    let dbTestimonials: any[] = [];
 
     try {
       if (process.env.DATABASE_URL) {
-        testimonials = await prisma.testimonial.findMany({
+        dbTestimonials = await prisma.testimonial.findMany({
           orderBy: { createdAt: 'desc' },
         });
       }
@@ -18,14 +20,18 @@ export async function GET() {
       console.warn('DB error fetching testimonials:', dbError);
     }
 
-    if (testimonials.length === 0) {
-      testimonials = TESTIMONIALS_LIST;
-    }
+    const dbIds = new Set(dbTestimonials.map((t) => t.id));
+    const merged = [
+      ...dbTestimonials,
+      ...TESTIMONIALS_LIST.filter((t) => !dbIds.has(t.id)),
+    ];
 
     return NextResponse.json({
       success: true,
-      count: testimonials.length,
-      data: testimonials,
+      count: merged.length,
+      data: merged,
+    }, {
+      headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' }
     });
   } catch (error: any) {
     return NextResponse.json(

@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma';
 import { verifyAdminToken } from '@/lib/auth';
 import { getStoredServices, saveStoredService, deleteStoredService, StoredService } from '@/lib/storage';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/services/[id]
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
@@ -36,6 +38,8 @@ export async function GET(request: Request, { params }: { params: { id: string }
     return NextResponse.json({
       success: true,
       data: service,
+    }, {
+      headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate' }
     });
   } catch (error: any) {
     return NextResponse.json(
