@@ -232,66 +232,66 @@ function PemesananContent() {
           type="button"
           onClick={() => setActiveTab('laptop')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'laptop' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+            activeTab === 'laptop' ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/20' : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
           }`}
         >
-          <Laptop className={`w-4 h-4 ${activeTab === 'laptop' ? 'text-white' : 'text-cyan-400'}`} />
-          <span>Laptop</span>
+          <Laptop className={`w-4 h-4 ${activeTab === 'laptop' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+          <span className={activeTab === 'laptop' ? '!text-white' : ''}>Laptop</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('mouse')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'mouse' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+            activeTab === 'mouse' ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/20' : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
           }`}
         >
-          <MousePointer className={`w-4 h-4 ${activeTab === 'mouse' ? 'text-white' : 'text-cyan-400'}`} />
-          <span>Mouse</span>
+          <MousePointer className={`w-4 h-4 ${activeTab === 'mouse' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+          <span className={activeTab === 'mouse' ? '!text-white' : ''}>Mouse</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('keyboard')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'keyboard' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+            activeTab === 'keyboard' ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/20' : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
           }`}
         >
-          <Keyboard className={`w-4 h-4 ${activeTab === 'keyboard' ? 'text-white' : 'text-cyan-400'}`} />
-          <span>Keyboard</span>
+          <Keyboard className={`w-4 h-4 ${activeTab === 'keyboard' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+          <span className={activeTab === 'keyboard' ? '!text-white' : ''}>Keyboard</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('gamepad')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'gamepad' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+            activeTab === 'gamepad' ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/20' : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
           }`}
         >
-          <Gamepad2 className={`w-4 h-4 ${activeTab === 'gamepad' ? 'text-white' : 'text-cyan-400'}`} />
-          <span>Gamepad</span>
+          <Gamepad2 className={`w-4 h-4 ${activeTab === 'gamepad' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+          <span className={activeTab === 'gamepad' ? '!text-white' : ''}>Gamepad</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('rakit-pc')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'rakit-pc' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+            activeTab === 'rakit-pc' ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/20' : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
           }`}
         >
-          <Cpu className={`w-4 h-4 ${activeTab === 'rakit-pc' ? 'text-white' : 'text-cyan-400'}`} />
-          <span>Rakit PC</span>
+          <Cpu className={`w-4 h-4 ${activeTab === 'rakit-pc' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+          <span className={activeTab === 'rakit-pc' ? '!text-white' : ''}>Rakit PC</span>
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('instalasi')}
           className={`flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-bold transition-all ${
-            activeTab === 'instalasi' ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+            activeTab === 'instalasi' ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/20' : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
           }`}
         >
-          <Download className={`w-4 h-4 ${activeTab === 'instalasi' ? 'text-white' : 'text-cyan-400'}`} />
-          <span>Instalasi</span>
+          <Download className={`w-4 h-4 ${activeTab === 'instalasi' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+          <span className={activeTab === 'instalasi' ? '!text-white' : ''}>Instalasi</span>
         </button>
       </div>
 

@@ -295,7 +295,7 @@ export default function HomePage() {
       {/* 3. DARK TECH CONTAINER SECTION ("A GOOD TEAM DELIVERS A GREAT WORK")     */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl cut-corner-container-lg bg-gradient-to-br from-[#080B14] via-[#0E152A] to-[#0A0D18] text-white p-8 sm:p-12 lg:p-16 shadow-[0_25px_50px_rgba(0,0,0,0.8)] overflow-hidden border border-blue-500/25">
+        <div className="preserve-dark relative rounded-3xl cut-corner-container-lg bg-gradient-to-br from-[#080B14] via-[#0E152A] to-[#0A0D18] text-white p-8 sm:p-12 lg:p-16 shadow-[0_25px_50px_rgba(0,0,0,0.8)] overflow-hidden border border-blue-500/25">
           {/* Ambient Glows */}
           <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -left-20 -top-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -554,7 +554,7 @@ export default function HomePage() {
                   key={item.id}
                   className={`rounded-2xl cut-corner-card p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 shadow-sm ${
                     isFirst
-                      ? 'bg-gradient-to-br from-blue-900/80 via-blue-950 to-[#0B1020] text-white shadow-[0_0_35px_rgba(37,99,235,0.3)] border border-blue-500/40'
+                      ? 'preserve-dark bg-gradient-to-br from-blue-900/80 via-blue-950 to-[#0B1020] text-white shadow-[0_0_35px_rgba(37,99,235,0.3)] border border-blue-500/40'
                       : 'bg-[#0B0D16] text-white border border-white/[0.08] hover:border-blue-500/30 shadow-[0_8px_30px_rgba(0,0,0,0.6)]'
                   }`}
                 >
@@ -616,7 +616,7 @@ export default function HomePage() {
       {/* 7. AWARDS & RECOGNITION (HITBOOX SECTION 7: DARK CUT-CORNER CONTAINER)   */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl cut-corner-container-lg bg-gradient-to-r from-[#08090F] via-[#0E1220] to-[#090D1A] text-white p-8 sm:p-12 lg:p-16 border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden">
+        <div className="preserve-dark rounded-3xl cut-corner-container-lg bg-gradient-to-r from-[#08090F] via-[#0E1220] to-[#090D1A] text-white p-8 sm:p-12 lg:p-16 border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.8)] relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Trophy / Badge Emblem */}
             <div className="lg:col-span-5 text-center lg:text-left space-y-4">
@@ -776,7 +776,7 @@ export default function HomePage() {
       {/* 10. MAKE YOUR PC DREAM REAL (CONSULTATION FORM WITH CUT-CORNER BUTTONS)   */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl cut-corner-container-lg bg-gradient-to-br from-[#080B14] via-[#0E1528] to-[#070911] text-white p-8 sm:p-12 lg:p-16 border border-blue-500/30 shadow-[0_0_50px_rgba(37,99,235,0.2)] overflow-hidden">
+        <div className="preserve-dark relative rounded-3xl cut-corner-container-lg bg-gradient-to-br from-[#080B14] via-[#0E1528] to-[#070911] text-white p-8 sm:p-12 lg:p-16 border border-blue-500/30 shadow-[0_0_50px_rgba(37,99,235,0.2)] overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Copy & Rig Graphic */}
             <div className="lg:col-span-6 space-y-6">

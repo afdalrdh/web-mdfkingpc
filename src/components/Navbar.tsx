@@ -131,44 +131,84 @@ export const Navbar: React.FC = () => {
                     >
                       <Link
                         href={link.href}
-                        className={`inline-flex items-center gap-1 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
+                        className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
                           isActive(link.href)
-                            ? 'text-blue-500 bg-blue-500/10 font-bold border border-blue-500/30 shadow-[0_0_12px_rgba(59,130,246,0.2)]'
-                            : 'dark:text-slate-300 text-slate-600 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/[0.06]'
+                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/15 font-bold border border-blue-200/90 dark:border-blue-500/30 shadow-xs'
+                            : 'text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
                         }`}
                       >
                         <span>{link.label}</span>
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? 'rotate-180 text-blue-400' : 'text-slate-500'}`} />
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180 text-blue-600 dark:text-blue-400' : 'text-slate-400'}`} />
                       </Link>
 
-                      {/* Dropdown Menu */}
+                      {/* Dropdown Menu - Wide 2-Column Grid */}
                       {isServicesOpen && (
-                        <div className="absolute top-full left-0 w-84 dark:bg-[#0D0F17]/95 bg-white backdrop-blur-2xl dark:border-white/10 border-black/[0.07] border rounded-2xl shadow-2xl p-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                          <div className="text-[10px] font-bold text-slate-400 px-3 py-1.5 uppercase tracking-wider">
-                            Pilih Layanan Servis
-                          </div>
-                          {serviceSubmenu.map((sub) => {
-                            const IconComponent = sub.icon;
-                            return (
+                        <div className="absolute top-full -left-12 pt-2 w-[620px] lg:w-[660px] z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                          <div className="bg-white dark:bg-[#0D0F18]/98 backdrop-blur-2xl border border-slate-200/90 dark:border-white/10 rounded-2xl shadow-2xl p-3.5">
+                            <div className="flex items-center justify-between px-3 py-1.5 border-b border-slate-100 dark:border-white/[0.06] mb-2">
+                              <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                                Katalog Layanan Spesialis IT
+                              </span>
+                              <span className="text-[10px] font-semibold text-blue-600 dark:text-cyan-400">
+                                Diagnostik Rp 0 • Garansi 30 Hari
+                              </span>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-2">
+                              {serviceSubmenu.map((sub) => {
+                                const IconComponent = sub.icon;
+                                return (
+                                  <Link
+                                    key={sub.href}
+                                    href={sub.href}
+                                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-blue-50/70 dark:hover:bg-white/[0.06] text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-white transition-all group"
+                                  >
+                                    <div className="p-2 rounded-xl bg-blue-500/10 dark:bg-blue-500/15 text-blue-600 dark:text-cyan-400 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xs shrink-0 mt-0.5">
+                                      <IconComponent className="w-4 h-4" />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="text-xs font-bold leading-snug text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                                        {sub.label}
+                                      </div>
+                                      <div className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                                        {sub.desc}
+                                      </div>
+                                    </div>
+                                  </Link>
+                                );
+                              })}
+
+                              {/* 8th Slot: Explore All Services Card */}
                               <Link
-                                key={sub.href}
-                                href={sub.href}
-                                className="flex items-start gap-3 p-2.5 rounded-xl dark:hover:bg-white/[0.06] hover:bg-slate-50 dark:text-slate-300 text-slate-700 dark:hover:text-white hover:text-blue-700 transition-all group"
+                                href="/layanan"
+                                className="flex items-start gap-3 p-2.5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50/50 dark:from-blue-950/40 dark:to-cyan-950/30 border border-blue-200/60 dark:border-blue-500/20 hover:border-blue-400 dark:hover:border-cyan-500/50 transition-all group"
                               >
-                                <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xs">
-                                  <IconComponent className="w-4 h-4" />
+                                <div className="p-2 rounded-xl bg-blue-600 text-white shadow-xs shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                                  <Sparkles className="w-4 h-4" />
                                 </div>
-                                <div className="flex-1">
-                                  <div className="text-xs font-bold leading-tight dark:text-slate-100 text-slate-900 dark:group-hover:text-cyan-400 group-hover:text-blue-600 transition-colors">
-                                    {sub.label}
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-xs font-bold leading-snug text-blue-700 dark:text-cyan-300 group-hover:text-blue-800 dark:group-hover:text-cyan-200 transition-colors flex items-center gap-1">
+                                    <span>Lihat Semua Layanan</span>
+                                    <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                                   </div>
-                                  <div className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-1 mt-0.5">
-                                    {sub.desc}
+                                  <div className="text-[11px] text-blue-600/70 dark:text-slate-400 line-clamp-1 mt-0.5">
+                                    Katalog komplit &amp; rincian harga
                                   </div>
                                 </div>
                               </Link>
-                            );
-                          })}
+                            </div>
+
+                            {/* Bottom Banner */}
+                            <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-white/[0.06] flex items-center justify-between px-3 text-[11px] text-slate-500 dark:text-slate-400">
+                              <span>Workshop Bandung &amp; Cimahi buka setiap hari</span>
+                              <Link
+                                href="/kontak"
+                                className="text-blue-600 dark:text-cyan-400 font-bold hover:underline"
+                              >
+                                Lokasi &amp; Jam Buka &rarr;
+                              </Link>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -181,8 +221,8 @@ export const Navbar: React.FC = () => {
                     href={link.href}
                     className={`px-3.5 py-2 rounded-full text-xs font-semibold transition-all duration-200 ${
                       isActive(link.href)
-                        ? 'text-blue-500 bg-blue-500/10 font-bold border border-blue-500/30 shadow-[0_0_12px_rgba(59,130,246,0.2)]'
-                        : 'dark:text-slate-300 text-slate-600 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/[0.06]'
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/15 font-bold border border-blue-200/90 dark:border-blue-500/30 shadow-xs'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
                     }`}
                   >
                     {link.label}
@@ -268,7 +308,7 @@ export const Navbar: React.FC = () => {
               ) : (
                 <button
                   onClick={() => setIsAuthModalOpen(true)}
-                  className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-300 bg-white/[0.06] border border-white/[0.1]"
+                  className="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.06] border border-slate-200 dark:border-white/[0.1]"
                 >
                   Login
                 </button>
@@ -277,7 +317,7 @@ export const Navbar: React.FC = () => {
               <ThemeToggle />
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] focus:outline-none"
+                className="p-2 rounded-xl text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] focus:outline-none"
                 aria-label="Toggle Navigation"
               >
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -288,7 +328,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="md:hidden dark:bg-[#090B10]/98 bg-white/98 backdrop-blur-2xl dark:border-white/10 border-black/[0.06] border-b px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-2xl">
+          <div className="md:hidden dark:bg-[#090B10]/98 bg-white/98 backdrop-blur-2xl dark:border-white/10 border-slate-200 border-b px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-2xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -296,8 +336,8 @@ export const Navbar: React.FC = () => {
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   isActive(link.href)
-                    ? 'bg-blue-500/15 text-blue-500 border border-blue-500/30 font-bold'
-                    : 'dark:text-slate-300 text-slate-700 dark:hover:bg-white/[0.05] hover:bg-slate-100'
+                    ? 'bg-blue-50 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30 font-bold'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/[0.05]'
                 }`}
               >
                 <span>{link.label}</span>
@@ -305,16 +345,16 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
 
-            <div className="pt-2 border-t border-white/[0.08]">
-              <div className="text-xs font-bold text-slate-400 px-2 py-1 uppercase tracking-wider">Layanan Servis</div>
+            <div className="pt-2 border-t dark:border-white/[0.08] border-slate-200">
+              <div className="text-xs font-bold text-slate-500 dark:text-slate-400 px-2 py-1 uppercase tracking-wider">Layanan Servis</div>
               {serviceSubmenu.map((sub) => (
                 <Link
                   key={sub.href}
                   href={sub.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 px-3 py-2 text-xs text-slate-300 hover:text-cyan-400 hover:bg-white/[0.05] rounded-lg"
+                  className="flex items-center gap-2 px-3 py-2 text-xs text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/[0.05] rounded-lg transition-colors font-medium"
                 >
-                  <sub.icon className="w-3.5 h-3.5 text-blue-400" />
+                  <sub.icon className="w-3.5 h-3.5 text-blue-500 dark:text-blue-400" />
                   <span>{sub.label}</span>
                 </Link>
               ))}

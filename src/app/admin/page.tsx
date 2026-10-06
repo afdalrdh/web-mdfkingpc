@@ -853,7 +853,7 @@ export default function AdminDashboardPage() {
                 required
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
-                placeholder="admin@mdfkingpc.com"
+                placeholder="admin@example.com"
                 className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-500"
               />
             </div>
@@ -868,12 +868,6 @@ export default function AdminDashboardPage() {
                 placeholder="••••••••"
                 className="w-full px-4 py-3 rounded-xl bg-slate-800/80 border border-slate-700 text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all placeholder:text-slate-500"
               />
-            </div>
-
-            <div className="bg-blue-950/40 border border-blue-800/50 rounded-xl p-3 text-[11px] text-blue-300 space-y-1">
-              <div className="font-semibold text-blue-200">Kredensial Default:</div>
-              <div>Email: <code className="text-white">admin@mdfkingpc.com</code></div>
-              <div>Password: <code className="text-white">admin123</code></div>
             </div>
 
             <button

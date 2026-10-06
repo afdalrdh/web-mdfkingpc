@@ -299,12 +299,12 @@ export default function RakitPcSimulator() {
               onClick={() => setActiveTab('custom')}
               className={`py-3 px-4 cut-corner-card font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all uppercase tracking-wider ${
                 activeTab === 'custom'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+                  ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/30'
+                  : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
               }`}
             >
-              <Wrench className={`w-4 h-4 ${activeTab === 'custom' ? 'text-white' : 'text-cyan-400'}`} />
-              <span>1. Rakit Spek Sendiri</span>
+              <Wrench className={`w-4 h-4 ${activeTab === 'custom' ? '!text-white' : 'text-blue-600 dark:text-cyan-400'}`} />
+              <span className={activeTab === 'custom' ? '!text-white' : ''}>1. Rakit Spek Sendiri</span>
             </button>
 
             <button
@@ -312,12 +312,12 @@ export default function RakitPcSimulator() {
               onClick={() => setActiveTab('budget')}
               className={`py-3 px-4 cut-corner-card font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all uppercase tracking-wider ${
                 activeTab === 'budget'
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+                  ? 'bg-blue-600 !text-white shadow-md shadow-blue-600/30'
+                  : 'text-slate-700 dark:text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]'
               }`}
             >
-              <DollarSign className={`w-4 h-4 ${activeTab === 'budget' ? 'text-white' : 'text-emerald-400'}`} />
-              <span>2. Rakit Sesuai Budget (AI)</span>
+              <DollarSign className={`w-4 h-4 ${activeTab === 'budget' ? '!text-white' : 'text-emerald-600 dark:text-emerald-400'}`} />
+              <span className={activeTab === 'budget' ? '!text-white' : ''}>2. Rakit Sesuai Budget (AI)</span>
             </button>
           </div>
         </div>

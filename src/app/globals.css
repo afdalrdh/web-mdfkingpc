@@ -88,8 +88,8 @@
 
   --text-primary:   #0F172A;
   --text-secondary: #1E293B;
-  --text-muted:     #475569;
-  --text-faint:     #94A3B8;
+  --text-muted:     #334155;
+  --text-faint:     #64748B;
 
   --border-default: rgba(0,0,0,0.09);
   --border-strong:  rgba(0,0,0,0.15);
@@ -276,39 +276,74 @@ body {
   color: var(--text-faint) !important;
 }
 
-.light select {
+.light select,
+.light select option {
   background-color: var(--bg-card) !important;
   color: var(--text-primary) !important;
   border-color: var(--border-default) !important;
 }
 
 /* ============================================================
-   LIGHT MODE — AMBIENT GLOW ORBS (soften, don't kill)
+   LIGHT MODE — AMBIENT GLOW ORBS (soften only blur background blobs, NOT content)
    ============================================================ */
-.light [class*="bg-blue-600\/\[0."],
-.light [class*="bg-blue-500\/\[0."],
-.light [class*="bg-cyan-500\/\[0."],
-.light [class*="bg-indigo-600\/\[0."],
-.light [class*="bg-blue-500\/15"],
-.light [class*="bg-blue-600\/14"],
-.light [class*="bg-blue-500\/20"],
-.light [class*="bg-blue-600\/30"],
-.light [class*="bg-blue-500\/10"],
-.light [class*="bg-cyan-500\/10"] {
-  opacity: 0.2 !important;
+.light .pointer-events-none[class*="blur-"],
+.light .pointer-events-none[class*="blur\["],
+.light [class*="rounded-full"][class*="blur-"],
+.light [class*="rounded-full"][class*="blur\["] {
+  opacity: 0.25 !important;
 }
 
 /* ============================================================
-   LIGHT MODE — ACCENT COLORS (stay vibrant)
+   LIGHT MODE — ACCENT COLORS (stay vibrant and high contrast)
    ============================================================ */
 .light .text-cyan-400  { color: #0891B2 !important; }
-.light .text-cyan-300  { color: #06B6D4 !important; }
+.light .text-cyan-300  { color: #0E7490 !important; }
 .light .text-emerald-400 { color: #059669 !important; }
+.light .text-emerald-300 { color: #047857 !important; }
 .light .text-amber-400   { color: #D97706 !important; }
+.light .text-amber-300   { color: #B45309 !important; }
 .light .text-rose-500    { color: #E11D48 !important; }
+.light .text-rose-400    { color: #BE123C !important; }
 .light .text-blue-400    { color: #2563EB !important; }
 .light .text-blue-500    { color: #1D4ED8 !important; }
 .light .text-indigo-400  { color: #4F46E5 !important; }
+
+/* Counter metric gradients & colored gradient text in light mode */
+.light [class*="bg-clip-text"][class*="text-transparent"][class*="from-blue-400"]:not(.preserve-dark):not(.preserve-dark *) {
+  background-image: linear-gradient(to right, #1D4ED8, #4338CA, #0891B2) !important;
+}
+.light [class*="bg-clip-text"][class*="text-transparent"][class*="from-cyan-400"]:not(.preserve-dark):not(.preserve-dark *) {
+  background-image: linear-gradient(to right, #0891B2, #1D4ED8) !important;
+}
+
+/* Table row dividers in light mode */
+.light [class*="divide-white"] > * + * {
+  border-color: var(--border-default) !important;
+}
+
+/* Ensure buttons with colored backgrounds always keep pure white text */
+.light .btn-hitboox-primary,
+.light .btn-hitboox-primary *,
+.light .btn-hitboox-red,
+.light .btn-hitboox-red *,
+.light [class*="bg-blue-600"],
+.light [class*="bg-blue-600"] *,
+.light [class*="bg-blue-700"],
+.light [class*="bg-blue-700"] *,
+.light [class*="bg-rose-500"],
+.light [class*="bg-rose-500"] *,
+.light [class*="bg-rose-600"],
+.light [class*="bg-rose-600"] *,
+.light [class*="bg-emerald-600"],
+.light [class*="bg-emerald-600"] *,
+.light [class*="bg-slate-900"],
+.light [class*="bg-slate-900"] *,
+.light [class*="bg-black"],
+.light [class*="bg-black"] *,
+.light .preserve-white-text,
+.light .preserve-white-text * {
+  color: #FFFFFF !important;
+}
 
 /* ============================================================
    LIGHT MODE — SHADOWS (soften)
@@ -464,6 +499,24 @@ body {
 
 .light .preserve-dark [class*="border-white"] {
   border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.light .preserve-dark input,
+.light .preserve-dark textarea,
+.light .preserve-dark select {
+  color: #FFFFFF !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.light .preserve-dark input::placeholder,
+.light .preserve-dark textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+.light .preserve-dark select option {
+  background-color: #0B0D16 !important;
+  color: #FFFFFF !important;
 }
 
 .light .preserve-dark [class*="opacity-30"],
