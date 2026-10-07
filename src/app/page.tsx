@@ -204,16 +204,16 @@ export default function HomePage() {
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-3">
               <span className="w-1.5 h-6 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full" />
-              <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
-                WE FOCUS ON HIGH PERFORMANCE RIGS & PERFECT REPAIRS
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400">
+                WE FOCUS ON HIGH PERFORMANCE RIGS &amp; PERFECT REPAIRS
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight font-display uppercase bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-              DEDIKASI KAMI UNTUK PERFORMA HARDWARE MAKSIMAL & HASIL SERVIS SEMPURNA
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight font-display uppercase bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-white dark:via-slate-100 dark:to-slate-400 bg-clip-text text-transparent">
+              DEDIKASI KAMI UNTUK PERFORMA HARDWARE MAKSIMAL &amp; HASIL SERVIS SEMPURNA
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
               mdfkingpc didirikan dengan satu komitmen: menghadirkan solusi hardware komputer dan laptop yang transparan tanpa mark-up biaya membingungkan. Dari penanganan mikrosoldering logic board yang rumit hingga perakitan rig PC gaming bersirkulasi dingin, seluruh pekerjaan dikerjakan oleh teknisi spesialis bersertifikasi.
             </p>
 
@@ -242,50 +242,50 @@ export default function HomePage() {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 bg-blue-950/80 px-2.5 py-1 rounded border border-cyan-500/30">
                   Laboratorium Bandung &amp; Cimahi
                 </span>
-                <h4 className="text-sm font-bold mt-1.5 text-white">Peralatan Mikrosolder & Kompresor Anti-Statis Modern</h4>
+                <h4 className="text-sm font-bold mt-1.5 text-white">Peralatan Mikrosolder &amp; Kompresor Anti-Statis Modern</h4>
               </div>
             </div>
 
             {/* Floating Review Badge */}
-            <div className="absolute -bottom-6 -left-4 sm:-left-6 bg-[#0E111B]/95 backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-[0_12px_35px_rgba(0,0,0,0.7)] cut-corner-card animate-float hidden sm:flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+            <div className="absolute -bottom-6 -left-4 sm:-left-6 bg-white dark:bg-[#0E111B] backdrop-blur-xl border border-slate-200 dark:border-white/15 rounded-2xl p-4 shadow-xl dark:shadow-[0_12px_35px_rgba(0,0,0,0.7)] cut-corner-card animate-float hidden sm:flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-500 dark:text-amber-400">
                 <Star className="w-5 h-5 fill-amber-400" />
               </div>
               <div>
-                <div className="text-xs font-black text-white flex items-center gap-1.5">
+                <div className="text-xs font-black text-slate-900 dark:text-white flex items-center gap-1.5">
                   <span>4.9 / 5.0</span>
-                  <span className="text-[9px] text-amber-400 bg-amber-500/15 border border-amber-500/30 px-1.5 py-0.5 rounded font-bold">Google Review</span>
+                  <span className="text-[9px] text-amber-600 dark:text-amber-400 bg-amber-500/15 border border-amber-500/30 px-1.5 py-0.5 rounded font-bold">Google Review</span>
                 </div>
-                <span className="text-[11px] text-slate-400">30.000+ Pengguna Puas</span>
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">30.000+ Pengguna Puas</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* 4 Big Counter Metrics (Luminous Cyan & Sapphire Gradients) */}
-        <div className="mt-16 pt-12 border-t border-white/[0.08] grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mt-16 pt-12 border-t border-slate-200 dark:border-white/[0.08] grid grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-1">
-            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent font-display">15+</span>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Tahun Pengalaman</h4>
-            <p className="text-[11px] text-slate-400">Teknisi spesialis hardware bersertifikasi</p>
+            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 dark:from-blue-400 dark:via-indigo-300 dark:to-cyan-400 bg-clip-text text-transparent font-display">15+</span>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Tahun Pengalaman</h4>
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">Teknisi spesialis hardware bersertifikasi</p>
           </div>
 
           <div className="space-y-1">
-            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent font-display">100%</span>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Komponen Original</h4>
-            <p className="text-[11px] text-slate-400">Garansi distributor resmi Indonesia</p>
+            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 dark:from-blue-400 dark:via-indigo-300 dark:to-cyan-400 bg-clip-text text-transparent font-display">100%</span>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Komponen Original</h4>
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">Garansi distributor resmi Indonesia</p>
           </div>
 
           <div className="space-y-1">
-            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent font-display">75K+</span>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Komponen Teruji</h4>
-            <p className="text-[11px] text-slate-400">Hardware & peripheral terselesaikan</p>
+            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 dark:from-blue-400 dark:via-indigo-300 dark:to-cyan-400 bg-clip-text text-transparent font-display">75K+</span>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Komponen Teruji</h4>
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">Hardware &amp; peripheral terselesaikan</p>
           </div>
 
           <div className="space-y-1">
-            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400 bg-clip-text text-transparent font-display">30K+</span>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Pelanggan Puas</h4>
-            <p className="text-[11px] text-slate-400">Komunitas gamer & profesional se-Bandung</p>
+            <span className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 dark:from-blue-400 dark:via-indigo-300 dark:to-cyan-400 bg-clip-text text-transparent font-display">30K+</span>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">Pelanggan Puas</h4>
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">Komunitas gamer &amp; profesional se-Bandung</p>
           </div>
         </div>
       </section>
@@ -399,16 +399,16 @@ export default function HomePage() {
       {/* 5. INTERACTIVE SERVICE ACCORDION (HITBOOX SECTION 5: 01-05 EXPANDABLE)    */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl cut-corner-container-lg bg-[#090C15] border border-white/[0.08] p-6 sm:p-12 lg:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+        <div className="rounded-3xl cut-corner-container-lg bg-white dark:bg-[#090C15] border border-slate-200 dark:border-white/[0.08] p-6 sm:p-12 lg:p-16 shadow-sm dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-600 dark:text-cyan-400 text-xs font-bold uppercase tracking-wider">
               <Wrench className="w-3.5 h-3.5" />
-              <span>SPESIALISASI PERBAIKAN & MODIFIKASI</span>
+              <span>SPESIALISASI PERBAIKAN &amp; MODIFIKASI</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display uppercase bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-              IT HARDWARE & REPAIR SERVICES
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display uppercase bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-white dark:via-slate-100 dark:to-slate-400 bg-clip-text text-transparent">
+              IT HARDWARE &amp; REPAIR SERVICES
             </h2>
-            <p className="text-slate-400 text-sm font-sans">
+            <p className="text-slate-600 dark:text-slate-400 text-sm font-sans">
               Klik pada tiap nomor layanan untuk melihat detail pengerjaan, garansi, dan simulasi penanganan perangkat Anda.
             </p>
           </div>
@@ -424,34 +424,34 @@ export default function HomePage() {
                     onClick={() => setActiveAccordion(idx)}
                     className={`cursor-pointer rounded-2xl cut-corner-card border transition-all duration-300 overflow-hidden ${
                       isActive
-                        ? 'bg-gradient-to-r from-blue-950/40 via-[#0E1528] to-[#0A0D18] border-blue-500/50 shadow-[0_0_25px_rgba(37,99,235,0.2)]'
-                        : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.12]'
+                        ? 'bg-blue-50/80 dark:bg-gradient-to-r dark:from-blue-950/40 dark:via-[#0E1528] dark:to-[#0A0D18] border-blue-300 dark:border-blue-500/50 shadow-sm dark:shadow-[0_0_25px_rgba(37,99,235,0.2)]'
+                        : 'bg-slate-50 dark:bg-white/[0.02] border-slate-200 dark:border-white/[0.06] hover:bg-slate-100 dark:hover:bg-white/[0.04] hover:border-slate-300 dark:hover:border-white/[0.12]'
                     }`}
                   >
                     <div className="p-5 sm:p-6 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-4">
-                        <span className={`text-2xl sm:text-3xl font-black font-display ${isActive ? 'text-cyan-400' : 'text-slate-600'}`}>
+                        <span className={`text-2xl sm:text-3xl font-black font-display ${isActive ? 'text-blue-600 dark:text-cyan-400' : 'text-slate-400 dark:text-slate-600'}`}>
                           {step.num}
                         </span>
                         <div>
-                          <h3 className={`text-base sm:text-lg font-bold font-sans ${isActive ? 'text-white' : 'text-slate-300'}`}>
+                          <h3 className={`text-base sm:text-lg font-bold font-sans ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
                             {step.title}
                           </h3>
                         </div>
                       </div>
-                      <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-90 text-cyan-400' : 'text-slate-500'}`} />
+                      <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-90 text-blue-600 dark:text-cyan-400' : 'text-slate-400 dark:text-slate-500'}`} />
                     </div>
 
                     {/* Active Expanded Content */}
                     {isActive && (
-                      <div className="px-5 sm:px-6 pb-6 pt-2 border-t border-white/[0.08] space-y-4 animate-in fade-in duration-200">
-                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <div className="px-5 sm:px-6 pb-6 pt-2 border-t border-slate-200 dark:border-white/[0.08] space-y-4 animate-in fade-in duration-200">
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                           {step.desc}
                         </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-slate-200">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200">
                           {step.features.map((feat, fIdx) => (
                             <div key={fIdx} className="flex items-center gap-2">
-                              <Check className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                              <Check className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400 shrink-0" />
                               <span>{feat}</span>
                             </div>
                           ))}
@@ -508,14 +508,14 @@ export default function HomePage() {
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <span className="w-1.5 h-6 bg-cyan-400 rounded-full" />
-              <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
-                REPUTASI & KOMUNITAS
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400">
+                REPUTASI &amp; KOMUNITAS
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display uppercase bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-              TRUSTED BY GAMERS & CREATORS
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display uppercase bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-white dark:via-slate-100 dark:to-slate-400 bg-clip-text text-transparent">
+              TRUSTED BY GAMERS &amp; CREATORS
             </h2>
-            <p className="text-slate-400 text-sm max-w-xl">
+            <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
               Ulasan nyata dari pelanggan yang telah membuktikan kualitas hasil perbaikan dan perakitan rig di mdfkingpc.
             </p>
           </div>
@@ -534,15 +534,15 @@ export default function HomePage() {
           {testimonials.length === 0 ? (
             // Skeleton loading placeholders
             [0, 1, 2].map((i) => (
-              <div key={i} className="rounded-2xl cut-corner-card p-6 sm:p-8 border border-white/[0.08] bg-[#0B0D16] animate-pulse">
+              <div key={i} className="rounded-2xl cut-corner-card p-6 sm:p-8 border border-slate-200 dark:border-white/[0.08] bg-white dark:bg-[#0B0D16] animate-pulse">
                 <div className="space-y-3">
-                  <div className="h-8 w-8 bg-white/[0.06] rounded" />
+                  <div className="h-8 w-8 bg-slate-200 dark:bg-white/[0.06] rounded" />
                   <div className="flex gap-1">{[...Array(5)].map((_, j) => <div key={j} className="w-4 h-4 bg-amber-400/20 rounded" />)}</div>
-                  <div className="h-20 bg-white/[0.04] rounded" />
+                  <div className="h-20 bg-slate-100 dark:bg-white/[0.04] rounded" />
                 </div>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.08] mt-4">
-                  <div className="w-10 h-10 rounded-full bg-white/[0.06]" />
-                  <div className="space-y-1"><div className="h-3 w-24 bg-white/[0.06] rounded" /><div className="h-2 w-16 bg-white/[0.04] rounded" /></div>
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-200 dark:border-white/[0.08] mt-4">
+                  <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-white/[0.06]" />
+                  <div className="space-y-1"><div className="h-3 w-24 bg-slate-200 dark:bg-white/[0.06] rounded" /><div className="h-2 w-16 bg-slate-100 dark:bg-white/[0.04] rounded" /></div>
                 </div>
               </div>
             ))
@@ -555,31 +555,31 @@ export default function HomePage() {
                   className={`rounded-2xl cut-corner-card p-6 sm:p-8 flex flex-col justify-between space-y-6 transition-all duration-300 hover:-translate-y-1 shadow-sm ${
                     isFirst
                       ? 'preserve-dark bg-gradient-to-br from-blue-900/80 via-blue-950 to-[#0B1020] text-white shadow-[0_0_35px_rgba(37,99,235,0.3)] border border-blue-500/40'
-                      : 'bg-[#0B0D16] text-white border border-white/[0.08] hover:border-blue-500/30 shadow-[0_8px_30px_rgba(0,0,0,0.6)]'
+                      : 'bg-white dark:bg-[#0B0D16] text-slate-800 dark:text-white border border-slate-200 dark:border-white/[0.08] hover:border-blue-500/30 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.6)]'
                   }`}
                 >
                   <div className="space-y-4">
                     {/* Large Quotation Icon */}
-                    <span className={`text-5xl font-black leading-none font-display block ${isFirst ? 'text-white/40' : 'text-blue-500/30'}`}>
+                    <span className={`text-5xl font-black leading-none font-display block ${isFirst ? 'text-white/40' : 'text-blue-500/20 dark:text-blue-500/30'}`}>
                       &ldquo;
                     </span>
-                    <div className="flex items-center gap-1 text-amber-400">
+                    <div className="flex items-center gap-1 text-amber-500 dark:text-amber-400">
                       {[...Array(item.rating || 5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
-                    <p className={`text-xs sm:text-sm leading-relaxed italic ${isFirst ? 'text-slate-200' : 'text-slate-300'}`}>
+                    <p className={`text-xs sm:text-sm leading-relaxed italic ${isFirst ? 'text-slate-200' : 'text-slate-600 dark:text-slate-300'}`}>
                       {item.quote}
                     </p>
                   </div>
 
-                  <div className={`pt-4 border-t flex items-center gap-3.5 ${isFirst ? 'border-white/20' : 'border-white/[0.08]'}`}>
-                    <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 border border-white/20">
+                  <div className={`pt-4 border-t flex items-center gap-3.5 ${isFirst ? 'border-white/20' : 'border-slate-200 dark:border-white/[0.08]'}`}>
+                    <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 border border-slate-200 dark:border-white/20">
                       <Image src={item.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop'} alt={item.name} fill className="object-cover" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-white">{item.name}</h4>
-                      <span className={`text-[11px] font-semibold block ${isFirst ? 'text-cyan-300' : 'text-cyan-400'}`}>
+                      <h4 className={`text-xs font-bold ${isFirst ? 'text-white' : 'text-slate-900 dark:text-white'}`}>{item.name}</h4>
+                      <span className={`text-[11px] font-semibold block ${isFirst ? 'text-cyan-300' : 'text-blue-600 dark:text-cyan-400'}`}>
                         {item.serviceType}
                       </span>
                     </div>
@@ -591,19 +591,19 @@ export default function HomePage() {
         </div>
 
         {/* Brand Partner Logo Continuous Marquee (Hitboox Partner Ticker) */}
-        <div className="mt-16 pt-10 border-t border-white/[0.08] overflow-hidden">
+        <div className="mt-16 pt-10 border-t border-slate-200 dark:border-white/[0.08] overflow-hidden">
           <div className="text-center mb-6">
-            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-              DIDUKUNG KOMPONEN & SUKU CADANG DISTRIBUTOR RESMI
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+              DIDUKUNG KOMPONEN &amp; SUKU CADANG DISTRIBUTOR RESMI
             </span>
           </div>
           <div className="flex space-x-10 animate-marquee items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
             {[...brandLogos, ...brandLogos].map((brand, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-xl cut-corner-card bg-white/[0.03] border border-white/[0.08] text-xs font-black text-slate-300 tracking-wider whitespace-nowrap hover:border-blue-500/40 hover:text-white transition-colors"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-xl cut-corner-card bg-slate-100 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] text-xs font-black text-slate-700 dark:text-slate-300 tracking-wider whitespace-nowrap hover:border-blue-500/40 hover:text-blue-600 dark:hover:text-white transition-colors"
               >
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
                 <span>{brand}</span>
               </div>
             ))}
@@ -666,16 +666,16 @@ export default function HomePage() {
       {/* 9. WHAT'S TRENDING (HITBOOX SECTION 9: 1 LARGE FEATURED + 4 POSTS)       */}
       {/* ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl cut-corner-container-lg bg-[#090C15] border border-white/[0.08] p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+        <div className="rounded-3xl cut-corner-container-lg bg-white dark:bg-[#090C15] border border-slate-200 dark:border-white/[0.08] p-6 sm:p-10 lg:p-12 shadow-sm dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div className="space-y-2">
               <div className="flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-cyan-400 rounded-full" />
-                <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
-                  INSIGHT & EDUKASI HARDWARE
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-cyan-400">
+                  INSIGHT &amp; EDUKASI HARDWARE
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black font-display uppercase bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl font-black font-display uppercase bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 dark:from-white dark:via-slate-100 dark:to-slate-400 bg-clip-text text-transparent">
                 WHAT&apos;S TRENDING IN HARDWARE
               </h2>
             </div>
@@ -691,31 +691,31 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* 1 Large Featured Post (Left) */}
             {blogPosts.length === 0 ? (
-              <div className="lg:col-span-7 bg-[#0B0D16] rounded-2xl cut-corner-card border border-white/[0.08] overflow-hidden animate-pulse h-80" />
+              <div className="lg:col-span-7 bg-white dark:bg-[#0B0D16] rounded-2xl cut-corner-card border border-slate-200 dark:border-white/[0.08] overflow-hidden animate-pulse h-80" />
             ) : (
-              <div className="lg:col-span-7 bg-[#0B0D16] rounded-2xl cut-corner-card border border-white/[0.08] overflow-hidden hover:border-blue-500/40 shadow-[0_10px_35px_rgba(0,0,0,0.7)] transition-all duration-300 flex flex-col h-full group">
-                <div className="relative w-full h-56 sm:h-64 lg:h-auto lg:flex-1 min-h-[200px] bg-slate-900 overflow-hidden">
+              <div className="lg:col-span-7 bg-white dark:bg-[#0B0D16] rounded-2xl cut-corner-card border border-slate-200 dark:border-white/[0.08] overflow-hidden hover:border-blue-500/40 shadow-sm dark:shadow-[0_10px_35px_rgba(0,0,0,0.7)] transition-all duration-300 flex flex-col h-full group">
+                <div className="relative w-full h-56 sm:h-64 lg:h-auto lg:flex-1 min-h-[200px] bg-slate-100 dark:bg-slate-900 overflow-hidden">
                   <Image
                     src={blogPosts[0].imageUrl}
                     alt={blogPosts[0].title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-85"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 dark:opacity-85"
                   />
-                  <span className="absolute top-4 left-4 bg-blue-600/40 text-cyan-300 border border-cyan-500/30 text-[10px] font-bold px-3 py-1 rounded uppercase tracking-wider backdrop-blur-md">
+                  <span className="absolute top-4 left-4 bg-blue-600/90 dark:bg-blue-600/40 text-white dark:text-cyan-300 border border-blue-500/40 dark:border-cyan-500/30 text-[10px] font-bold px-3 py-1 rounded uppercase tracking-wider backdrop-blur-md">
                     {blogPosts[0].category}
                   </span>
                 </div>
 
                 <div className="p-6 sm:p-7 space-y-3 shrink-0">
-                  <div className="flex items-center gap-3 text-xs text-slate-500">
+                  <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
                     <span>{blogPosts[0].date}</span>
                     <span>•</span>
                     <span>{blogPosts[0].readTime}</span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white font-sans group-hover:text-cyan-400 transition-colors line-clamp-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors line-clamp-2">
                     {blogPosts[0].title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed line-clamp-2">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2">
                     {blogPosts[0].snippet}
                   </p>
                   <div className="pt-1">
@@ -735,12 +735,12 @@ export default function HomePage() {
             <div className="lg:col-span-5 flex flex-col gap-[20px]">
               {blogPosts.length === 0 ? (
                 [0, 1, 2, 3].map((i) => (
-                  <div key={i} className="bg-[#0B0D16] rounded-xl cut-corner-card p-3 sm:p-3.5 border border-white/[0.08] flex gap-3.5 items-center animate-pulse">
-                    <div className="w-20 h-20 rounded-lg bg-white/[0.06] shrink-0" />
+                  <div key={i} className="bg-white dark:bg-[#0B0D16] rounded-xl cut-corner-card p-3 sm:p-3.5 border border-slate-200 dark:border-white/[0.08] flex gap-3.5 items-center animate-pulse">
+                    <div className="w-20 h-20 rounded-lg bg-slate-200 dark:bg-white/[0.06] shrink-0" />
                     <div className="space-y-2 flex-1">
-                      <div className="h-2 w-16 bg-white/[0.06] rounded" />
-                      <div className="h-4 w-full bg-white/[0.06] rounded" />
-                      <div className="h-2 w-20 bg-white/[0.04] rounded" />
+                      <div className="h-2 w-16 bg-slate-200 dark:bg-white/[0.06] rounded" />
+                      <div className="h-4 w-full bg-slate-200 dark:bg-white/[0.06] rounded" />
+                      <div className="h-2 w-20 bg-slate-100 dark:bg-white/[0.04] rounded" />
                     </div>
                   </div>
                 ))
@@ -749,19 +749,19 @@ export default function HomePage() {
                   <Link
                     key={post.id}
                     href={`/blog#${post.slug}`}
-                    className="bg-[#0B0D16] rounded-xl cut-corner-card p-3 sm:p-3.5 border border-white/[0.08] hover:border-blue-500/40 hover:bg-white/[0.03] transition-all flex gap-3.5 sm:gap-4 items-center group"
+                    className="bg-white dark:bg-[#0B0D16] rounded-xl cut-corner-card p-3 sm:p-3.5 border border-slate-200 dark:border-white/[0.08] hover:border-blue-500/40 hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-all flex gap-3.5 sm:gap-4 items-center group"
                   >
-                    <div className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-lg overflow-hidden shrink-0 bg-slate-900 border border-white/[0.06]">
-                      <Image src={post.imageUrl} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-80" />
+                    <div className="relative w-20 h-20 sm:w-22 sm:h-22 rounded-lg overflow-hidden shrink-0 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/[0.06]">
+                      <Image src={post.imageUrl} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300 opacity-90 dark:opacity-80" />
                     </div>
                     <div className="space-y-1 flex-1 min-w-0">
-                      <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider block">
+                      <span className="text-[10px] font-bold text-blue-600 dark:text-cyan-400 uppercase tracking-wider block">
                         {post.category}
                       </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-cyan-400 line-clamp-2 transition-colors font-sans">
+                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 line-clamp-2 transition-colors font-sans">
                         {post.title}
                       </h4>
-                      <span className="text-[11px] text-slate-500 block">{post.date}</span>
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 block">{post.date}</span>
                     </div>
                   </Link>
                 ))
@@ -795,7 +795,7 @@ export default function HomePage() {
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-center gap-3 text-xs text-slate-300">
-                  <div className="w-6 h-6 rounded-full bg-blue-600/30 border border-blue-500/40 text-cyan-400 flex items-center justify-center font-bold text-[10px]">âœ“</div>
+                  <div className="w-6 h-6 rounded-full bg-blue-600/30 border border-blue-500/40 text-cyan-400 flex items-center justify-center font-bold text-[10px]">✓</div>
                   <span>Konsultasi dan estimasi biaya gratis tanpa paksaan servis</span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-slate-300">

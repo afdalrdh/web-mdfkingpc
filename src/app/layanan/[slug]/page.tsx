@@ -199,7 +199,7 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="dark:bg-[#0D0F18]/90 bg-white p-6 rounded-2xl dark:border-white/[0.08] border-slate-200/90 shadow-lg space-y-3 hover:border-cyan-500/30 transition-all duration-300">
+              <div className="dark:bg-[#0D0F18] bg-white p-6 rounded-2xl dark:border-white/[0.08] border-slate-200/90 shadow-lg space-y-3 hover:border-cyan-500/30 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
                   <ShieldCheck className="w-6 h-6 text-cyan-400" />
                 </div>
@@ -209,7 +209,7 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
                 </p>
               </div>
 
-              <div className="dark:bg-[#0D0F18]/90 bg-white p-6 rounded-2xl dark:border-white/[0.08] border-slate-200/90 shadow-lg space-y-3 hover:border-cyan-500/30 transition-all duration-300">
+              <div className="dark:bg-[#0D0F18] bg-white p-6 rounded-2xl dark:border-white/[0.08] border-slate-200/90 shadow-lg space-y-3 hover:border-cyan-500/30 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
                   <Wrench className="w-6 h-6 text-blue-400" />
                 </div>
@@ -219,7 +219,7 @@ export default async function ServiceDetailPage({ params }: { params: { slug: st
                 </p>
               </div>
 
-              <div className="dark:bg-[#0D0F18]/90 bg-white p-6 rounded-2xl dark:border-white/[0.08] border-slate-200/90 shadow-lg space-y-3 hover:border-cyan-500/30 transition-all duration-300">
+              <div className="dark:bg-[#0D0F18] bg-white p-6 rounded-2xl dark:border-white/[0.08] border-slate-200/90 shadow-lg space-y-3 hover:border-cyan-500/30 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
                   <Award className="w-6 h-6 text-amber-400" />
                 </div>

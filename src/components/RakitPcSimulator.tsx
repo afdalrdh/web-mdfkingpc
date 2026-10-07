@@ -421,7 +421,7 @@ export default function RakitPcSimulator() {
 
               {/* AI Groq Custom Result Display */}
               {customAiResult && (
-                <div className="dark:bg-[#070911]/90 bg-slate-50 dark:border-cyan-500/30 border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm border">
+                <div className="dark:bg-[#070911] bg-slate-50 dark:border-cyan-500/30 border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm border">
                   <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/[0.08] border-slate-200 pb-4">
                     <div>
                       <span className="text-[10px] dark:text-cyan-400 text-blue-600 uppercase font-bold tracking-wider block">Tingkat Performa Rakitan</span>
@@ -626,7 +626,7 @@ export default function RakitPcSimulator() {
 
               {/* AI Groq Budget Result Display */}
               {budgetAiResult && (
-                <div className="dark:bg-[#070911]/90 bg-slate-50 dark:border-cyan-500/30 border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm border">
+                <div className="dark:bg-[#070911] bg-slate-50 dark:border-cyan-500/30 border-blue-200 rounded-3xl p-6 sm:p-8 space-y-6 animate-in fade-in duration-300 shadow-sm border">
                   <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/[0.08] border-slate-200 pb-4">
                     <div>
                       <span className="text-[10px] dark:text-cyan-400 text-blue-600 uppercase font-extrabold tracking-wider block">
@@ -736,7 +736,7 @@ export default function RakitPcSimulator() {
           {PC_PACKAGES.map((pkg, idx) => (
             <div
               key={idx}
-              className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200/90 hover:border-blue-500/50 rounded-3xl p-6 sm:p-7 space-y-5 transition-all shadow-xs hover:shadow-md flex flex-col justify-between"
+              className="dark:bg-[#0D0F18] bg-white dark:border-white/[0.08] border border-slate-200/90 hover:border-blue-500/50 rounded-3xl p-6 sm:p-7 space-y-5 transition-all shadow-xs hover:shadow-md flex flex-col justify-between"
             >
               <div className="space-y-4">
                 <span className="px-3 py-1 rounded-full dark:bg-blue-500/15 dark:text-cyan-300 dark:border-cyan-500/30 bg-blue-50 text-blue-700 text-[11px] font-bold border border-blue-100 inline-block">

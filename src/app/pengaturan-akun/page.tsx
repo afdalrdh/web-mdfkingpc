@@ -65,7 +65,7 @@ export default function PengaturanAkunPage() {
   return (
     <div className="min-h-screen bg-transparent dark:text-slate-100 text-slate-800 flex flex-col font-sans">
       <main className="flex-1 py-12 max-w-xl mx-auto px-4 sm:px-6 w-full">
-        <div className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200/90 rounded-3xl p-8 shadow-sm space-y-6">
+        <div className="dark:bg-[#0D0F18] bg-white dark:border-white/[0.08] border border-slate-200/90 rounded-3xl p-8 shadow-sm space-y-6">
           <div className="border-b dark:border-white/[0.06] border-slate-100 pb-4">
             <h1 className="text-2xl font-bold dark:text-white text-slate-900 font-display uppercase flex items-center gap-2">
               <UserIcon className="w-6 h-6 dark:text-cyan-400 text-blue-600" />

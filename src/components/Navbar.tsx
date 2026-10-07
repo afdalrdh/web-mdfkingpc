@@ -144,8 +144,8 @@ export const Navbar: React.FC = () => {
                       {/* Dropdown Menu - Wide 2-Column Grid */}
                       {isServicesOpen && (
                         <div className="absolute top-full -left-12 pt-2 w-[620px] lg:w-[660px] z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                          <div className="bg-white dark:bg-[#0D0F18]/98 backdrop-blur-2xl border border-slate-200/90 dark:border-white/10 rounded-2xl shadow-2xl p-3.5">
-                            <div className="flex items-center justify-between px-3 py-1.5 border-b border-slate-100 dark:border-white/[0.06] mb-2">
+                          <div className="bg-white dark:bg-[#0D0F18] backdrop-blur-2xl border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-3.5">
+                            <div className="flex items-center justify-between px-3 py-1.5 border-b border-slate-100 dark:border-slate-800 mb-2">
                               <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                                 Katalog Layanan Spesialis IT
                               </span>
@@ -199,7 +199,7 @@ export const Navbar: React.FC = () => {
                             </div>
 
                             {/* Bottom Banner */}
-                            <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-white/[0.06] flex items-center justify-between px-3 text-[11px] text-slate-500 dark:text-slate-400">
+                            <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between px-3 text-[11px] text-slate-500 dark:text-slate-400">
                               <span>Workshop Bandung &amp; Cimahi buka setiap hari</span>
                               <Link
                                 href="/kontak"
@@ -247,8 +247,8 @@ export const Navbar: React.FC = () => {
                   </button>
 
                   {isUserDropdownOpen && (
-                    <div className="absolute right-0 top-full mt-2 w-52 dark:bg-[#0D0F17]/95 bg-white backdrop-blur-2xl dark:border-white/10 border-black/[0.07] border rounded-2xl shadow-2xl p-2 z-50 text-xs">
-                      <div className="px-3 py-2 dark:border-white/[0.08] border-black/[0.07] border-b mb-1">
+                    <div className="absolute right-0 top-full mt-2 w-52 dark:bg-[#0D0F17] bg-white backdrop-blur-2xl dark:border-slate-800 border-slate-200 border rounded-2xl shadow-2xl p-2 z-50 text-xs">
+                      <div className="px-3 py-2 dark:border-slate-800 border-slate-100 border-b mb-1">
                         <div className="font-bold dark:text-white text-slate-900 truncate">{user.name}</div>
                         <div className="text-[11px] dark:text-slate-400 text-slate-500 truncate">{user.email}</div>
                       </div>
@@ -328,7 +328,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="md:hidden dark:bg-[#090B10]/98 bg-white/98 backdrop-blur-2xl dark:border-white/10 border-slate-200 border-b px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-2xl">
+          <div className="md:hidden dark:bg-[#090B10] bg-white backdrop-blur-2xl dark:border-slate-800 border-slate-200 border-b px-4 pt-2 pb-6 space-y-2 animate-fadeIn shadow-2xl">
             {navLinks.map((link) => (
               <Link
                 key={link.href}

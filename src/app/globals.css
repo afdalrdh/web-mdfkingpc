@@ -230,16 +230,31 @@ body {
 .light .text-slate-400 { color: var(--text-muted)     !important; }
 .light .text-slate-500 { color: var(--text-faint)     !important; }
 
-/* Headings in light mode */
-.light h1, .light h2, .light h3,
-.light h4, .light h5, .light h6 {
+/* Headings in light mode (only when not transparent gradient text) */
+.light h1:not([class*="text-transparent"]),
+.light h2:not([class*="text-transparent"]),
+.light h3:not([class*="text-transparent"]),
+.light h4:not([class*="text-transparent"]),
+.light h5:not([class*="text-transparent"]),
+.light h6:not([class*="text-transparent"]) {
   color: var(--text-primary);
 }
 
-/* Gradient text on white => becomes dark gradient */
-.light [class*="bg-clip-text"][class*="text-transparent"][class*="from-white"],
-.light [class*="bg-clip-text"][class*="text-transparent"][class*="via-slate-100"] {
-  background-image: linear-gradient(to right, var(--text-primary), #334155, #475569) !important;
+/* Gradient text on light background => dark crisp gradient */
+.light [class*="bg-clip-text"][class*="text-transparent"]:not(.preserve-dark):not(.preserve-dark *) {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+.light [class*="bg-clip-text"][class*="text-transparent"][class*="from-white"]:not(.preserve-dark):not(.preserve-dark *),
+.light [class*="bg-clip-text"][class*="text-transparent"][class*="via-slate-100"]:not(.preserve-dark):not(.preserve-dark *) {
+  background-image: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #475569 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* ============================================================
@@ -310,10 +325,18 @@ body {
 
 /* Counter metric gradients & colored gradient text in light mode */
 .light [class*="bg-clip-text"][class*="text-transparent"][class*="from-blue-400"]:not(.preserve-dark):not(.preserve-dark *) {
-  background-image: linear-gradient(to right, #1D4ED8, #4338CA, #0891B2) !important;
+  background-image: linear-gradient(135deg, #1D4ED8 0%, #4338CA 50%, #0891B2 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 .light [class*="bg-clip-text"][class*="text-transparent"][class*="from-cyan-400"]:not(.preserve-dark):not(.preserve-dark *) {
-  background-image: linear-gradient(to right, #0891B2, #1D4ED8) !important;
+  background-image: linear-gradient(135deg, #0891B2 0%, #1D4ED8 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* Table row dividers in light mode */
@@ -326,20 +349,8 @@ body {
 .light .btn-hitboox-primary *,
 .light .btn-hitboox-red,
 .light .btn-hitboox-red *,
-.light [class*="bg-blue-600"],
-.light [class*="bg-blue-600"] *,
-.light [class*="bg-blue-700"],
-.light [class*="bg-blue-700"] *,
-.light [class*="bg-rose-500"],
-.light [class*="bg-rose-500"] *,
-.light [class*="bg-rose-600"],
-.light [class*="bg-rose-600"] *,
-.light [class*="bg-emerald-600"],
-.light [class*="bg-emerald-600"] *,
-.light [class*="bg-slate-900"],
-.light [class*="bg-slate-900"] *,
-.light [class*="bg-black"],
-.light [class*="bg-black"] *,
+.light .preserve-dark,
+.light .preserve-dark *,
 .light .preserve-white-text,
 .light .preserve-white-text * {
   color: #FFFFFF !important;
@@ -389,16 +400,20 @@ body {
 /* ============================================================
    LIGHT MODE — SECONDARY BUTTON
    ============================================================ */
-.light .btn-hitboox-secondary {
-  background-color: rgba(0, 0, 0, 0.05) !important;
+.light .btn-hitboox-secondary,
+.light .btn-hitboox-secondary *,
+.light .btn-hitboox-secondary span {
+  background-color: #F1F5F9 !important;
   color: #0F172A !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-color: #CBD5E1 !important;
 }
-.light .btn-hitboox-secondary:hover {
-  border-color: rgba(37, 99, 235, 0.4) !important;
-  color: #2563EB !important;
-  background-color: rgba(37, 99, 235, 0.06) !important;
-  box-shadow: 0 0 18px rgba(37, 99, 235, 0.1) !important;
+.light .btn-hitboox-secondary:hover,
+.light .btn-hitboox-secondary:hover *,
+.light .btn-hitboox-secondary:hover span {
+  background-color: #E2E8F0 !important;
+  color: #1D4ED8 !important;
+  border-color: #93C5FD !important;
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.15) !important;
 }
 
 /* ============================================================
@@ -524,14 +539,9 @@ body {
   opacity: 0.45 !important;
 }
 
-/* Ensure dark pill buttons & image overlays keep white text in light mode */
-.light [class*="bg-slate-900"],
-.light [class*="bg-slate-900"] *,
-.light [class*="bg-slate-900"] span,
-.light [class*="bg-slate-900"] svg,
-.light [class*="bg-black"],
-.light [class*="bg-black"] *,
-.light .preserve-white-text {
+/* Ensure explicitly marked white text elements keep white text in light mode */
+.light .preserve-white-text,
+.light .preserve-white-text * {
   color: #FFFFFF !important;
 }
 

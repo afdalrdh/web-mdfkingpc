@@ -190,7 +190,7 @@ export default function PesananSayaPage() {
             {orders.map((order) => (
               <div
                 key={order.id}
-                className="dark:bg-[#0D0F18]/90 bg-white dark:border-white/[0.08] border border-slate-200/90 rounded-3xl p-6 shadow-sm space-y-4"
+                className="dark:bg-[#0D0F18] bg-white dark:border-white/[0.08] border border-slate-200/90 rounded-3xl p-6 shadow-sm space-y-4"
               >
                 {/* Header Info */}
                 <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/[0.06] border-slate-100 pb-4">

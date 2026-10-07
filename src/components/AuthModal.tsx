@@ -137,7 +137,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps
 
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
         <div
-          className={`relative w-full ${isGoogleStep ? 'max-w-lg bg-[#0F121C]' : 'max-w-md bg-[#0D0F18]/95'} text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-8 border border-white/10 overflow-hidden transition-all`}
+          className={`relative w-full ${isGoogleStep ? 'max-w-lg bg-[#0F121C]' : 'max-w-md bg-[#0D0F18]'} text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-8 border border-white/10 overflow-hidden transition-all`}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
